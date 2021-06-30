@@ -1,5 +1,5 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, StyleSheet, Button} from 'react-native';
 
 const styles = StyleSheet.create({
   center: {
@@ -22,10 +22,14 @@ const Greeting = props => {
 };
 
 const HelloTransactionApp = () => {
+  const [count, setCount] = useState(0);
+
   return (
     <View style={styles.center}>
       <Logo />
       <Greeting name="Renato" />
+      <Text>Você clicou no botão {count} vezes.</Text>
+      <Button onPress={() => setCount(count + 1)} title="Cadastre-se" />
     </View>
   );
 };
