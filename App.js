@@ -1,37 +1,69 @@
-import React, {useState} from 'react';
-import {Text, View, StyleSheet, Button} from 'react-native';
+import React from 'react';
+import {Text, View, StyleSheet, Pressable, Image, Alert} from 'react-native';
+
+const Logo = () => {
+  return (
+    <View style={styles.logoWrapper}>
+      <Image style={styles.logoImg} source={require('./img/logo.png')} />
+      <Text style={styles.title}>Transactions App</Text>
+    </View>
+  );
+};
+
+const InitialScreen = () => {
+  return (
+    <View style={styles.main}>
+      <View style={styles.logoArea}>
+        <Logo />
+      </View>
+      <View style={styles.buttonsArea}>
+        <Pressable
+          style={styles.signupButton}
+          onPress={() => Alert.alert('Cadastra-se')}>
+          <Text style={styles.signupButtonText}>Cadastre-se</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  center: {
+  main: {
+    flex: 1,
+    backgroundColor: '#4EA8DE',
+  },
+  logoArea: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoWrapper: {
+    alignItems: 'center',
+  },
+  logoImg: {
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#ffffff',
+  },
+  buttonsArea: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  signupButton: {
+    backgroundColor: '#ffffff',
+    padding: 15,
+    width: '50%',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  signupButtonText: {
+    color: '#4EA8DE',
+  },
 });
 
-const Logo = () => {
-  return <Text>Transactions App</Text>;
-};
-
-const Greeting = props => {
-  return (
-    <View>
-      <Text>Olá, {props.name}!</Text>
-    </View>
-  );
-};
-
-const HelloTransactionApp = () => {
-  const [count, setCount] = useState(0);
-
-  return (
-    <View style={styles.center}>
-      <Logo />
-      <Greeting name="Renato" />
-      <Text>Você clicou no botão {count} vezes.</Text>
-      <Button onPress={() => setCount(count + 1)} title="Cadastre-se" />
-    </View>
-  );
-};
-
-export default HelloTransactionApp;
+export default InitialScreen;
