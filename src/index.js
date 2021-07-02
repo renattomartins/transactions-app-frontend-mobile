@@ -4,7 +4,10 @@ import {Text, View, StyleSheet, Pressable, Image, Alert} from 'react-native';
 const Logo = () => {
   return (
     <View style={styles.logoWrapper}>
-      <Image style={styles.logoImg} source={require('./img/logo.png')} />
+      <Image
+        style={styles.logoImg}
+        source={require('./assets/images/logo.png')}
+      />
       <Text style={styles.title}>Transactions App</Text>
     </View>
   );
