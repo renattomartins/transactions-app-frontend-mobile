@@ -1,17 +1,6 @@
 import React from 'react';
-import {Text, View, StyleSheet, Pressable, Image, Alert} from 'react-native';
-
-const Logo = () => {
-  return (
-    <View style={styles.logoWrapper}>
-      <Image
-        style={styles.logoImg}
-        source={require('./assets/images/logo.png')}
-      />
-      <Text style={styles.title}>Transactions App</Text>
-    </View>
-  );
-};
+import {Text, View, StyleSheet, Pressable, Alert} from 'react-native';
+import Logo from './components/atoms/Logo';
 
 const InitialScreen = () => {
   return (
@@ -39,18 +28,6 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  logoWrapper: {
-    alignItems: 'center',
-  },
-  logoImg: {
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#ffffff',
   },
   buttonsArea: {
     flex: 1,
