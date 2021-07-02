@@ -1,36 +1,25 @@
-import React from 'react';
-import {View, Alert, StyleSheet} from 'react-native';
-import Logo from './components/atoms/Logo';
-import Button from './components/atoms/Button';
+import 'react-native-gesture-handler';
 
-const InitialScreen = () => {
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import InitialScreen from './screens/InitialScreen';
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.main}>
-      <View style={styles.logoArea}>
-        <Logo />
-      </View>
-      <View style={styles.buttonsArea}>
-        <Button title="Cadastre-se" onPress={() => Alert.alert('Rá!')} />
-      </View>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={InitialScreen}
+          options={{title: 'Transactions App: Início'}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: '#4EA8DE',
-  },
-  logoArea: {
-    flex: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonsArea: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-export default InitialScreen;
+export default App;
