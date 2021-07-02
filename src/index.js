@@ -1,6 +1,7 @@
 import React from 'react';
-import {Text, View, StyleSheet, Pressable, Alert} from 'react-native';
+import {View, Alert, StyleSheet} from 'react-native';
 import Logo from './components/atoms/Logo';
+import Button from './components/atoms/Button';
 
 const InitialScreen = () => {
   return (
@@ -9,11 +10,7 @@ const InitialScreen = () => {
         <Logo />
       </View>
       <View style={styles.buttonsArea}>
-        <Pressable
-          style={styles.signupButton}
-          onPress={() => Alert.alert('Cadastra-se')}>
-          <Text style={styles.signupButtonText}>Cadastre-se</Text>
-        </Pressable>
+        <Button title="Cadastre-se" onPress={() => Alert.alert('Rá!')} />
       </View>
     </View>
   );
@@ -33,16 +30,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  signupButton: {
-    backgroundColor: '#ffffff',
-    padding: 15,
-    width: '50%',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  signupButtonText: {
-    color: '#4EA8DE',
   },
 });
 
