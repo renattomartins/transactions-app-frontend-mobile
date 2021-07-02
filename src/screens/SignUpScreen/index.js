@@ -1,12 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
 
 import styles from './styles';
 
-const InitialScreen = ({navigation}) => {
+const SignUpScreen = props => {
   return (
     <View style={styles.main}>
       <View style={styles.logoArea}>
@@ -14,12 +14,12 @@ const InitialScreen = ({navigation}) => {
       </View>
       <View style={styles.buttonsArea}>
         <Button
-          title="Cadastre-se"
-          onPress={() => navigation.navigate('SignUp')}
+          title="Cadastrer"
+          onPress={() => Alert.alert('Usuário cadastrado!')}
         />
       </View>
     </View>
   );
 };
 
-export default InitialScreen;
+export default SignUpScreen;
