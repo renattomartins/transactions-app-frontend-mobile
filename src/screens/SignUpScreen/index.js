@@ -14,7 +14,7 @@ const SignUpScreen = props => {
       </View>
       <View style={styles.buttonsArea}>
         <Button
-          title="Cadastrer"
+          title="Cadastrar"
           onPress={() => Alert.alert('Usuário cadastrado!')}
         />
       </View>

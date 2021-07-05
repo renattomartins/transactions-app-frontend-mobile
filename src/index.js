@@ -12,16 +12,20 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {backgroundColor: '#4EA8DE'},
+          headerTintColor: '#fff',
+        }}>
         <Stack.Screen
           name="Home"
           component={InitialScreen}
-          options={{title: 'Transactions App: Início'}}
+          options={{title: 'Home'}}
         />
         <Stack.Screen
           name="SignUp"
           component={SignUpScreen}
-          options={{title: 'Cadastre-se'}}
+          options={{title: 'Cadastrar'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
