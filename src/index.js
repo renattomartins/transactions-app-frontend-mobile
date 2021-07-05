@@ -16,16 +16,17 @@ const App = () => {
         screenOptions={{
           headerStyle: {backgroundColor: '#4EA8DE'},
           headerTintColor: '#fff',
+          headerTitleAlign: 'center',
         }}>
         <Stack.Screen
           name="Home"
           component={InitialScreen}
-          options={{title: 'Home'}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="SignUp"
           component={SignUpScreen}
-          options={{title: 'Cadastrar'}}
+          options={{title: 'Cadastrar', headerBackTitleVisible: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
