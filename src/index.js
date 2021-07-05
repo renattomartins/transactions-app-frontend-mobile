@@ -7,6 +7,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import InitialScreen from './screens/InitialScreen';
 import SignUpScreen from './screens/SignUpScreen';
 
+import {Colors} from './styles';
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -14,7 +16,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerStyle: {backgroundColor: '#4EA8DE'},
+          headerStyle: {backgroundColor: Colors.blueFive},
           headerTintColor: '#fff',
           headerTitleAlign: 'center',
         }}>

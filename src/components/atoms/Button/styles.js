@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {Colors} from '../../../styles';
 
 const styles = StyleSheet.create({
   buttonArea: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonText: {
-    color: '#4EA8DE',
+    color: Colors.blueFive,
     fontSize: 14,
     textTransform: 'uppercase',
   },

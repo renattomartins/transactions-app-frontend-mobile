@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import {Colors} from '../../styles';
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: '#4EA8DE',
+    backgroundColor: Colors.blueFive,
   },
   logoArea: {
     flex: 1,
