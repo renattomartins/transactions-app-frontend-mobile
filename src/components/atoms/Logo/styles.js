@@ -5,9 +5,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   img: {
-    marginBottom: 20,
+    resizeMode: 'contain',
+  },
+  Small: {
+    height: 40,
+  },
+  Medium: {
+    height: 80,
+  },
+  Large: {
+    height: 176,
   },
   label: {
+    marginTop: 20,
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',

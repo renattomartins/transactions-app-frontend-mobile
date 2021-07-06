@@ -9,10 +9,10 @@ import styles from './styles';
 const SignUpScreen = props => {
   return (
     <View style={styles.main}>
-      <View style={styles.logoArea}>
-        <Logo />
+      <View style={styles.headerArea}>
+        <Logo isLabelVisisble={false} size="Medium" />
       </View>
-      <View style={styles.buttonsArea}>
+      <View style={styles.inputsArea}>
         <Button
           title="Cadastrar"
           onPress={() => Alert.alert('Usuário cadastrado!')}

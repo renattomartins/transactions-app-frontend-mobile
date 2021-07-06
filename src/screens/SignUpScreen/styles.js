@@ -6,14 +6,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.blueFive,
   },
-  logoArea: {
-    flex: 1,
+  headerArea: {
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 20,
   },
-  buttonsArea: {
-    flex: 3,
-    justifyContent: 'center',
+  inputsArea: {
+    flex: 1,
     alignItems: 'center',
   },
 });

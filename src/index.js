@@ -28,7 +28,7 @@ const App = () => {
         <Stack.Screen
           name="SignUp"
           component={SignUpScreen}
-          options={{title: 'Cadastrar', headerBackTitleVisible: false}}
+          options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
