@@ -15,6 +15,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  onboardingFields: {
+    borderBottomColor: '#fff',
+    borderBottomWidth: 1,
+    paddingVertical: 20,
+    marginBottom: 10,
+    width: 300,
+    fontSize: 20,
+    color: '#fff',
+  },
 });
 
 export default styles;

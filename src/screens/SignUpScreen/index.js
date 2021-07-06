@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Alert} from 'react-native';
+import {View, TextInput, Alert} from 'react-native';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
@@ -13,6 +13,21 @@ const SignUpScreen = props => {
         <Logo isLabelVisisble={false} size="Medium" />
       </View>
       <View style={styles.inputsArea}>
+        <TextInput
+          style={styles.onboardingFields}
+          placeholder="email"
+          placeholderTextColor={'#91C8EB'}
+        />
+        <TextInput
+          style={styles.onboardingFields}
+          placeholder="senha"
+          placeholderTextColor={'#91C8EB'}
+        />
+        <TextInput
+          style={styles.onboardingFields}
+          placeholder="repetir senha"
+          placeholderTextColor={'#91C8EB'}
+        />
         <Button
           title="Cadastrar"
           onPress={() => Alert.alert('Usuário cadastrado!')}
