@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, TextInput, Alert} from 'react-native';
+import {View, Alert} from 'react-native';
 
 import Logo from '../../components/atoms/Logo';
+import TextInput from '../../components/atoms/TextInput';
 import Button from '../../components/atoms/Button';
 
 import styles from './styles';
@@ -14,24 +15,16 @@ const SignUpScreen = props => {
       </View>
       <View style={styles.inputsArea}>
         <TextInput
-          style={styles.onboardingFields}
           placeholder="email"
-          placeholderTextColor={'#91C8EB'}
-          autoCapitalize={'none'}
           autoCompleteType={'email'}
-          autoCorrect={false}
           keyboardType={'email-address'}
           maxLength={60}
           returnKeyType={'next'}
           textContentType={'username'}
         />
         <TextInput
-          style={styles.onboardingFields}
           placeholder="senha"
-          placeholderTextColor={'#91C8EB'}
-          autoCapitalize={'none'}
           autoCompleteType={'password'}
-          autoCorrect={false}
           maxLength={60}
           returnKeyType={'next'}
           secureTextEntry={true}
@@ -41,21 +34,19 @@ const SignUpScreen = props => {
           }
         />
         <TextInput
-          style={styles.onboardingFields}
           placeholder="repetir senha"
-          placeholderTextColor={'#91C8EB'}
-          autoCapitalize={'none'}
           autoCompleteType={'password'}
-          autoCorrect={false}
           maxLength={60}
           returnKeyType={'send'}
           secureTextEntry={true}
         />
-        <Button
-          title="Cadastrar"
-          onPress={() => Alert.alert('Usuário cadastrado!')}
-          width="50%"
-        />
+        <View style={styles.buttonArea}>
+          <Button
+            title="Cadastrar"
+            onPress={() => Alert.alert('Usuário cadastrado!')}
+            width="100%"
+          />
+        </View>
       </View>
     </View>
   );

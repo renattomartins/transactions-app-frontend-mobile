@@ -14,15 +14,11 @@ const styles = StyleSheet.create({
   inputsArea: {
     flex: 1,
     alignItems: 'center',
+    paddingHorizontal: 40,
   },
-  onboardingFields: {
-    borderBottomColor: '#fff',
-    borderBottomWidth: 1,
-    paddingVertical: 20,
-    marginBottom: 10,
-    width: 300,
-    fontSize: 20,
-    color: '#fff',
+  buttonArea: {
+    width: '100%',
+    marginTop: 30,
   },
 });
 
