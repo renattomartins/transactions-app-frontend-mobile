@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   buttonArea: {
     backgroundColor: '#ffffff',
     padding: 15,
-    width: '50%',
     alignItems: 'center',
     borderRadius: 10,
   },

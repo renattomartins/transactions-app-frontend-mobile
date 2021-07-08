@@ -4,10 +4,10 @@ import {Pressable, Text} from 'react-native';
 
 import styles from './styles';
 
-const Button = props => {
+const Button = ({title, onPress, ...buttonProps}) => {
   return (
-    <Pressable style={styles.buttonArea} onPress={props.onPress}>
-      <Text style={styles.buttonText}>{props.title}</Text>
+    <Pressable style={styles.buttonArea} onPress={onPress} {...buttonProps}>
+      <Text style={styles.buttonText}>{title}</Text>
     </Pressable>
   );
 };

@@ -54,6 +54,7 @@ const SignUpScreen = props => {
         <Button
           title="Cadastrar"
           onPress={() => Alert.alert('Usuário cadastrado!')}
+          width="50%"
         />
       </View>
     </View>

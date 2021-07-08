@@ -16,6 +16,7 @@ const InitialScreen = ({navigation}) => {
         <Button
           title="Cadastre-se"
           onPress={() => navigation.navigate('SignUp')}
+          width="50%"
         />
       </View>
     </View>
