@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import {View, TextInput, Alert} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
@@ -19,7 +20,7 @@ const SignUpScreen = props => {
   };
 
   return (
-    <View style={styles.main}>
+    <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.headerArea}>
         <Logo isLabelVisisble={false} size="Medium" />
       </View>
@@ -71,7 +72,7 @@ const SignUpScreen = props => {
           />
         </View>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 
