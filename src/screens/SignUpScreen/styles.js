@@ -20,6 +20,18 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 30,
   },
+  textInputWrapper: {
+    width: '100%',
+    marginBottom: 10,
+  },
+  textInputOnboarding: {
+    borderBottomColor: '#fff',
+    borderBottomWidth: 1,
+    paddingVertical: 20,
+    width: '100%',
+    fontSize: 20,
+    color: '#fff',
+  },
 });
 
 export default styles;
