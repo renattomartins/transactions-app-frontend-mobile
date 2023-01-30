@@ -8,7 +8,7 @@ import Button from '../../components/atoms/Button';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const SignUp = props => {
+const SignUp = (props, handleOnSubmit) => {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
@@ -17,6 +17,15 @@ const SignUp = props => {
     placeholderTextColor: Colors.placeholderTextColor,
     autoCapitalize: 'none',
     autoCorrect: false,
+  };
+
+  const onSubmit = async () => {
+    try {
+      // handleOnSubmit(env, email, password, confirmPassword)
+      Alert.alert('Chegou aqui');
+    } catch (e) {
+      // tratar
+    }
   };
 
   return (
@@ -65,11 +74,7 @@ const SignUp = props => {
           {...textInputDefaultProps}
         />
         <View style={styles.buttonArea}>
-          <Button
-            title="Cadastrar"
-            onPress={() => Alert.alert('Usuário cadastrado!')}
-            width="100%"
-          />
+          <Button title="Cadastrar" onPress={onSubmit} width="100%" />
         </View>
       </View>
     </KeyboardAwareScrollView>
