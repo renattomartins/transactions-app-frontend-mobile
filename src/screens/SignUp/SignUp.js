@@ -1,6 +1,7 @@
-import React, {useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import {View, TextInput, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import axios from 'axios';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
@@ -12,6 +13,10 @@ const SignUp = (props, handleOnSubmit) => {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPpassword, setConfirmPassword] = useState('');
+
   const textInputDefaultProps = {
     style: styles.textInputOnboarding,
     placeholderTextColor: Colors.placeholderTextColor,
@@ -21,10 +26,20 @@ const SignUp = (props, handleOnSubmit) => {
 
   const onSubmit = async () => {
     try {
-      // handleOnSubmit(env, email, password, confirmPassword)
-      Alert.alert('Chegou aqui');
+      // handleOnSubmit(env, email, password, confirmPpassword);
+      await axios({
+        method: 'post',
+        baseURL: 'http://localhost:3000/',
+        url: '/users',
+        data: {
+          email: email,
+          password: password,
+          passwordVerification: confirmPpassword,
+        },
+      });
     } catch (e) {
       // tratar
+      Alert.alert('Falha na criação do novo usuário');
     }
   };
 
@@ -45,6 +60,7 @@ const SignUp = (props, handleOnSubmit) => {
             passwordRef.current.focus();
           }}
           blurOnSubmit={false}
+          onChangeText={value => setEmail(value.trim())}
           {...textInputDefaultProps}
         />
         <TextInput
@@ -62,6 +78,7 @@ const SignUp = (props, handleOnSubmit) => {
             confirmPasswordRef.current.focus();
           }}
           blurOnSubmit={false}
+          onChangeText={setPassword}
           {...textInputDefaultProps}
         />
         <TextInput
@@ -71,6 +88,7 @@ const SignUp = (props, handleOnSubmit) => {
           maxLength={60}
           secureTextEntry={true}
           returnKeyType={'send'}
+          onChangeText={setConfirmPassword}
           {...textInputDefaultProps}
         />
         <View style={styles.buttonArea}>
