@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import InitialScreen from './screens/InitialScreen';
-import SignUpScreen from './screens/SignUpScreen';
+import SignUp from './screens/SignUp';
 
 import {Colors} from './styles';
 
@@ -27,7 +27,7 @@ const App = () => {
         />
         <Stack.Screen
           name="SignUp"
-          component={SignUpScreen}
+          component={SignUp}
           options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
         />
       </Stack.Navigator>
