@@ -1,5 +1,5 @@
 import React from 'react';
-import {handleSignUp} from '../../services/users';
+import {handleSignUp} from '../../services/UserManager';
 import SignUp from './SignUp';
 
 const SignUpWithDependencies = props => (
