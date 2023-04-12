@@ -1,7 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {View, TextInput, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import axios from 'axios';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
@@ -9,13 +8,13 @@ import Button from '../../components/atoms/Button';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const SignUp = (props, handleOnSubmit) => {
+const SignUp = ({props, handleOnSubmit}) => {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPpassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const textInputDefaultProps = {
     style: styles.textInputOnboarding,
@@ -26,21 +25,27 @@ const SignUp = (props, handleOnSubmit) => {
 
   const onSubmit = async () => {
     try {
-      // handleOnSubmit(env, email, password, confirmPpassword);
-      await axios({
-        method: 'post',
-        baseURL: 'http://localhost:3000/',
-        url: '/users',
-        data: {
-          email: email,
-          password: password,
-          passwordVerification: confirmPpassword,
-        },
-      });
+      // @todo
+      // get env
+      // make simple local validations
+      // set loader? (and similar)
+      const env = 'local';
+      await handleOnSubmit(env, email, password, confirmPassword);
     } catch (e) {
-      // tratar
-      Alert.alert('Falha na criação do novo usuário');
+      // Make a small error global area to display error
+      // Make small error areas for each field
+      // Think about error logging instead alert to better debugging
+      Alert.alert('Falha na criação do novo usuário: ' + e);
     }
+
+    // Clean up field's value and error messages on submit (error or success)
+
+    // Screen states:
+    // - Initial (empty)
+    // - Filled
+    // - Loading (disabled fields and button)
+    // - Generic error
+    // - Field error
   };
 
   return (
