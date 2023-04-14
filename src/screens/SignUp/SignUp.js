@@ -12,6 +12,11 @@ const SignUp = ({props, handleOnSubmit}) => {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
+  // @todo
+  // get env
+  // const { env } = useContext(ApplicationContext);
+  const env = 'local';
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -26,10 +31,8 @@ const SignUp = ({props, handleOnSubmit}) => {
   const onSubmit = async () => {
     try {
       // @todo
-      // get env
       // make simple local validations
       // set loader? (and similar)
-      const env = 'local';
       await handleOnSubmit(env, email, password, confirmPassword);
     } catch (e) {
       // Make a small error global area to display error
