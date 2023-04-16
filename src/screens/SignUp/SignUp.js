@@ -1,21 +1,19 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import {View, TextInput, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
+import {ApplicationContext} from '../../store';
 
 import {Colors} from '../../styles';
 import styles from './styles';
 
 const SignUp = ({props, handleOnSubmit}) => {
+  const {env} = useContext(ApplicationContext);
+
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-
-  // @todo
-  // get env
-  // const { env } = useContext(ApplicationContext);
-  const env = 'local';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
