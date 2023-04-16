@@ -13,7 +13,7 @@ const addUser = async (env, email, password, confirmPassword) => {
     });
 
     console.log(`${response.status} Created ${response.headers.location}`);
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
     throw error;

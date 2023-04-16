@@ -31,22 +31,25 @@ const SignUp = ({props, handleOnSubmit}) => {
       // @todo
       // make simple local validations
       // set loader? (and similar)
-      await handleOnSubmit(env, email, password, confirmPassword);
+      const registeredUser = await handleOnSubmit(
+        env,
+        email,
+        password,
+        confirmPassword,
+      );
+
+      Alert.alert(
+        `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.created}`,
+      );
+
+      // Clean up field's value and error messages on submit (error or success)
     } catch (e) {
+      // @todo
       // Make a small error global area to display error
       // Make small error areas for each field
       // Think about error logging instead alert to better debugging
       Alert.alert('Falha na criação do novo usuário: ' + e);
     }
-
-    // Clean up field's value and error messages on submit (error or success)
-
-    // Screen states:
-    // - Initial (empty)
-    // - Filled
-    // - Loading (disabled fields and button)
-    // - Generic error
-    // - Field error
   };
 
   return (
@@ -93,7 +96,7 @@ const SignUp = ({props, handleOnSubmit}) => {
           autoCompleteType={'password'}
           maxLength={60}
           secureTextEntry={true}
-          returnKeyType={'send'}
+          returnKeyType={'done'}
           onChangeText={setConfirmPassword}
           {...textInputDefaultProps}
         />
