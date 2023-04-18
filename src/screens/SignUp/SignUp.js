@@ -26,6 +26,13 @@ const SignUp = ({props, handleOnSubmit}) => {
     autoCorrect: false,
   };
 
+  const cleanUpFields = async () => {
+    await setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    //@todo Also clean error msgs
+  };
+
   const onSubmit = async () => {
     try {
       // @todo
@@ -42,7 +49,7 @@ const SignUp = ({props, handleOnSubmit}) => {
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.created}`,
       );
 
-      // Clean up field's value and error messages on submit (error or success)
+      cleanUpFields();
     } catch (e) {
       // @todo
       // Make a small error global area to display error
@@ -69,6 +76,7 @@ const SignUp = ({props, handleOnSubmit}) => {
             passwordRef.current.focus();
           }}
           blurOnSubmit={false}
+          value={email}
           onChangeText={value => setEmail(value.trim())}
           {...textInputDefaultProps}
         />
@@ -87,6 +95,7 @@ const SignUp = ({props, handleOnSubmit}) => {
             confirmPasswordRef.current.focus();
           }}
           blurOnSubmit={false}
+          value={password}
           onChangeText={setPassword}
           {...textInputDefaultProps}
         />
@@ -97,6 +106,7 @@ const SignUp = ({props, handleOnSubmit}) => {
           maxLength={60}
           secureTextEntry={true}
           returnKeyType={'done'}
+          value={confirmPassword}
           onChangeText={setConfirmPassword}
           {...textInputDefaultProps}
         />
