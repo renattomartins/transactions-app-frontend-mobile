@@ -46,7 +46,7 @@ const SignUp = ({props, handleOnSubmit}) => {
       );
 
       Alert.alert(
-        `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.created}`,
+        `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
       );
 
       cleanUpFields();
