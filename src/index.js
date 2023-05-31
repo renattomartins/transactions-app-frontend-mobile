@@ -7,6 +7,7 @@ import {StoreProvider} from './store';
 
 import InitialScreen from './screens/InitialScreen';
 import SignUp from './screens/SignUp';
+import Transactions from './screens/Transactions';
 
 import {Colors} from './styles';
 
@@ -31,6 +32,11 @@ const App = props => {
             name="SignUp"
             component={SignUp}
             options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
+          />
+          <Stack.Screen
+            name="Transactions"
+            component={Transactions}
+            options={{title: 'Transações', headerLeft: () => null}}
           />
         </Stack.Navigator>
       </NavigationContainer>

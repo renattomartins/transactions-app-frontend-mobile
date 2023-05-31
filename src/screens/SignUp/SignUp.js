@@ -9,7 +9,7 @@ import {ApplicationContext} from '../../store';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const SignUp = ({props, handleOnSubmit}) => {
+const SignUp = ({navigation, handleOnSubmit}) => {
   const {env} = useContext(ApplicationContext);
 
   const passwordRef = useRef();
@@ -45,11 +45,12 @@ const SignUp = ({props, handleOnSubmit}) => {
         confirmPassword,
       );
 
+      cleanUpFields();
+      navigation.navigate('Transactions');
+      // @todo Remove this Alert after authentication implementation
       Alert.alert(
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
       );
-
-      cleanUpFields();
     } catch (e) {
       // @todo
       // Make a small error global area to display error
