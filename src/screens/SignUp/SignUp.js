@@ -1,5 +1,5 @@
 import React, {useState, useRef, useContext} from 'react';
-import {View, TextInput, Alert} from 'react-native';
+import {View, TextInput, Text, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import Logo from '../../components/atoms/Logo';
@@ -18,6 +18,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [genericErrorMsg, setGenericErrorMsg] = useState('');
 
   const textInputDefaultProps = {
     style: styles.textInputOnboarding,
@@ -26,11 +27,12 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     autoCorrect: false,
   };
 
-  const cleanUpFields = async () => {
-    await setEmail('');
+  const cleanUpFields = () => {
+    setEmail('');
     setPassword('');
     setConfirmPassword('');
     //@todo Also clean error msgs
+    setGenericErrorMsg('');
   };
 
   const onSubmit = async () => {
@@ -52,11 +54,31 @@ const SignUp = ({navigation, handleOnSubmit}) => {
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
       );
     } catch (e) {
+      let errorMessageToDiplay;
+      switch (e.response.data.code) {
+        case 400:
+          errorMessageToDiplay =
+            'Erro no aplicativo. Verifique se ele está atualizado.';
+          break;
+        case 409:
+          errorMessageToDiplay = 'Email já existente.';
+          break;
+        case 422:
+          errorMessageToDiplay = 'Verifique os campos abaixo';
+          break;
+        case 500:
+          errorMessageToDiplay =
+            'Erro interno no servidor. Aguarde alguns instantes e tente novamente.';
+          break;
+        default:
+          errorMessageToDiplay =
+            'Erro desconhecido. Por favor, tente novamente.';
+      }
       // @todo
       // Make a small error global area to display error
       // Make small error areas for each field
       // Think about error logging instead alert to better debugging
-      Alert.alert('Falha na criação do novo usuário: ' + e);
+      setGenericErrorMsg(errorMessageToDiplay);
     }
   };
 
@@ -64,6 +86,9 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.headerArea}>
         <Logo isLabelVisisble={false} size="Medium" />
+      </View>
+      <View style={styles.genericErrorArea}>
+        <Text style={styles.genericErrorText}>{genericErrorMsg}</Text>
       </View>
       <View style={styles.inputsArea}>
         <TextInput
