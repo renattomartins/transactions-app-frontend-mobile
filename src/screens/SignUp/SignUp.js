@@ -2,9 +2,11 @@ import React, {useState, useRef, useContext} from 'react';
 import {View, TextInput, Text, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
+import {ApplicationContext} from '../../store';
+
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
-import {ApplicationContext} from '../../store';
+import ErrorMessage from '../../components/atoms/ErrorMessage';
 import If from '../../utils/if';
 
 import {Colors} from '../../styles';
@@ -92,9 +94,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
         <Logo isLabelVisisble={false} size="Medium" />
       </View>
       <If test={showGenericErrorMsg}>
-        <View style={styles.genericErrorArea}>
-          <Text style={styles.genericErrorText}>{genericErrorMsg}</Text>
-        </View>
+        <ErrorMessage message={genericErrorMsg} />
       </If>
       <View style={styles.inputsArea}>
         <TextInput

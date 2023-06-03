@@ -11,19 +11,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
   },
-  genericErrorArea: {
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    borderLeftColor: 'red',
-    borderLeftWidth: 5,
-    borderStyle: 'solid',
-    marginHorizontal: 40,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-  },
-  genericErrorText: {
-    color: '#555',
-  },
   inputsArea: {
     flex: 1,
     alignItems: 'center',
