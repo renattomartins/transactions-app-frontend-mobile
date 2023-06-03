@@ -81,7 +81,6 @@ const SignUp = ({navigation, handleOnSubmit}) => {
             'Erro desconhecido. Por favor, tente novamente.';
       }
       // @todo
-      // Make a small error global area to display error
       // Make small error areas for each field
       // Think about error logging instead alert to better debugging
       setGenericErrorMsg(errorMessageToDiplay);
@@ -112,6 +111,11 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           onChangeText={value => setEmail(value.trim())}
           {...textInputDefaultProps}
         />
+        <If test={showGenericErrorMsg}>
+          <Text style={styles.inputValidationMessage}>
+            👆 campo obrigatório
+          </Text>
+        </If>
         <TextInput
           ref={passwordRef}
           placeholder="senha"
@@ -131,6 +135,11 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           onChangeText={setPassword}
           {...textInputDefaultProps}
         />
+        <If test={showGenericErrorMsg}>
+          <Text style={styles.inputValidationMessage}>
+            👆 campo obrigatório
+          </Text>
+        </If>
         <TextInput
           ref={confirmPasswordRef}
           placeholder="repetir senha"
@@ -142,6 +151,11 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           onChangeText={setConfirmPassword}
           {...textInputDefaultProps}
         />
+        <If test={showGenericErrorMsg}>
+          <Text style={styles.inputValidationMessage}>
+            👆 campo obrigatório
+          </Text>
+        </If>
         <View style={styles.buttonArea}>
           <Button title="Cadastrar" onPress={onSubmit} width="100%" />
         </View>

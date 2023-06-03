@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
   },
+  inputValidationMessage: {
+    marginTop: 4,
+    marginBottom: 4,
+    width: '100%',
+    fontSize: 12,
+    color: '#fff',
+  },
 });
 
 export default styles;
