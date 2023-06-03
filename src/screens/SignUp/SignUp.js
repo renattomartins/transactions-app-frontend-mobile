@@ -5,6 +5,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
 import {ApplicationContext} from '../../store';
+import If from '../../utils/if';
 
 import {Colors} from '../../styles';
 import styles from './styles';
@@ -19,6 +20,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [genericErrorMsg, setGenericErrorMsg] = useState('');
+  const [showGenericErrorMsg, setShowGenericErrorMsg] = useState(false);
 
   const textInputDefaultProps = {
     style: styles.textInputOnboarding,
@@ -33,6 +35,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     setConfirmPassword('');
     //@todo Also clean error msgs
     setGenericErrorMsg('');
+    setShowGenericErrorMsg(false);
   };
 
   const onSubmit = async () => {
@@ -55,6 +58,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
       );
     } catch (e) {
       let errorMessageToDiplay;
+      setShowGenericErrorMsg(true);
       switch (e.response.data.code) {
         case 400:
           errorMessageToDiplay =
@@ -87,9 +91,11 @@ const SignUp = ({navigation, handleOnSubmit}) => {
       <View style={styles.headerArea}>
         <Logo isLabelVisisble={false} size="Medium" />
       </View>
-      <View style={styles.genericErrorArea}>
-        <Text style={styles.genericErrorText}>{genericErrorMsg}</Text>
-      </View>
+      <If test={showGenericErrorMsg}>
+        <View style={styles.genericErrorArea}>
+          <Text style={styles.genericErrorText}>{genericErrorMsg}</Text>
+        </View>
+      </If>
       <View style={styles.inputsArea}>
         <TextInput
           placeholder="email"
