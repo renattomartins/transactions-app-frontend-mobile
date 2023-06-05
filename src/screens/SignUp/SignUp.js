@@ -16,11 +16,11 @@ const SignUp = ({navigation, handleOnSubmit}) => {
   const {env} = useContext(ApplicationContext);
 
   const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
+  const passwordVerificationRef = useRef();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordVerification, setPasswordVerification] = useState('');
   const [genericErrorMsg, setGenericErrorMsg] = useState('');
   const [showGenericErrorMsg, setShowGenericErrorMsg] = useState(false);
 
@@ -34,7 +34,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
   const cleanUpFields = () => {
     setEmail('');
     setPassword('');
-    setConfirmPassword('');
+    setPasswordVerification('');
     //@todo Also clean error msgs
     setGenericErrorMsg('');
     setShowGenericErrorMsg(false);
@@ -49,7 +49,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
         env,
         email,
         password,
-        confirmPassword,
+        passwordVerification,
       );
 
       cleanUpFields();
@@ -67,7 +67,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
             'Erro no aplicativo. Verifique se ele está atualizado.';
           break;
         case 409:
-          errorMessageToDiplay = 'Email já existente.';
+          errorMessageToDiplay = 'Email já existente';
           break;
         case 422:
           errorMessageToDiplay = 'Verifique os campos abaixo';
@@ -128,7 +128,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           }
           returnKeyType={'next'}
           onSubmitEditing={() => {
-            confirmPasswordRef.current.focus();
+            passwordVerificationRef.current.focus();
           }}
           blurOnSubmit={false}
           value={password}
@@ -141,14 +141,14 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           </Text>
         </If>
         <TextInput
-          ref={confirmPasswordRef}
+          ref={passwordVerificationRef}
           placeholder="repetir senha"
           autoCompleteType={'password'}
           maxLength={60}
           secureTextEntry={true}
           returnKeyType={'done'}
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
+          value={passwordVerification}
+          onChangeText={setPasswordVerification}
           {...textInputDefaultProps}
         />
         <If test={showGenericErrorMsg}>
