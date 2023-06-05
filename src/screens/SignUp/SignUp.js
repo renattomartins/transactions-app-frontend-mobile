@@ -1,5 +1,5 @@
 import React, {useState, useRef, useContext} from 'react';
-import {View, TextInput, Text, Alert} from 'react-native';
+import {View, TextInput, Text} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
@@ -7,7 +7,9 @@ import {ApplicationContext} from '../../store';
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
+
 import If from '../../utils/if';
+import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
 import {Colors} from '../../styles';
 import styles from './styles';
@@ -55,30 +57,28 @@ const SignUp = ({navigation, handleOnSubmit}) => {
       cleanUpFields();
       navigation.navigate('Transactions');
       // @todo Remove this Alert after authentication implementation
-      Alert.alert(
+      console.log(
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
       );
     } catch (e) {
       let errorMessageToDiplay;
       setShowGenericErrorMsg(true);
+
       switch (e.response.data.code) {
         case 400:
-          errorMessageToDiplay =
-            'Erro no aplicativo. Verifique se ele está atualizado.';
+          errorMessageToDiplay = errorMessages.signup.e400.message;
           break;
         case 409:
-          errorMessageToDiplay = 'Email já existente';
+          errorMessageToDiplay = errorMessages.signup.e409.message;
           break;
         case 422:
-          errorMessageToDiplay = 'Verifique os campos abaixo';
+          errorMessageToDiplay = errorMessages.signup.e422.message;
           break;
         case 500:
-          errorMessageToDiplay =
-            'Erro interno no servidor. Aguarde alguns instantes e tente novamente.';
+          errorMessageToDiplay = errorMessages.signup.e500.message;
           break;
         default:
-          errorMessageToDiplay =
-            'Erro desconhecido. Por favor, tente novamente.';
+          errorMessageToDiplay = errorMessages.signup.unknown.message;
       }
       // @todo
       // Make small error areas for each field
