@@ -8,7 +8,7 @@ const friendlyErrorMessages = {
       message: 'Email já existente',
       details: {
         email: {
-          emailMustBeUnique: 'Insira outro email e tente novamente',
+          emailMustBeUnique: 'Insira um email diferente e tente novamente',
         },
       },
     },

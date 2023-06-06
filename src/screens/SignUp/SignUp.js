@@ -24,8 +24,22 @@ const SignUp = ({navigation, handleOnSubmit}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVerification, setPasswordVerification] = useState('');
-  const [genericErrorMsg, setGenericErrorMsg] = useState('');
+
   const [showGenericErrorMsg, setShowGenericErrorMsg] = useState(false);
+  const [genericErrorMsg, setGenericErrorMsg] = useState('');
+  const [showEmailValidationMsg, setShowEmailValidationMsg] = useState(false);
+  const [emailValidationMsg, setEmailValidationMsg] = useState('');
+  const [showPasswordValidationMsg, setShowPasswordValidationMsg] =
+    useState(false);
+  const [passwordValidationMsg, setPasswordValidationMsg] = useState('');
+  const [
+    showPasswordVerificationValidationMsg,
+    setShowPasswordVerificationValidationMsg,
+  ] = useState(false);
+  const [
+    passwordVerificationValidationMsg,
+    setPasswordVerificationValidationMsg,
+  ] = useState('');
 
   const textInputDefaultProps = {
     style: styles.textInputOnboarding,
@@ -73,7 +87,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           errorMessageToDiplay = errorMessages.signup.e409.message;
           processValidationMessages(
             e.response.data.details,
-            errorMessages.signup.e422.details,
+            errorMessages.signup.e409.details,
           );
           break;
         case 422:
@@ -96,10 +110,32 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     }
   };
 
-  const processValidationMessages = (responseErrorDetails, messages) => {
+  const processValidationMessages = (
+    responseErrorDetails,
+    messagesErrorDetails,
+  ) => {
+    setShowEmailValidationMsg(false);
+    setShowPasswordValidationMsg(false);
+    setShowPasswordVerificationValidationMsg(false);
+
     for (let errorDetail of responseErrorDetails) {
-      console.log(errorDetail.path);
-      console.log(convertStringToCamelCase(errorDetail.msg));
+      let fieldName = errorDetail.path;
+      let messageKey = convertStringToCamelCase(errorDetail.msg);
+
+      if (fieldName === 'email') {
+        setShowEmailValidationMsg(true);
+        setEmailValidationMsg(messagesErrorDetails[fieldName][messageKey]);
+      }
+      if (fieldName === 'password') {
+        setShowPasswordValidationMsg(true);
+        setPasswordValidationMsg(messagesErrorDetails[fieldName][messageKey]);
+      }
+      if (fieldName === 'passwordVerification') {
+        setShowPasswordVerificationValidationMsg(true);
+        setPasswordVerificationValidationMsg(
+          messagesErrorDetails[fieldName][messageKey],
+        );
+      }
     }
   };
 
@@ -127,9 +163,9 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           onChangeText={value => setEmail(value.trim())}
           {...textInputDefaultProps}
         />
-        <If test={showGenericErrorMsg}>
+        <If test={showEmailValidationMsg}>
           <Text style={styles.inputValidationMessage}>
-            👆 campo obrigatório
+            👆 {emailValidationMsg}
           </Text>
         </If>
         <TextInput
@@ -151,9 +187,9 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           onChangeText={setPassword}
           {...textInputDefaultProps}
         />
-        <If test={showGenericErrorMsg}>
+        <If test={showPasswordValidationMsg}>
           <Text style={styles.inputValidationMessage}>
-            👆 campo obrigatório
+            👆 {passwordValidationMsg}
           </Text>
         </If>
         <TextInput
@@ -167,9 +203,9 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           onChangeText={setPasswordVerification}
           {...textInputDefaultProps}
         />
-        <If test={showGenericErrorMsg}>
+        <If test={showPasswordVerificationValidationMsg}>
           <Text style={styles.inputValidationMessage}>
-            👆 campo obrigatório
+            👆 {passwordVerificationValidationMsg}
           </Text>
         </If>
         <View style={styles.buttonArea}>
