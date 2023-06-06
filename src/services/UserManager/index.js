@@ -6,7 +6,6 @@ const addUser = async (env, email, password, passwordVerification) => {
 
   try {
     const response = await axios.post(signUpUrl, {
-      //@todo Verify proper headers
       email: email,
       password: password,
       passwordVerification: passwordVerification,

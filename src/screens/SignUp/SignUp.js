@@ -10,6 +10,7 @@ import ErrorMessage from '../../components/atoms/ErrorMessage';
 
 import If from '../../utils/if';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
+import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 
 import {Colors} from '../../styles';
 import styles from './styles';
@@ -70,9 +71,17 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           break;
         case 409:
           errorMessageToDiplay = errorMessages.signup.e409.message;
+          processValidationMessages(
+            e.response.data.details,
+            errorMessages.signup.e422.details,
+          );
           break;
         case 422:
           errorMessageToDiplay = errorMessages.signup.e422.message;
+          processValidationMessages(
+            e.response.data.details,
+            errorMessages.signup.e422.details,
+          );
           break;
         case 500:
           errorMessageToDiplay = errorMessages.signup.e500.message;
@@ -84,6 +93,13 @@ const SignUp = ({navigation, handleOnSubmit}) => {
       // Make small error areas for each field
       // Think about error logging instead alert to better debugging
       setGenericErrorMsg(errorMessageToDiplay);
+    }
+  };
+
+  const processValidationMessages = (responseErrorDetails, messages) => {
+    for (let errorDetail of responseErrorDetails) {
+      console.log(errorDetail.path);
+      console.log(convertStringToCamelCase(errorDetail.msg));
     }
   };
 

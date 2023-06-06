@@ -8,7 +8,7 @@ const friendlyErrorMessages = {
       message: 'Email já existente',
       details: {
         email: {
-          uniqueViolation: 'Insira outro email e tente novamente',
+          emailMustBeUnique: 'Insira outro email e tente novamente',
         },
       },
     },
@@ -16,16 +16,16 @@ const friendlyErrorMessages = {
       message: 'Verifique os campos abaixo',
       details: {
         email: {
-          invalidField: 'Campo obrigatório',
-          invalidEmail: 'Email inválido',
+          invalidValue: 'Campo obrigatório',
+          invalidEmailFormat: 'Email inválido',
         },
         password: {
-          invalidField: 'Campo obrigatório',
-          minSizeField: 'Senha deve conter no mínimo 8 caracteres',
+          invalidValue: 'Campo obrigatório',
+          minimumSizeOf8Characters: 'Senha deve conter no mínimo 8 caracteres',
         },
         passwordVerification: {
-          invalidField: 'Campo obrigatório',
-          doesNotMatch: 'Senhas digitadas não são iguais',
+          invalidValue: 'Campo obrigatório',
+          passwordsHaveToMatch: 'Senhas digitadas não são iguais',
         },
       },
     },
