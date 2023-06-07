@@ -13,6 +13,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textTransform: 'uppercase',
   },
+  buttonLoading: {
+    backgroundColor: 'rgba(78, 168, 222, 0.6)',
+    padding: 15,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    borderRadius: 10,
+    position: 'absolute',
+  },
 });
 
 export default styles;

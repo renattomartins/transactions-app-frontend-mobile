@@ -40,6 +40,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     passwordVerificationValidationMsg,
     setPasswordVerificationValidationMsg,
   ] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const textInputDefaultProps = {
     style: styles.textInputOnboarding,
@@ -52,16 +53,21 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     setEmail('');
     setPassword('');
     setPasswordVerification('');
-    //@todo Also clean error msgs
     setGenericErrorMsg('');
     setShowGenericErrorMsg(false);
+    cleanUpValidations();
+  };
+
+  const cleanUpValidations = () => {
+    setShowEmailValidationMsg(false);
+    setShowPasswordValidationMsg(false);
+    setShowPasswordVerificationValidationMsg(false);
   };
 
   const onSubmit = async () => {
     try {
-      // @todo
-      // make simple local validations
-      // set loader? (and similar)
+      setLoading(true);
+
       const registeredUser = await handleOnSubmit(
         env,
         email,
@@ -71,7 +77,8 @@ const SignUp = ({navigation, handleOnSubmit}) => {
 
       cleanUpFields();
       navigation.navigate('Transactions');
-      // @todo Remove this Alert after authentication implementation
+
+      // @todo Remove this console.log after authentication implementation
       console.log(
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
       );
@@ -103,10 +110,9 @@ const SignUp = ({navigation, handleOnSubmit}) => {
         default:
           errorMessageToDiplay = errorMessages.signup.unknown.message;
       }
-      // @todo
-      // Make small error areas for each field
-      // Think about error logging instead alert to better debugging
       setGenericErrorMsg(errorMessageToDiplay);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -114,9 +120,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     responseErrorDetails,
     messagesErrorDetails,
   ) => {
-    setShowEmailValidationMsg(false);
-    setShowPasswordValidationMsg(false);
-    setShowPasswordVerificationValidationMsg(false);
+    cleanUpValidations();
 
     for (let errorDetail of responseErrorDetails) {
       let fieldName = errorDetail.path;
@@ -209,7 +213,12 @@ const SignUp = ({navigation, handleOnSubmit}) => {
           </Text>
         </If>
         <View style={styles.buttonArea}>
-          <Button title="Cadastrar" onPress={onSubmit} width="100%" />
+          <Button
+            title="Cadastrar"
+            onPress={onSubmit}
+            width="100%"
+            loading={loading}
+          />
         </View>
       </View>
     </KeyboardAwareScrollView>
