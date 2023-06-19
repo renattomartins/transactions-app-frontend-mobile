@@ -5,11 +5,27 @@ import {Pressable, Text, ActivityIndicator} from 'react-native';
 import If from '../../../utils/if';
 import styles from './styles';
 
-const Button = ({title, onPress, loading, ...buttonProps}) => {
+const Button = ({
+  title,
+  onPress,
+  loading,
+  withMargin,
+  inverse,
+  ...buttonProps
+}) => {
   return (
     <>
-      <Pressable style={styles.buttonArea} onPress={onPress} {...buttonProps}>
-        <Text style={styles.buttonText}>{title}</Text>
+      <Pressable
+        style={[
+          styles.buttonArea,
+          withMargin ? styles.buttonAreaMargin : null,
+          inverse ? styles.buttonInverse : null,
+        ]}
+        onPress={onPress}
+        {...buttonProps}>
+        <Text style={[styles.buttonText, inverse ? styles.textInverse : null]}>
+          {title}
+        </Text>
       </Pressable>
       <If test={loading}>
         <ActivityIndicator style={styles.buttonLoading} />

@@ -7,6 +7,11 @@ const styles = StyleSheet.create({
     padding: 15,
     alignItems: 'center',
     borderRadius: 10,
+    borderColor: '#ffffff',
+    borderWidth: 2,
+  },
+  buttonAreaMargin: {
+    margin: 10,
   },
   buttonText: {
     color: Colors.blueFive,
@@ -21,6 +26,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     position: 'absolute',
+  },
+  buttonInverse: {
+    backgroundColor: Colors.blueFive,
+  },
+  textInverse: {
+    color: '#ffffff',
   },
 });
 
