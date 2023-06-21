@@ -7,6 +7,7 @@ import {StoreProvider} from './store';
 
 import InitialScreen from './screens/InitialScreen';
 import SignUp from './screens/SignUp';
+import Login from './screens/Login';
 import Transactions from './screens/Transactions';
 
 import {Colors} from './styles';
@@ -32,6 +33,11 @@ const App = props => {
             name="SignUp"
             component={SignUp}
             options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{title: 'Entrar', headerBackTitleVisible: false}}
           />
           <Stack.Screen
             name="Transactions"

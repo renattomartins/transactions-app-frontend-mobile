@@ -20,7 +20,7 @@ const InitialScreen = ({navigation}) => {
         />
         <Button
           title="Entrar"
-          onPress={() => navigation.navigate('SignUp')}
+          onPress={() => navigation.navigate('Login')}
           withMargin
           inverse
         />

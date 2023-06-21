@@ -2,16 +2,18 @@ const getEnvironment = env => {
   const environment = typeof env === 'string' ? env.toLocaleLowerCase() : env;
 
   const hosts = {
-    LOCAL: 'http://localhost:3000',
+    LOCAL: 'http://192.168.18.4:3000',
     PRD: '',
   };
 
   const values = {
     local: {
       signUpUrl: `${hosts.LOCAL}/users`,
+      loginUrl: `${hosts.LOCAL}/login`,
     },
     prd: {
       signUpUrl: `${hosts.PRD}/users`,
+      loginUrl: `${hosts.PRD}/login`,
     },
   };
 
