@@ -1,20 +1,15 @@
 import axios from 'axios';
 import getEnvironment from '../../config';
 
-const logUserIn = async (env, email, password, passwordVerification) => {
+const logUserIn = async (env, email, password) => {
   const {loginUrl} = getEnvironment(env);
 
   try {
-    // const response = await axios.post(signUpUrl, {
-    //   email: email,
-    //   password: password,
-    //   passwordVerification: passwordVerification,
-    // });
-
-    // console.log(`${response.status} Created ${response.headers.location}`);
-    console.log(`${loginUrl}`);
-    // return response.data;
-    return {id: 1, token: 'abc'};
+    const response = await axios.post(loginUrl, {
+      email: email,
+      password: password,
+    });
+    return response.data;
   } catch (error) {
     throw error;
   }

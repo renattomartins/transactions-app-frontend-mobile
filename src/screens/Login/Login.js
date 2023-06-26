@@ -63,7 +63,7 @@ const Login = ({navigation, handleOnLogin}) => {
 
       // @todo Remove this console.log after authentication implementation
       console.log(
-        `Usuário autenticado com sucesso. ID: ${loggedInUser.id}, Token: ${loggedInUser.token}`,
+        `Usuário autenticado com sucesso. ID: ${loggedInUser.userId}.`,
       );
     } catch (e) {
       let errorMessageToDiplay;
