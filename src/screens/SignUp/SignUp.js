@@ -78,7 +78,6 @@ const SignUp = ({navigation, handleOnSubmit}) => {
       cleanUpFields();
       navigation.navigate('Transactions');
 
-      // @todo Remove this console.log after authentication implementation
       console.log(
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
       );

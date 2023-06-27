@@ -4,6 +4,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {StoreProvider} from './store';
+import PropTypes from 'prop-types';
 
 import InitialScreen from './screens/InitialScreen';
 import SignUp from './screens/SignUp';
@@ -48,6 +49,10 @@ const App = props => {
       </NavigationContainer>
     </StoreProvider>
   );
+};
+
+App.propTypes = {
+  env: PropTypes.string,
 };
 
 App.defaultProps = {

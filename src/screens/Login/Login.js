@@ -17,6 +17,7 @@ import styles from './styles';
 
 const Login = ({navigation, handleOnLogin}) => {
   const {env} = useContext(ApplicationContext);
+  const {setToken} = useContext(ApplicationContext);
 
   const passwordRef = useRef();
 
@@ -58,10 +59,10 @@ const Login = ({navigation, handleOnLogin}) => {
 
       const loggedInUser = await handleOnLogin(env, email, password);
 
+      setToken(loggedInUser.token);
       cleanUpFields();
       navigation.navigate('Transactions');
 
-      // @todo Remove this console.log after authentication implementation
       console.log(
         `Usuário autenticado com sucesso. ID: ${loggedInUser.userId}.`,
       );
