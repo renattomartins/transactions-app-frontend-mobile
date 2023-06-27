@@ -73,12 +73,11 @@ const Login = ({navigation, handleOnLogin}) => {
         case 400:
           errorMessageToDiplay = errorMessages.login.e400.message;
           break;
+        case 401:
+          errorMessageToDiplay = errorMessages.login.e401.message;
+          break;
         case 404:
           errorMessageToDiplay = errorMessages.login.e404.message;
-          processValidationMessages(
-            e.response.data.details,
-            errorMessages.login.e404.details,
-          );
           break;
         case 422:
           errorMessageToDiplay = errorMessages.login.e422.message;

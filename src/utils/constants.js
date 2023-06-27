@@ -44,24 +44,23 @@ const friendlyErrorMessages = {
       message: 'Erro no aplicativo. Verifique se o mesmo está atualizado.',
       details: {},
     },
+    e401: {
+      message: 'Usuário e senha não conferem',
+      details: {},
+    },
     e404: {
       message: 'Usuário não cadastrado',
-      details: {
-        email: {
-          emailMustBeUnique: 'Usuário não encontrado na nossa base de dados',
-        },
-      },
+      details: {},
     },
     e422: {
       message: 'Verifique os campos abaixo',
       details: {
         email: {
           invalidValue: 'Campo obrigatório',
-          invalidEmailFormat: 'Email inválido',
+          invalidEmailFormat: 'Digite um email válido',
         },
         password: {
           invalidValue: 'Campo obrigatório',
-          invalidPassword: 'Usuário e senha não batem',
         },
       },
     },
