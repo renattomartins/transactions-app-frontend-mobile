@@ -17,6 +17,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 40,
   },
+  textArea: {
+    backgroundColor: '#fff',
+    padding: 20,
+    margin: 20,
+    borderColor: '#bbb',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
   text: {
     color: '#fff',
     padding: 20,

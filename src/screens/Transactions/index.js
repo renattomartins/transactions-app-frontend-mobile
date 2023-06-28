@@ -1,11 +1,14 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, TextInput} from 'react-native';
+
+import {ApplicationContext} from '../../store';
 
 import Button from '../../components/atoms/Button';
 
 import styles from './styles';
 
 const Transactions = ({navigation}) => {
+  const {token} = useContext(ApplicationContext);
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
@@ -14,6 +17,14 @@ const Transactions = ({navigation}) => {
         </Text>
       </View>
       <View style={styles.mainArea}>
+        <TextInput
+          style={styles.textArea}
+          editable={false}
+          multiline={true}
+          numberOfLines={10}
+          value={token}
+          onFocus={e => e.target.select()}
+        />
         <Button
           title="Voltar para o início"
           onPress={() => navigation.navigate('Home')}
