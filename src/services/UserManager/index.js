@@ -11,7 +11,6 @@ const addUser = async (env, email, password, passwordVerification) => {
       passwordVerification: passwordVerification,
     });
 
-    console.log(`${response.status} Created ${response.headers.location}`);
     return response.data;
   } catch (error) {
     throw error;

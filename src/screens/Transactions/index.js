@@ -6,6 +6,7 @@ import {ApplicationContext} from '../../store';
 import Button from '../../components/atoms/Button';
 
 import styles from './styles';
+import If from '../../utils/if';
 
 const Transactions = ({navigation}) => {
   const {token} = useContext(ApplicationContext);
@@ -17,14 +18,16 @@ const Transactions = ({navigation}) => {
         </Text>
       </View>
       <View style={styles.mainArea}>
-        <TextInput
-          style={styles.textArea}
-          editable={false}
-          multiline={true}
-          numberOfLines={10}
-          value={token}
-          onFocus={e => e.target.select()}
-        />
+        <If test={token !== ''}>
+          <TextInput
+            style={styles.textArea}
+            editable={false}
+            multiline={true}
+            numberOfLines={10}
+            value={token}
+            onFocus={e => e.target.select()}
+          />
+        </If>
         <Button
           title="Voltar para o início"
           onPress={() => navigation.navigate('Home')}

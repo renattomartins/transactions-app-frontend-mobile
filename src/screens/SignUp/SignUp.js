@@ -1,4 +1,4 @@
-import React, {useState, useRef, useContext} from 'react';
+import React, {useState, useRef, useContext, useEffect} from 'react';
 import {View, TextInput, Text} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
@@ -16,7 +16,7 @@ import {Colors} from '../../styles';
 import styles from './styles';
 
 const SignUp = ({navigation, handleOnSubmit}) => {
-  const {env} = useContext(ApplicationContext);
+  const {env, setToken} = useContext(ApplicationContext);
 
   const passwordRef = useRef();
   const passwordVerificationRef = useRef();
@@ -48,6 +48,10 @@ const SignUp = ({navigation, handleOnSubmit}) => {
     autoCapitalize: 'none',
     autoCorrect: false,
   };
+
+  useEffect(() => {
+    setToken('');
+  });
 
   const cleanUpFields = () => {
     setEmail('');
