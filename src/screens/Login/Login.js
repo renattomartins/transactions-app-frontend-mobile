@@ -3,6 +3,7 @@ import {View, TextInput, Text} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
+import AsyncStorage from '../../modules/AsyncStorage';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
@@ -60,6 +61,8 @@ const Login = ({navigation, handleOnLogin}) => {
       const loggedInUser = await handleOnLogin(env, email, password);
 
       setToken(loggedInUser.token);
+      AsyncStorage.storeData('token', loggedInUser.token);
+
       cleanUpFields();
       navigation.navigate('Transactions');
 
