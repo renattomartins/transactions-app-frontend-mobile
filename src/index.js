@@ -15,7 +15,14 @@ import {Colors} from './styles';
 
 const Stack = createStackNavigator();
 
+const getIsSignedIn = () => {
+  // custom logic
+  return false;
+};
+
 const App = props => {
+  const isSignedIn = getIsSignedIn();
+
   return (
     <StoreProvider {...props}>
       <NavigationContainer>
@@ -25,26 +32,33 @@ const App = props => {
             headerTintColor: '#fff',
             headerTitleAlign: 'center',
           }}>
-          <Stack.Screen
-            name="Home"
-            component={InitialScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="SignUp"
-            component={SignUp}
-            options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{title: 'Entrar', headerBackTitleVisible: false}}
-          />
-          <Stack.Screen
-            name="Transactions"
-            component={Transactions}
-            options={{title: 'Transações', headerLeft: () => null}}
-          />
+          {isSignedIn ? (
+            <>
+              <Stack.Screen
+                name="Transactions"
+                component={Transactions}
+                options={{title: 'Transações', headerLeft: () => null}}
+              />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="Home"
+                component={InitialScreen}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+                options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
+              />
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{title: 'Entrar', headerBackTitleVisible: false}}
+              />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </StoreProvider>
