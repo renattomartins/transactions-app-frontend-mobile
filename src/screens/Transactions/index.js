@@ -8,8 +8,9 @@ import Button from '../../components/atoms/Button';
 import styles from './styles';
 import If from '../../utils/if';
 
-const Transactions = ({navigation}) => {
+const Transactions = ({navigation, route}) => {
   const {token} = useContext(ApplicationContext);
+  const {setUserToken} = route.params;
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
@@ -30,7 +31,7 @@ const Transactions = ({navigation}) => {
         </If>
         <Button
           title="Voltar para o início"
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => setUserToken(null)}
           width="80%"
         />
       </View>

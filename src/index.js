@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {StoreProvider} from './store';
@@ -16,14 +16,26 @@ import {Colors} from './styles';
 
 const Stack = createStackNavigator();
 
-const getIsSignedIn = () => {
-  // custom logic
-  return false;
-};
-
 const App = props => {
-  const [isLoading, setIsLoading] = useState(false);
-  const isSignedIn = getIsSignedIn();
+  const [isLoading, setIsLoading] = useState(true);
+  const [userToken, setUserToken] = useState(null);
+
+  const getUserToken = async () => {
+    // testing purposes
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    try {
+      // custom logic
+      await sleep(2000);
+      const token = null;
+      setUserToken(token);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getUserToken();
+  }, []);
 
   if (isLoading) {
     // We haven't finished checking for the token yet
@@ -39,15 +51,7 @@ const App = props => {
             headerTintColor: '#fff',
             headerTitleAlign: 'center',
           }}>
-          {isSignedIn ? (
-            <>
-              <Stack.Screen
-                name="Transactions"
-                component={Transactions}
-                options={{title: 'Transações', headerLeft: () => null}}
-              />
-            </>
-          ) : (
+          {userToken == null ? (
             <>
               <Stack.Screen
                 name="Home"
@@ -58,11 +62,22 @@ const App = props => {
                 name="SignUp"
                 component={SignUp}
                 options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
+                initialParams={{setUserToken}}
               />
               <Stack.Screen
                 name="Login"
                 component={Login}
                 options={{title: 'Entrar', headerBackTitleVisible: false}}
+                initialParams={{setUserToken}}
+              />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="Transactions"
+                component={Transactions}
+                options={{title: 'Transações', headerLeft: () => null}}
+                initialParams={{setUserToken}}
               />
             </>
           )}

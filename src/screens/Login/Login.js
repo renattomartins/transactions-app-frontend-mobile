@@ -16,9 +16,10 @@ import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const Login = ({navigation, handleOnLogin}) => {
+const Login = ({navigation, route, handleOnLogin}) => {
   const {env} = useContext(ApplicationContext);
   const {setToken} = useContext(ApplicationContext);
+  const {setUserToken} = route.params;
 
   const passwordRef = useRef();
 
@@ -62,9 +63,9 @@ const Login = ({navigation, handleOnLogin}) => {
 
       setToken(loggedInUser.token);
       AsyncStorage.storeData('token', loggedInUser.token);
+      setUserToken('token');
 
       cleanUpFields();
-      navigation.navigate('Transactions');
 
       console.log(
         `Usuário autenticado com sucesso. ID: ${loggedInUser.userId}.`,

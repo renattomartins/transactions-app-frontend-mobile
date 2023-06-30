@@ -15,8 +15,9 @@ import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const SignUp = ({navigation, handleOnSubmit}) => {
+const SignUp = ({navigation, route, handleOnSubmit}) => {
   const {env, setToken} = useContext(ApplicationContext);
+  const {setUserToken} = route.params;
 
   const passwordRef = useRef();
   const passwordVerificationRef = useRef();
@@ -80,7 +81,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
       );
 
       cleanUpFields();
-      navigation.navigate('Transactions');
+      setUserToken('token');
 
       console.log(
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
