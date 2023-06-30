@@ -6,16 +6,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.blueFive,
   },
-  logoArea: {
-    flex: 3,
+  loader: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  buttonsArea: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
   },
 });
 

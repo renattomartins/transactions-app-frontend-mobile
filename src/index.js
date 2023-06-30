@@ -1,11 +1,12 @@
 import 'react-native-gesture-handler';
 
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {StoreProvider} from './store';
 import PropTypes from 'prop-types';
 
+import SplashScreen from './screens/SplashScreen';
 import InitialScreen from './screens/InitialScreen';
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
@@ -21,7 +22,13 @@ const getIsSignedIn = () => {
 };
 
 const App = props => {
+  const [isLoading, setIsLoading] = useState(false);
   const isSignedIn = getIsSignedIn();
+
+  if (isLoading) {
+    // We haven't finished checking for the token yet
+    return <SplashScreen />;
+  }
 
   return (
     <StoreProvider {...props}>
