@@ -18,4 +18,4 @@ Feel free to explore package.json dependencies and devDependencies to learn more
 ## Design patterns covered
 
 - The core objects is represented with... TBD.
-- ...
+- Protected Routes pattern are used to manage screens according to the authentication flow
