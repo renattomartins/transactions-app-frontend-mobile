@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useReducer, useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {StoreProvider} from './store';
@@ -17,33 +17,73 @@ import {Colors} from './styles';
 const Stack = createStackNavigator();
 
 const App = props => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [userToken, setUserToken] = useState(null);
-
-  const getUserToken = async () => {
-    // testing purposes
-    const sleep = ms => new Promise(r => setTimeout(r, ms));
-    try {
-      // custom logic
-      await sleep(2000);
-      const token = null;
-      setUserToken(token);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [state, dispatch] = useReducer(
+    (prevState, action) => {
+      switch (action.type) {
+        case 'RESTORE_TOKEN':
+          return {
+            ...prevState,
+            userToken: action.token,
+            isLoading: false,
+          };
+        case 'SIGN_IN':
+          return {
+            ...prevState,
+            userToken: action.token,
+          };
+        case 'SIGN_OUT':
+          return {
+            ...prevState,
+            userToken: null,
+          };
+      }
+    },
+    {
+      isLoading: true,
+      userToken: null,
+    },
+  );
 
   useEffect(() => {
-    getUserToken();
+    // Fetch the token from storage then navigate to our appropriate place
+    const bootstrapAsync = async () => {
+      let userToken;
+
+      try {
+        // Restore token stored in `SecureStore` or any other encrypted storage
+        // userToken = await SecureStore.getItemAsync('userToken');
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+        await sleep(2000);
+      } catch (e) {
+        // Restoring token failed
+      }
+
+      // After restoring token, we may need to validate it in production apps
+
+      // This will switch to the App screen or Auth screen and this loading
+      // screen will be unmounted and thrown away.
+
+      dispatch({type: 'RESTORE_TOKEN', token: userToken});
+    };
+
+    bootstrapAsync();
   }, []);
 
-  if (isLoading) {
-    // We haven't finished checking for the token yet
+  const authContext = useMemo(
+    () => ({
+      signIn: async data => dispatch({type: 'SIGN_IN', token: data.token}),
+      signOut: () => dispatch({type: 'SIGN_OUT'}),
+      signUp: async data => dispatch({type: 'SIGN_IN', token: data.token}),
+    }),
+    [],
+  );
+
+  if (state.isLoading) {
     return <SplashScreen />;
   }
 
   return (
-    <StoreProvider {...props}>
+    <StoreProvider {...props} authActions={authContext}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -51,7 +91,7 @@ const App = props => {
             headerTintColor: '#fff',
             headerTitleAlign: 'center',
           }}>
-          {userToken == null ? (
+          {state.userToken == null ? (
             <>
               <Stack.Screen
                 name="Home"
@@ -62,13 +102,11 @@ const App = props => {
                 name="SignUp"
                 component={SignUp}
                 options={{title: 'Cadastre-se', headerBackTitleVisible: false}}
-                initialParams={{setUserToken}}
               />
               <Stack.Screen
                 name="Login"
                 component={Login}
                 options={{title: 'Entrar', headerBackTitleVisible: false}}
-                initialParams={{setUserToken}}
               />
             </>
           ) : (
@@ -77,7 +115,6 @@ const App = props => {
                 name="Transactions"
                 component={Transactions}
                 options={{title: 'Transações', headerLeft: () => null}}
-                initialParams={{setUserToken}}
               />
             </>
           )}

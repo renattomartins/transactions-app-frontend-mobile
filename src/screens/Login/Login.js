@@ -16,10 +16,8 @@ import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const Login = ({navigation, route, handleOnLogin}) => {
-  const {env} = useContext(ApplicationContext);
-  const {setToken} = useContext(ApplicationContext);
-  const {setUserToken} = route.params;
+const Login = ({navigation, handleOnLogin}) => {
+  const {env, signIn, setUserToken} = useContext(ApplicationContext);
 
   const passwordRef = useRef();
 
@@ -60,12 +58,11 @@ const Login = ({navigation, route, handleOnLogin}) => {
       setLoading(true);
 
       const loggedInUser = await handleOnLogin(env, email, password);
+      await AsyncStorage.storeData('token', loggedInUser.token);
 
-      setToken(loggedInUser.token);
-      AsyncStorage.storeData('token', loggedInUser.token);
-      setUserToken('token');
-
+      setUserToken(loggedInUser.token);
       cleanUpFields();
+      signIn({token: loggedInUser.token});
 
       console.log(
         `Usuário autenticado com sucesso. ID: ${loggedInUser.userId}.`,

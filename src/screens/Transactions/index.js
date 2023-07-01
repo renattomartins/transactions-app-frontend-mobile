@@ -8,9 +8,8 @@ import Button from '../../components/atoms/Button';
 import styles from './styles';
 import If from '../../utils/if';
 
-const Transactions = ({navigation, route}) => {
-  const {token} = useContext(ApplicationContext);
-  const {setUserToken} = route.params;
+const Transactions = ({navigation}) => {
+  const {signOut, userToken} = useContext(ApplicationContext);
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
@@ -19,19 +18,19 @@ const Transactions = ({navigation, route}) => {
         </Text>
       </View>
       <View style={styles.mainArea}>
-        <If test={token !== ''}>
+        <If test={userToken !== null}>
           <TextInput
             style={styles.textArea}
             editable={false}
             multiline={true}
             numberOfLines={10}
-            value={token}
+            value={userToken}
             onFocus={e => e.target.select()}
           />
         </If>
         <Button
           title="Voltar para o início"
-          onPress={() => setUserToken(null)}
+          onPress={() => signOut()}
           width="80%"
         />
       </View>

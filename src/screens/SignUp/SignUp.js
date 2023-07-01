@@ -1,8 +1,9 @@
-import React, {useState, useRef, useContext, useEffect} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import {View, TextInput, Text} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
+import AsyncStorage from '../../modules/AsyncStorage';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
@@ -15,9 +16,8 @@ import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const SignUp = ({navigation, route, handleOnSubmit}) => {
-  const {env, setToken} = useContext(ApplicationContext);
-  const {setUserToken} = route.params;
+const SignUp = ({navigation, handleOnSubmit}) => {
+  const {env, signUp, setUserToken} = useContext(ApplicationContext);
 
   const passwordRef = useRef();
   const passwordVerificationRef = useRef();
@@ -50,10 +50,6 @@ const SignUp = ({navigation, route, handleOnSubmit}) => {
     autoCorrect: false,
   };
 
-  useEffect(() => {
-    setToken('');
-  });
-
   const cleanUpFields = () => {
     setEmail('');
     setPassword('');
@@ -80,8 +76,12 @@ const SignUp = ({navigation, route, handleOnSubmit}) => {
         passwordVerification,
       );
 
+      const token = 'dummy-token';
+      await AsyncStorage.storeData('token', token);
+
+      setUserToken(token);
       cleanUpFields();
-      setUserToken('token');
+      signUp({token});
 
       console.log(
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
