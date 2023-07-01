@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {View, Text, TextInput} from 'react-native';
 
 import {ApplicationContext} from '../../store';
+import AsyncStorage from '../../modules/AsyncStorage';
 
 import Button from '../../components/atoms/Button';
 
@@ -10,6 +11,12 @@ import If from '../../utils/if';
 
 const Transactions = ({navigation}) => {
   const {signOut, userToken} = useContext(ApplicationContext);
+
+  const onSubmit = async () => {
+    await AsyncStorage.cleanKeyData('userToken');
+    signOut();
+  };
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
@@ -28,11 +35,7 @@ const Transactions = ({navigation}) => {
             onFocus={e => e.target.select()}
           />
         </If>
-        <Button
-          title="Voltar para o início"
-          onPress={() => signOut()}
-          width="80%"
-        />
+        <Button title="Voltar para o início" onPress={onSubmit} width="80%" />
       </View>
     </View>
   );

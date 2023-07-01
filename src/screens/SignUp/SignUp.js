@@ -77,7 +77,7 @@ const SignUp = ({navigation, handleOnSubmit}) => {
       );
 
       const token = 'dummy-token';
-      await AsyncStorage.storeData('token', token);
+      await AsyncStorage.storeData('userToken', token);
 
       setUserToken(token);
       cleanUpFields();

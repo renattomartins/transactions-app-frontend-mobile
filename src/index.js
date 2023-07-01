@@ -6,6 +6,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {StoreProvider} from './store';
 import PropTypes from 'prop-types';
 
+import AsyncStorage from './modules/AsyncStorage';
+
 import SplashScreen from './screens/SplashScreen';
 import InitialScreen from './screens/InitialScreen';
 import SignUp from './screens/SignUp';
@@ -45,15 +47,13 @@ const App = props => {
   );
 
   useEffect(() => {
-    // Fetch the token from storage then navigate to our appropriate place
     const bootstrapAsync = async () => {
       let userToken;
 
       try {
-        // Restore token stored in `SecureStore` or any other encrypted storage
-        // userToken = await SecureStore.getItemAsync('userToken');
+        userToken = await AsyncStorage.readData('userToken');
         const sleep = ms => new Promise(r => setTimeout(r, ms));
-        await sleep(2000);
+        await sleep(1000);
       } catch (e) {
         // Restoring token failed
       }
@@ -91,7 +91,7 @@ const App = props => {
             headerTintColor: '#fff',
             headerTitleAlign: 'center',
           }}>
-          {state.userToken == null ? (
+          {state.userToken === null ? (
             <>
               <Stack.Screen
                 name="Home"

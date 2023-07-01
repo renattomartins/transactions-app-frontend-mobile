@@ -58,7 +58,7 @@ const Login = ({navigation, handleOnLogin}) => {
       setLoading(true);
 
       const loggedInUser = await handleOnLogin(env, email, password);
-      await AsyncStorage.storeData('token', loggedInUser.token);
+      await AsyncStorage.storeData('userToken', loggedInUser.token);
 
       setUserToken(loggedInUser.token);
       cleanUpFields();

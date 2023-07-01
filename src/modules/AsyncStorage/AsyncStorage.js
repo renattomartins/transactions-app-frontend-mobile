@@ -7,12 +7,10 @@ export default AsyncStorageLibrary => {
     }
   };
 
-  const readData = async (key, setDataCallBack) => {
+  const readData = async key => {
     try {
       const value = await AsyncStorageLibrary.getItem(key);
-      if (value !== null) {
-        setDataCallBack(value);
-      }
+      return value;
     } catch (e) {
       console.error(e);
     }
