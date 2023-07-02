@@ -83,7 +83,7 @@ const App = props => {
   }
 
   return (
-    <StoreProvider {...props} authActions={authContext}>
+    <StoreProvider {...props} token={state.userToken} authActions={authContext}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{

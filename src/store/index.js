@@ -2,8 +2,8 @@ import React, {createContext, useState} from 'react';
 
 const ApplicationContext = createContext();
 
-const StoreProvider = ({children, authActions, ...props}) => {
-  const [userToken, setUserToken] = useState(null);
+const StoreProvider = ({children, token, authActions, ...props}) => {
+  const [userToken, setUserToken] = useState(token);
   const {values, ...propsFromWrapperApp} = props;
   const {env} = propsFromWrapperApp;
 
