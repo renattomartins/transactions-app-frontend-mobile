@@ -14,6 +14,8 @@ import SignUp from './screens/SignUp';
 import Login from './screens/Login';
 import Transactions from './screens/Transactions';
 
+import {getAccounts} from './services/AccountManager';
+
 import {Colors} from './styles';
 
 const Stack = createStackNavigator();
@@ -50,24 +52,25 @@ const App = props => {
     const bootstrapAsync = async () => {
       let userToken;
 
+      // Trying restore token from local storage
       try {
         userToken = await AsyncStorage.readData('userToken');
-        const sleep = ms => new Promise(r => setTimeout(r, ms));
-        await sleep(1000);
-      } catch (e) {
-        // Restoring token failed
-      }
+      } catch (e) {}
 
       // After restoring token, we may need to validate it in production apps
-
-      // This will switch to the App screen or Auth screen and this loading
-      // screen will be unmounted and thrown away.
+      if (userToken != null) {
+        try {
+          await getAccounts(props.env, userToken);
+        } catch (e) {
+          userToken = null;
+        }
+      }
 
       dispatch({type: 'RESTORE_TOKEN', token: userToken});
     };
 
     bootstrapAsync();
-  }, []);
+  }, [props.env]);
 
   const authContext = useMemo(
     () => ({
