@@ -10,10 +10,12 @@ const getEnvironment = env => {
     local: {
       signUpUrl: `${hosts.LOCAL}/users`,
       loginUrl: `${hosts.LOCAL}/login`,
+      getAccountsUrl: `${hosts.LOCAL}/accounts`,
     },
     prd: {
       signUpUrl: `${hosts.PRD}/users`,
       loginUrl: `${hosts.PRD}/login`,
+      getAccountsUrl: `${hosts.PRD}/accounts`,
     },
   };
 
