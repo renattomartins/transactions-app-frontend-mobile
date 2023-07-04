@@ -16,7 +16,7 @@ import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const SignUp = ({navigation, handleOnSubmit}) => {
+const SignUp = ({navigation, handleOnSubmit, handleOnLogin}) => {
   const {env, signUp, setUserToken} = useContext(ApplicationContext);
 
   const passwordRef = useRef();
@@ -76,12 +76,12 @@ const SignUp = ({navigation, handleOnSubmit}) => {
         passwordVerification,
       );
 
-      const token = 'dummy-token';
-      await AsyncStorage.storeData('userToken', token);
+      const loggedInUser = await handleOnLogin(env, email, password);
+      await AsyncStorage.storeData('userToken', loggedInUser.token);
 
-      setUserToken(token);
+      setUserToken(loggedInUser.token);
       cleanUpFields();
-      signUp({token});
+      signUp({token: loggedInUser.token});
 
       console.log(
         `Novo usuário cadastro com sucesso. ID: ${registeredUser.id}, Email: ${registeredUser.email}, Data de criação: ${registeredUser.createdAt}`,
