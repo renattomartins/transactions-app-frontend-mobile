@@ -10,12 +10,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+  },
+  logoutText: {
+    width: '77%',
+    height: 75,
+    justifyContent: 'center',
+  },
+  logoutButton: {
+    width: '23%',
+    paddingRight: 15,
   },
   mainArea: {
     flex: 9,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 40,
+    backgroundColor: 'white',
   },
   textArea: {
     backgroundColor: '#fff',

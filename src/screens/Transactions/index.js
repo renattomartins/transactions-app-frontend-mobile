@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, Image} from 'react-native';
 
 import {ApplicationContext} from '../../store';
 import AsyncStorage from '../../modules/AsyncStorage';
@@ -20,9 +20,14 @@ const Transactions = ({navigation}) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
-        <Text style={styles.text}>
-          No futuro, você verá as transações nessa tela.
-        </Text>
+        <View style={styles.logoutText}>
+          <Text style={styles.text}>
+            Você está logado como: renato@teste.com
+          </Text>
+        </View>
+        <View style={styles.logoutButton}>
+          <Button title="Sair" onPress={onSubmit} inverse />
+        </View>
       </View>
       <View style={styles.mainArea}>
         <If test={userToken !== null}>
@@ -35,7 +40,6 @@ const Transactions = ({navigation}) => {
             onFocus={e => e.target.select()}
           />
         </If>
-        <Button title="Voltar para o início" onPress={onSubmit} width="80%" />
       </View>
     </View>
   );
