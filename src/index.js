@@ -28,6 +28,7 @@ const App = props => {
           return {
             ...prevState,
             userToken: action.token,
+            loggedEmail: action.loggedEmail,
             isLoading: false,
           };
         case 'SIGN_IN':
@@ -39,22 +40,26 @@ const App = props => {
           return {
             ...prevState,
             userToken: null,
+            loggedEmail: null,
           };
       }
     },
     {
       isLoading: true,
       userToken: null,
+      loggedEmail: null,
     },
   );
 
   useEffect(() => {
     const bootstrapAsync = async () => {
       let userToken;
+      let loggedEmail;
 
       // Trying restore token from local storage
       try {
         userToken = await AsyncStorage.readData('userToken');
+        loggedEmail = await AsyncStorage.readData('loggedEmail');
       } catch (e) {}
 
       // After restoring token, we may need to validate it in production apps
@@ -66,7 +71,11 @@ const App = props => {
         }
       }
 
-      dispatch({type: 'RESTORE_TOKEN', token: userToken});
+      dispatch({
+        type: 'RESTORE_TOKEN',
+        token: userToken,
+        loggedEmail: loggedEmail,
+      });
     };
 
     bootstrapAsync();
@@ -86,7 +95,11 @@ const App = props => {
   }
 
   return (
-    <StoreProvider {...props} token={state.userToken} authActions={authContext}>
+    <StoreProvider
+      {...props}
+      token={state.userToken}
+      email={state.loggedEmail}
+      authActions={authContext}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{

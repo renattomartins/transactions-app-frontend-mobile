@@ -15,6 +15,7 @@ const Transactions = ({navigation}) => {
 
   const onSubmit = async () => {
     await AsyncStorage.cleanKeyData('userToken');
+    await AsyncStorage.cleanKeyData('loggedEmail');
     setLoggedEmail(null);
     signOut();
   };
