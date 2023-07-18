@@ -10,10 +10,12 @@ import styles from './styles';
 import If from '../../utils/if';
 
 const Transactions = ({navigation}) => {
-  const {signOut, userToken, loggedEmail} = useContext(ApplicationContext);
+  const {signOut, userToken, loggedEmail, setLoggedEmail} =
+    useContext(ApplicationContext);
 
   const onSubmit = async () => {
     await AsyncStorage.cleanKeyData('userToken');
+    setLoggedEmail(null);
     signOut();
   };
 
