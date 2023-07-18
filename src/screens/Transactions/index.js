@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, TextInput, Image} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 
 import {ApplicationContext} from '../../store';
 import AsyncStorage from '../../modules/AsyncStorage';
@@ -10,7 +10,7 @@ import styles from './styles';
 import If from '../../utils/if';
 
 const Transactions = ({navigation}) => {
-  const {signOut, userToken} = useContext(ApplicationContext);
+  const {signOut, userToken, loggedEmail} = useContext(ApplicationContext);
 
   const onSubmit = async () => {
     await AsyncStorage.cleanKeyData('userToken');
@@ -21,9 +21,7 @@ const Transactions = ({navigation}) => {
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
         <View style={styles.logoutText}>
-          <Text style={styles.text}>
-            Você está logado como: renato@teste.com
-          </Text>
+          <Text style={styles.text}>Você está logado como: {loggedEmail}</Text>
         </View>
         <View style={styles.logoutButton}>
           <Button title="Sair" onPress={onSubmit} inverse />

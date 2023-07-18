@@ -4,12 +4,21 @@ const ApplicationContext = createContext();
 
 const StoreProvider = ({children, token, authActions, ...props}) => {
   const [userToken, setUserToken] = useState(token);
+  const [loggedEmail, setLoggedEmail] = useState(null);
   const {values, ...propsFromWrapperApp} = props;
   const {env} = propsFromWrapperApp;
 
   return (
     <ApplicationContext.Provider
-      value={{env, userToken, setUserToken, ...authActions, ...values}}>
+      value={{
+        env,
+        userToken,
+        setUserToken,
+        loggedEmail,
+        setLoggedEmail,
+        ...authActions,
+        ...values,
+      }}>
       {children}
     </ApplicationContext.Provider>
   );

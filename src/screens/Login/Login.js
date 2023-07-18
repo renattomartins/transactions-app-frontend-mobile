@@ -17,7 +17,8 @@ import {Colors} from '../../styles';
 import styles from './styles';
 
 const Login = ({navigation, handleOnLogin}) => {
-  const {env, signIn, setUserToken} = useContext(ApplicationContext);
+  const {env, signIn, setLoggedEmail, setUserToken} =
+    useContext(ApplicationContext);
 
   const passwordRef = useRef();
 
@@ -60,6 +61,7 @@ const Login = ({navigation, handleOnLogin}) => {
       const loggedInUser = await handleOnLogin(env, email, password);
       await AsyncStorage.storeData('userToken', loggedInUser.token);
 
+      setLoggedEmail(email);
       setUserToken(loggedInUser.token);
       cleanUpFields();
       signIn({token: loggedInUser.token});
