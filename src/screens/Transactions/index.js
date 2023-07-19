@@ -31,16 +31,42 @@ const Transactions = ({navigation}) => {
         </View>
       </View>
       <View style={styles.mainArea}>
-        <If test={userToken !== null}>
-          <TextInput
-            style={styles.textArea}
-            editable={false}
-            multiline={true}
-            numberOfLines={10}
-            value={userToken}
-            onFocus={e => e.target.select()}
-          />
-        </If>
+        <View style={styles.transactionArea}>
+          <View style={styles.transactionIconWrapper}>
+            <Text style={[styles.transactionIcon, styles.transactionPlus]}>
+              +
+            </Text>
+          </View>
+          <View style={styles.transactionTextWrapper}>
+            <Text style={styles.transactionDescription}>Saque Banco 24h</Text>
+            <Text style={styles.transactionDate}>18/jul às 18:46</Text>
+            <Text style={styles.transactionAmount}>R$ 150,00</Text>
+          </View>
+        </View>
+        <View style={styles.transactionArea}>
+          <View style={styles.transactionIconWrapper}>
+            <Text style={[styles.transactionIcon, styles.transactionMinus]}>
+              -
+            </Text>
+          </View>
+          <View style={styles.transactionTextWrapper}>
+            <Text style={styles.transactionDescription}>Padaria</Text>
+            <Text style={styles.transactionDate}>19/jul às 07:10</Text>
+            <Text style={styles.transactionAmount}>R$ 13,40</Text>
+          </View>
+        </View>
+        <View style={styles.transactionArea}>
+          <View style={styles.transactionIconWrapper}>
+            <Text style={[styles.transactionIcon, styles.transactionMinus]}>
+              -
+            </Text>
+          </View>
+          <View style={styles.transactionTextWrapper}>
+            <Text style={styles.transactionDescription}>Barbearia</Text>
+            <Text style={styles.transactionDate}>19/jul às 09:15</Text>
+            <Text style={styles.transactionAmount}>R$ 40,00</Text>
+          </View>
+        </View>
       </View>
     </View>
   );

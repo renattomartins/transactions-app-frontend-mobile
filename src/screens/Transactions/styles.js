@@ -23,20 +23,37 @@ const styles = StyleSheet.create({
   },
   mainArea: {
     flex: 9,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 40,
     backgroundColor: 'white',
   },
-  textArea: {
-    backgroundColor: '#fff',
-    padding: 20,
-    margin: 20,
-    borderColor: '#bbb',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderRadius: 5,
+  transactionArea: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    flexDirection: 'row',
   },
+  transactionIconWrapper: {
+    height: 42,
+    width: 42,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  transactionIcon: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#666',
+  },
+  transactionMinus: {
+    color: '#E06755',
+  },
+  transactionPlus: {
+    color: '#A0DD63',
+  },
+  transactionTextWrapper: {
+    height: 60,
+    paddingHorizontal: 10,
+  },
+  transactionDescription: {},
+  transactionDate: {},
+  transactionAmount: {},
   text: {
     color: '#fff',
     padding: 20,
