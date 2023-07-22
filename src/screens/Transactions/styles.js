@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
     height: 75,
     justifyContent: 'center',
   },
+  text: {
+    color: '#fff',
+    padding: 20,
+  },
   logoutButton: {
     width: '23%',
     paddingRight: 15,
@@ -27,36 +31,39 @@ const styles = StyleSheet.create({
   },
   transactionArea: {
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 20,
     flexDirection: 'row',
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
   },
   transactionIconWrapper: {
-    height: 42,
-    width: 42,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1,
   },
   transactionIcon: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#666',
-  },
-  transactionMinus: {
-    color: '#E06755',
-  },
-  transactionPlus: {
-    color: '#A0DD63',
+    height: 38,
+    width: 34,
   },
   transactionTextWrapper: {
-    height: 60,
-    paddingHorizontal: 10,
+    minHeight: 50,
+    flex: 4,
   },
-  transactionDescription: {},
-  transactionDate: {},
-  transactionAmount: {},
-  text: {
-    color: '#fff',
-    padding: 20,
+  transactionDescription: {
+    fontWeight: 'bold',
+    width: 200,
+  },
+  transactionDate: {
+    color: '#666',
+  },
+  transactionAmountWrapper: {
+    flex: 2,
+  },
+  transactionAmount: {
+    fontWeight: 'bold',
+    textAlign: 'right',
+    color: '#DD4E4D',
+  },
+  positive: {
+    color: '#43B700',
   },
 });
 
