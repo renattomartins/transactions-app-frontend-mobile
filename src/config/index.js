@@ -11,11 +11,13 @@ const getEnvironment = env => {
       signUpUrl: `${hosts.LOCAL}/users`,
       loginUrl: `${hosts.LOCAL}/login`,
       getAccountsUrl: `${hosts.LOCAL}/accounts`,
+      getTransactionsUrl: `${hosts.LOCAL}/accounts/:accountId/transactions`,
     },
     prd: {
       signUpUrl: `${hosts.PRD}/users`,
       loginUrl: `${hosts.PRD}/login`,
       getAccountsUrl: `${hosts.PRD}/accounts`,
+      getTransactionsUrl: `${hosts.PRD}/accounts/:accountId/transactions`,
     },
   };
 
