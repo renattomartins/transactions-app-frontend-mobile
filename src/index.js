@@ -56,13 +56,11 @@ const App = props => {
       let userToken;
       let loggedEmail;
 
-      // Trying restore token from local storage
       try {
         userToken = await AsyncStorage.readData('userToken');
         loggedEmail = await AsyncStorage.readData('loggedEmail');
       } catch (e) {}
 
-      // After restoring token, we may need to validate it in production apps
       if (userToken != null) {
         try {
           await getAccounts(props.env, userToken);
