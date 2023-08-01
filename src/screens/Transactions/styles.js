@@ -29,6 +29,15 @@ const styles = StyleSheet.create({
     flex: 9,
     backgroundColor: 'white',
   },
+  loaderIcon: {
+    marginTop: 100,
+    marginBottom: 20,
+  },
+  loaderText: {
+    textAlign: 'center',
+    color: '#aaa',
+    fontStyle: 'italic',
+  },
   transactionArea: {
     paddingHorizontal: 20,
     paddingVertical: 20,
