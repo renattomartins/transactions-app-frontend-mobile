@@ -29,14 +29,25 @@ const styles = StyleSheet.create({
     flex: 9,
     backgroundColor: 'white',
   },
+  messagesWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 150,
+  },
   loaderIcon: {
-    marginTop: 100,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   loaderText: {
     textAlign: 'center',
     color: '#aaa',
     fontStyle: 'italic',
+  },
+  noTrasactions: {
+    textAlign: 'center',
+    color: '#aaa',
+    fontWeight: 'bold',
+    width: 200,
   },
   transactionArea: {
     paddingHorizontal: 20,

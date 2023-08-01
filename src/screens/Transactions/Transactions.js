@@ -33,14 +33,23 @@ const Transactions = ({navigation, handleGetTransactions}) => {
       </View>
       <View style={styles.mainArea}>
         <If test={isLoading}>
-          <ActivityIndicator
-            size="small"
-            color="#aaa"
-            style={styles.loaderIcon}
-          />
-          <Text style={styles.loaderText}>Carregando transações...</Text>
+          <View style={styles.messagesWrapper}>
+            <ActivityIndicator
+              size="small"
+              color="#aaa"
+              style={styles.loaderIcon}
+            />
+            <Text style={styles.loaderText}>Carregando transações...</Text>
+          </View>
         </If>
-        <If test={!isLoading}>
+        <If test={!isLoading && isEmpty}>
+          <View style={styles.messagesWrapper}>
+            <Text style={styles.noTrasactions}>
+              Você não possui transações cadastradas.
+            </Text>
+          </View>
+        </If>
+        <If test={!isLoading && !isEmpty}>
           <View style={styles.transactionArea}>
             <View style={styles.transactionIconWrapper}>
               <Image
