@@ -6,6 +6,7 @@ import AsyncStorage from '../../modules/AsyncStorage';
 
 import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
+import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
 import styles from './styles';
 
@@ -14,6 +15,8 @@ const Transactions = ({navigation, handleGetTransactions}) => {
     useContext(ApplicationContext);
   const [isLoading, setIsLoading] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
+  const [thereIsAnError, setThereIsAnError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onLogout = async () => {
     await AsyncStorage.cleanKeyData('userToken');
@@ -28,13 +31,39 @@ const Transactions = ({navigation, handleGetTransactions}) => {
 
       try {
         transactions = await handleGetTransactions(env, userToken, 23);
-      } catch (e) {}
+        console.log(`${transactions.length} transações recuperadas.`);
+      } catch (e) {
+        let errorMessageToDiplay;
+        setThereIsAnError(true);
 
-      setIsLoading(false);
+        switch (e.response.data.code) {
+          case 400:
+            errorMessageToDiplay = errorMessages.getTransactions.e400.message;
+            break;
+          case 401:
+            errorMessageToDiplay = errorMessages.getTransactions.e401.message;
+            break;
+          case 403:
+            errorMessageToDiplay = errorMessages.getTransactions.e403.message;
+            break;
+          case 404:
+            errorMessageToDiplay = errorMessages.getTransactions.e404.message;
+            break;
+          case 500:
+            errorMessageToDiplay = errorMessages.getTransactions.e500.message;
+            break;
+          default:
+            errorMessageToDiplay =
+              errorMessages.getTransactions.unknown.message;
+        }
+        setErrorMessage(errorMessageToDiplay);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     loadTransactions();
-  }, []);
+  });
 
   return (
     <View style={styles.wrapper}>
@@ -57,14 +86,23 @@ const Transactions = ({navigation, handleGetTransactions}) => {
             <Text style={styles.loaderText}>Carregando transações...</Text>
           </View>
         </If>
-        <If test={!isLoading && isEmpty}>
+        <If test={!isLoading && thereIsAnError}>
+          <View style={styles.messagesWrapper}>
+            <Image
+              style={[styles.errorIcon]}
+              source={require('../../assets/images/error-icon.png')}
+            />
+            <Text style={styles.errorMessage}>{errorMessage}</Text>
+          </View>
+        </If>
+        <If test={!isLoading && !thereIsAnError && isEmpty}>
           <View style={styles.messagesWrapper}>
             <Text style={styles.noTrasactions}>
               Você não possui transações cadastradas.
             </Text>
           </View>
         </If>
-        <If test={!isLoading && !isEmpty}>
+        <If test={!isLoading && !thereIsAnError && !isEmpty}>
           <View style={styles.transactionArea}>
             <View style={styles.transactionIconWrapper}>
               <Image

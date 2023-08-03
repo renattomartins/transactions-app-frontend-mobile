@@ -49,6 +49,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     width: 200,
   },
+  errorIcon: {
+    height: 88,
+    width: 88,
+  },
+  errorMessage: {
+    marginTop: 20,
+    color: '#666',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'center',
+    width: 200,
+  },
   transactionArea: {
     paddingHorizontal: 20,
     paddingVertical: 20,

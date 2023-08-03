@@ -74,6 +74,33 @@ const friendlyErrorMessages = {
       details: {},
     },
   },
+  getTransactions: {
+    e400: {
+      message: 'Erro no aplicativo. Verifique se o mesmo está atualizado.',
+      details: {},
+    },
+    e401: {
+      message: 'Sua sessão expirou. Faça login novamente antes de continuar.',
+      details: {},
+    },
+    e403: {
+      message: 'Não autorizado.',
+      details: {},
+    },
+    e404: {
+      message: 'Conta não encontrada.',
+      details: {},
+    },
+    e500: {
+      message:
+        'Erro interno no servidor. Aguarde alguns instantes e tente novamente.',
+      details: {},
+    },
+    unknown: {
+      message: 'Erro desconhecido. Por favor, tente novamente.',
+      details: {},
+    },
+  },
 };
 
 export {friendlyErrorMessages};
