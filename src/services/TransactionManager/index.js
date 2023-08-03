@@ -1,11 +1,12 @@
 import axios from 'axios';
 import getEnvironment from '../../config';
 
-const getTransactions = async (env, token) => {
-  const {getTransactionsUrl} = getEnvironment(env);
+const getTransactions = async (env, token, accountId) => {
+  let {getTransactionsUrl} = getEnvironment(env);
 
   try {
-    // @todo replaces :accountId in getTransactionsUrl
+    getTransactionsUrl = getTransactionsUrl.replace(':accountId', accountId);
+
     const response = await axios.get(getTransactionsUrl, {
       headers: {
         Authorization: `bearer ${token}`,

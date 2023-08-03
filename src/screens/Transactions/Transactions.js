@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {View, Text, Image, ActivityIndicator} from 'react-native';
 
 import {ApplicationContext} from '../../store';
@@ -10,9 +10,10 @@ import If from '../../utils/if';
 import styles from './styles';
 
 const Transactions = ({navigation, handleGetTransactions}) => {
-  const {signOut, loggedEmail, setLoggedEmail} = useContext(ApplicationContext);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(true);
+  const {env, userToken, signOut, loggedEmail, setLoggedEmail} =
+    useContext(ApplicationContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const onLogout = async () => {
     await AsyncStorage.cleanKeyData('userToken');
@@ -20,6 +21,20 @@ const Transactions = ({navigation, handleGetTransactions}) => {
     setLoggedEmail(null);
     signOut();
   };
+
+  useEffect(() => {
+    const loadTransactions = async () => {
+      let transactions;
+
+      try {
+        transactions = await handleGetTransactions(env, userToken, 23);
+      } catch (e) {}
+
+      setIsLoading(false);
+    };
+
+    loadTransactions();
+  }, []);
 
   return (
     <View style={styles.wrapper}>
