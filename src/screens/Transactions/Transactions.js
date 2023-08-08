@@ -11,16 +11,18 @@ import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 import styles from './styles';
 
 const Transactions = ({navigation, handleGetTransactions}) => {
-  const {env, userToken, signOut, loggedEmail, setLoggedEmail} =
+  const {env, userToken, setUserToken, loggedEmail, setLoggedEmail, signOut} =
     useContext(ApplicationContext);
+
   const [isLoading, setIsLoading] = useState(true);
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(true);
   const [thereIsAnError, setThereIsAnError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const onLogout = async () => {
     await AsyncStorage.cleanKeyData('userToken');
     await AsyncStorage.cleanKeyData('loggedEmail');
+    setUserToken(null);
     setLoggedEmail(null);
     signOut();
   };
@@ -32,6 +34,10 @@ const Transactions = ({navigation, handleGetTransactions}) => {
       try {
         transactions = await handleGetTransactions(env, userToken, 23);
         console.log(`${transactions.length} transações recuperadas.`);
+
+        if (transactions.length > 0) {
+          setIsEmpty(false);
+        }
       } catch (e) {
         let errorMessageToDiplay;
         setThereIsAnError(true);

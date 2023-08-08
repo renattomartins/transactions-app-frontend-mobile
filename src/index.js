@@ -66,6 +66,7 @@ const App = props => {
           await getAccounts(props.env, userToken);
         } catch (e) {
           userToken = null;
+          loggedEmail = null;
         }
       }
 
