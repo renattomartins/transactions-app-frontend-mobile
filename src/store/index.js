@@ -5,6 +5,7 @@ const ApplicationContext = createContext();
 const StoreProvider = ({children, token, email, authActions, ...props}) => {
   const [userToken, setUserToken] = useState(token);
   const [loggedEmail, setLoggedEmail] = useState(email);
+  const [accounts, setAccounts] = useState([]);
   const {values, ...propsFromWrapperApp} = props;
   const {env} = propsFromWrapperApp;
 
@@ -16,6 +17,8 @@ const StoreProvider = ({children, token, email, authActions, ...props}) => {
         setUserToken,
         loggedEmail,
         setLoggedEmail,
+        accounts,
+        setAccounts,
         ...authActions,
         ...values,
       }}>

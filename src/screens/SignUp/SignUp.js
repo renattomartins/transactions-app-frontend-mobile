@@ -16,8 +16,13 @@ import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 import {Colors} from '../../styles';
 import styles from './styles';
 
-const SignUp = ({navigation, handleOnSubmit, handleOnLogin}) => {
-  const {env, setUserToken, setLoggedEmail, signUp} =
+const SignUp = ({
+  navigation,
+  handleOnSubmit,
+  handleOnLogin,
+  handleOnGetAccounts,
+}) => {
+  const {env, setUserToken, setLoggedEmail, setAccounts, signUp} =
     useContext(ApplicationContext);
 
   const passwordRef = useRef();
@@ -70,19 +75,27 @@ const SignUp = ({navigation, handleOnSubmit, handleOnLogin}) => {
     try {
       setLoading(true);
 
+      // Requests
       const registeredUser = await handleOnSubmit(
         env,
         email,
         password,
         passwordVerification,
       );
-
       const loggedInUser = await handleOnLogin(env, email, password);
+      const accounts = await handleOnGetAccounts(env, loggedInUser.token);
+
+      // Local storage
       await AsyncStorage.storeData('userToken', loggedInUser.token);
       await AsyncStorage.storeData('loggedEmail', email);
+      await AsyncStorage.storeData('accounts', JSON.stringify(accounts));
 
+      // State in application context
       setUserToken(loggedInUser.token);
       setLoggedEmail(email);
+      setAccounts(accounts);
+
+      // Screen state
       cleanUpFields();
       signUp({token: loggedInUser.token});
 
