@@ -11,8 +11,16 @@ import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 import styles from './styles';
 
 const Transactions = ({navigation, handleGetTransactions}) => {
-  const {env, userToken, setUserToken, loggedEmail, setLoggedEmail, signOut} =
-    useContext(ApplicationContext);
+  const {
+    env,
+    userToken,
+    setUserToken,
+    loggedEmail,
+    setLoggedEmail,
+    accounts,
+    setAccounts,
+    signOut,
+  } = useContext(ApplicationContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isEmpty, setIsEmpty] = useState(true);
@@ -20,19 +28,40 @@ const Transactions = ({navigation, handleGetTransactions}) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const onLogout = async () => {
+    // Requests
+    // @todo
+
+    // Local storage
     await AsyncStorage.cleanKeyData('userToken');
     await AsyncStorage.cleanKeyData('loggedEmail');
+    await AsyncStorage.cleanKeyData('accounts');
+
+    // State in application context
     setUserToken(null);
     setLoggedEmail(null);
+    setAccounts([]);
+
+    // Screen state
     signOut();
   };
 
   useEffect(() => {
     const loadTransactions = async () => {
+      let initialAccountId;
       let transactions;
 
       try {
-        transactions = await handleGetTransactions(env, userToken, 23);
+        if (accounts.length > 0) {
+          initialAccountId = accounts[0].id;
+        }
+
+        transactions = await handleGetTransactions(
+          env,
+          userToken,
+          initialAccountId,
+        );
+        console.log('c');
+
         console.log(`${transactions.length} transações recuperadas.`);
 
         if (transactions.length > 0) {
