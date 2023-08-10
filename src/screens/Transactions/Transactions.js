@@ -60,7 +60,6 @@ const Transactions = ({navigation, handleGetTransactions}) => {
           userToken,
           initialAccountId,
         );
-        console.log('c');
 
         console.log(`${transactions.length} transações recuperadas.`);
 

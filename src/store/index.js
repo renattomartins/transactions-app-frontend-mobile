@@ -2,10 +2,17 @@ import React, {createContext, useState} from 'react';
 
 const ApplicationContext = createContext();
 
-const StoreProvider = ({children, token, email, authActions, ...props}) => {
-  const [userToken, setUserToken] = useState(token);
-  const [loggedEmail, setLoggedEmail] = useState(email);
-  const [accounts, setAccounts] = useState([]);
+const StoreProvider = ({
+  children,
+  initialToken,
+  initialEmail,
+  initialAccounts,
+  authActions,
+  ...props
+}) => {
+  const [userToken, setUserToken] = useState(initialToken);
+  const [loggedEmail, setLoggedEmail] = useState(initialEmail);
+  const [accounts, setAccounts] = useState(initialAccounts);
   const {values, ...propsFromWrapperApp} = props;
   const {env} = propsFromWrapperApp;
 

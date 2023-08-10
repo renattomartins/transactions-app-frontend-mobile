@@ -30,6 +30,7 @@ const App = props => {
             userToken: action.token,
             loggedEmail: action.loggedEmail,
             isLoading: false,
+            accounts: action.accounts,
           };
         case 'SIGN_IN':
           return {
@@ -48,13 +49,13 @@ const App = props => {
       isLoading: true,
       userToken: null,
       loggedEmail: null,
+      accounts: [],
     },
   );
 
   useEffect(() => {
     const bootstrapAsync = async () => {
-      let userToken;
-      let loggedEmail;
+      let userToken, loggedEmail, accounts;
 
       try {
         userToken = await AsyncStorage.readData('userToken');
@@ -63,7 +64,7 @@ const App = props => {
 
       if (userToken != null) {
         try {
-          await getAccounts(props.env, userToken);
+          accounts = await getAccounts(props.env, userToken);
         } catch (e) {
           userToken = null;
           loggedEmail = null;
@@ -74,6 +75,7 @@ const App = props => {
         type: 'RESTORE_TOKEN',
         token: userToken,
         loggedEmail: loggedEmail,
+        accounts: accounts,
       });
     };
 
@@ -96,8 +98,9 @@ const App = props => {
   return (
     <StoreProvider
       {...props}
-      token={state.userToken}
-      email={state.loggedEmail}
+      initialToken={state.userToken}
+      initialEmail={state.loggedEmail}
+      initialAccounts={state.accounts}
       authActions={authContext}>
       <NavigationContainer>
         <Stack.Navigator
