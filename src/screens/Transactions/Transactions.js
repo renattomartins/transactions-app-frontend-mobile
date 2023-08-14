@@ -26,10 +26,11 @@ const Transactions = ({navigation, handleGetTransactions}) => {
   const [isEmpty, setIsEmpty] = useState(true);
   const [thereIsAnError, setThereIsAnError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [transactions, setTransactions] = useState([]);
 
   const onLogout = async () => {
     // Requests
-    // @todo
+    // @todo Invalidate token on server
 
     // Local storage
     await AsyncStorage.cleanKeyData('userToken');
@@ -47,24 +48,25 @@ const Transactions = ({navigation, handleGetTransactions}) => {
 
   useEffect(() => {
     const loadTransactions = async () => {
-      let initialAccountId;
-      let transactions;
+      let initialAccountId, transactionsList;
 
       try {
         if (accounts.length > 0) {
           initialAccountId = accounts[0].id;
         }
 
-        transactions = await handleGetTransactions(
+        transactionsList = await handleGetTransactions(
           env,
           userToken,
           initialAccountId,
         );
 
-        console.log(`${transactions.length} transações recuperadas.`);
+        console.log(`${transactionsList.length} transações recuperadas.`);
 
-        if (transactions.length > 0) {
+        if (transactionsList.length > 0) {
           setIsEmpty(false);
+          console.log(transactionsList);
+          setTransactions(transactionsList);
         }
       } catch (e) {
         let errorMessageToDiplay;
@@ -97,7 +99,7 @@ const Transactions = ({navigation, handleGetTransactions}) => {
     };
 
     loadTransactions();
-  });
+  }, []);
 
   return (
     <View style={styles.wrapper}>
@@ -137,53 +139,35 @@ const Transactions = ({navigation, handleGetTransactions}) => {
           </View>
         </If>
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
-          <View style={styles.transactionArea}>
-            <View style={styles.transactionIconWrapper}>
-              <Image
-                style={[styles.transactionIcon]}
-                source={require('../../assets/images/money-in.png')}
-              />
+          {transactions.map(transaction => (
+            <View style={styles.transactionArea}>
+              <View style={styles.transactionIconWrapper}>
+                <Image
+                  style={[styles.transactionIcon]}
+                  source={
+                    transaction.isIncome
+                      ? require('../../assets/images/money-in.png')
+                      : require('../../assets/images/money-out.png')
+                  }
+                />
+              </View>
+              <View style={styles.transactionTextWrapper}>
+                <Text style={styles.transactionDescription}>
+                  {transaction.description}
+                </Text>
+                <Text style={styles.transactionDate}>{transaction.date}</Text>
+              </View>
+              <View style={styles.transactionAmountWrapper}>
+                <Text
+                  style={[
+                    styles.transactionAmount,
+                    transaction.isIncome ? styles.positive : styles.negative,
+                  ]}>
+                  {transaction.ammount}
+                </Text>
+              </View>
             </View>
-            <View style={styles.transactionTextWrapper}>
-              <Text style={styles.transactionDescription}>Saque Banco 24h</Text>
-              <Text style={styles.transactionDate}>18/jul às 18:46</Text>
-            </View>
-            <View style={styles.transactionAmountWrapper}>
-              <Text style={[styles.transactionAmount, styles.positive]}>
-                R$ 150,00
-              </Text>
-            </View>
-          </View>
-          <View style={styles.transactionArea}>
-            <View style={styles.transactionIconWrapper}>
-              <Image
-                style={[styles.transactionIcon]}
-                source={require('../../assets/images/money-out.png')}
-              />
-            </View>
-            <View style={styles.transactionTextWrapper}>
-              <Text style={styles.transactionDescription}>Padaria</Text>
-              <Text style={styles.transactionDate}>19/jul às 07:10</Text>
-            </View>
-            <View style={styles.transactionAmountWrapper}>
-              <Text style={styles.transactionAmount}>-R$ 13,40</Text>
-            </View>
-          </View>
-          <View style={styles.transactionArea}>
-            <View style={styles.transactionIconWrapper}>
-              <Image
-                style={[styles.transactionIcon]}
-                source={require('../../assets/images/money-out.png')}
-              />
-            </View>
-            <View style={styles.transactionTextWrapper}>
-              <Text style={styles.transactionDescription}>Barbearia</Text>
-              <Text style={styles.transactionDate}>19/jul às 09:15</Text>
-            </View>
-            <View style={styles.transactionAmountWrapper}>
-              <Text style={styles.transactionAmount}>-R$ 40,00</Text>
-            </View>
-          </View>
+          ))}
         </If>
       </View>
     </View>
