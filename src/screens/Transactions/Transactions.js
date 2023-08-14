@@ -65,7 +65,6 @@ const Transactions = ({navigation, handleGetTransactions}) => {
 
         if (transactionsList.length > 0) {
           setIsEmpty(false);
-          console.log(transactionsList);
           setTransactions(transactionsList);
         }
       } catch (e) {
@@ -140,7 +139,7 @@ const Transactions = ({navigation, handleGetTransactions}) => {
         </If>
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
           {transactions.map(transaction => (
-            <View style={styles.transactionArea}>
+            <View key={transaction.id} style={styles.transactionArea}>
               <View style={styles.transactionIconWrapper}>
                 <Image
                   style={[styles.transactionIcon]}
