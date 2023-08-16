@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useState, useEffect} from 'react';
 import {View, Text, Image, ActivityIndicator} from 'react-native';
 
 import {ApplicationContext} from '../../store';
 import AsyncStorage from '../../modules/AsyncStorage';
 
-import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
+import Button from '../../components/atoms/Button';
+import Transaction from '../../components/molecules/Transaction';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
 import styles from './styles';
@@ -139,33 +141,13 @@ const Transactions = ({navigation, handleGetTransactions}) => {
         </If>
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
           {transactions.map(transaction => (
-            <View key={transaction.id} style={styles.transactionArea}>
-              <View style={styles.transactionIconWrapper}>
-                <Image
-                  style={[styles.transactionIcon]}
-                  source={
-                    transaction.isIncome
-                      ? require('../../assets/images/money-in.png')
-                      : require('../../assets/images/money-out.png')
-                  }
-                />
-              </View>
-              <View style={styles.transactionTextWrapper}>
-                <Text style={styles.transactionDescription}>
-                  {transaction.description}
-                </Text>
-                <Text style={styles.transactionDate}>{transaction.date}</Text>
-              </View>
-              <View style={styles.transactionAmountWrapper}>
-                <Text
-                  style={[
-                    styles.transactionAmount,
-                    transaction.isIncome ? styles.positive : styles.negative,
-                  ]}>
-                  {transaction.ammount}
-                </Text>
-              </View>
-            </View>
+            <Transaction
+              id={transaction.id}
+              description={transaction.description}
+              isIncome={transaction.isIncome}
+              date={transaction.date}
+              amount={transaction.ammount}
+            />
           ))}
         </If>
       </View>
