@@ -4,6 +4,16 @@ import {View, Text, Image} from 'react-native';
 
 import styles from './styles';
 
+const currencyFormat = num => {
+  return (
+    'R$ ' +
+    num
+      .toFixed(2)
+      .replace('.', ',')
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+  );
+};
+
 const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
   return (
     <View key={`transactionId-${id}`} style={styles.transactionArea}>
@@ -27,7 +37,7 @@ const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
             styles.transactionAmount,
             isIncome ? styles.positive : styles.negative,
           ]}>
-          {amount}
+          {currencyFormat(amount)}
         </Text>
       </View>
     </View>
