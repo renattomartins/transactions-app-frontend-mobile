@@ -14,6 +14,16 @@ const currencyFormat = num => {
   );
 };
 
+const dateFormat = date => {
+  return new Date(date).toLocaleDateString('pt-br', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+};
+
 const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
   return (
     <View style={styles.transactionArea}>
@@ -29,7 +39,7 @@ const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
       </View>
       <View style={styles.transactionTextWrapper}>
         <Text style={styles.transactionDescription}>{description}</Text>
-        <Text style={styles.transactionDate}>{date}</Text>
+        <Text style={styles.transactionDate}>{dateFormat(date)}</Text>
       </View>
       <View style={styles.transactionAmountWrapper}>
         <Text
