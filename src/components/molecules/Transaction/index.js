@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import {View, Text, Image} from 'react-native';
 
 import styles from './styles';
@@ -16,7 +16,7 @@ const currencyFormat = num => {
 
 const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
   return (
-    <View key={`transactionId-${id}`} style={styles.transactionArea}>
+    <View style={styles.transactionArea}>
       <View style={styles.transactionIconWrapper}>
         <Image
           style={[styles.transactionIcon]}
@@ -44,12 +44,12 @@ const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
   );
 };
 
-Transaction.PropTypes = {
-  id: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  isIncome: PropTypes.bool.isRequired,
-  date: PropTypes.string.isRequired,
-  amount: PropTypes.number.isRequired,
+Transaction.propTypes = {
+  id: propTypes.number.isRequired,
+  description: propTypes.string.isRequired,
+  isIncome: propTypes.bool.isRequired,
+  date: propTypes.string.isRequired,
+  amount: propTypes.number.isRequired,
 };
 
 export default Transaction;

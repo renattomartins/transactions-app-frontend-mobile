@@ -142,6 +142,7 @@ const Transactions = ({navigation, handleGetTransactions}) => {
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
           {transactions.map(transaction => (
             <Transaction
+              key={`transactionId-${transaction.id}`}
               id={transaction.id}
               description={transaction.description}
               isIncome={transaction.isIncome}
