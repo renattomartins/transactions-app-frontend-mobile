@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useState, useEffect} from 'react';
-import {View, Text, Image, ActivityIndicator} from 'react-native';
+import {View, ScrollView, Text, Image, ActivityIndicator} from 'react-native';
 
 import {ApplicationContext} from '../../store';
 import AsyncStorage from '../../modules/AsyncStorage';
@@ -140,16 +140,20 @@ const Transactions = ({navigation, handleGetTransactions}) => {
           </View>
         </If>
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
-          {transactions.map(transaction => (
-            <Transaction
-              key={`transactionId-${transaction.id}`}
-              id={transaction.id}
-              description={transaction.description}
-              isIncome={transaction.isIncome}
-              date={transaction.date}
-              amount={transaction.ammount}
-            />
-          ))}
+          <ScrollView
+            scrollIndicatorInsets={{right: 1}}
+            style={styles.scrollArea}>
+            {transactions.map(transaction => (
+              <Transaction
+                key={`transactionId-${transaction.id}`}
+                id={transaction.id}
+                description={transaction.description}
+                isIncome={transaction.isIncome}
+                date={transaction.date}
+                amount={transaction.ammount}
+              />
+            ))}
+          </ScrollView>
         </If>
       </View>
     </View>

@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
     flex: 9,
     backgroundColor: 'white',
   },
+  scrollArea: {
+    flex: 1,
+    width: 'auto',
+  },
   messagesWrapper: {
     flex: 1,
     justifyContent: 'center',
