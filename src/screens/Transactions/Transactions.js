@@ -7,6 +7,7 @@ import AsyncStorage from '../../modules/AsyncStorage';
 
 import If from '../../utils/if';
 import Button from '../../components/atoms/Button';
+import FloatButton from '../../components/atoms/FloatButton';
 import Transaction from '../../components/molecules/Transaction';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
@@ -154,6 +155,7 @@ const Transactions = ({navigation, handleGetTransactions}) => {
               />
             ))}
           </ScrollView>
+          <FloatButton onPress={() => navigation.navigate('')} />
         </If>
       </View>
     </View>
