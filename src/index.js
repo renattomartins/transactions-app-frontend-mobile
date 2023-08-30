@@ -13,6 +13,7 @@ import InitialScreen from './screens/InitialScreen';
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
 import Transactions from './screens/Transactions';
+import Transaction from './screens/Transaction';
 
 import {getAccounts} from './services/AccountManager';
 
@@ -133,6 +134,14 @@ const App = props => {
                 name="Transactions"
                 component={Transactions}
                 options={{title: 'Transações', headerLeft: () => null}}
+              />
+              <Stack.Screen
+                name="Transaction"
+                component={Transaction}
+                options={{
+                  title: 'Nova transação',
+                  headerBackTitleVisible: false,
+                }}
               />
             </>
           )}

@@ -155,7 +155,7 @@ const Transactions = ({navigation, handleGetTransactions}) => {
               />
             ))}
           </ScrollView>
-          <FloatButton onPress={() => navigation.navigate('')} />
+          <FloatButton onPress={() => navigation.navigate('Transaction')} />
         </If>
       </View>
     </View>
