@@ -9,26 +9,44 @@ import styles from './styles.js';
 
 const Transaction = ({navigation}) => {
   const [amount, setAmount] = useState('');
-  const [isIncome, setIsIncome] = useState(false);
+  const [isIncome, setIsIncome] = useState(true);
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [notes, setNotes] = useState('');
   return (
     <View style={styles.main}>
       <View style={styles.inputsArea}>
-        <View style={styles.textInputWrapper}>
+        <View style={[styles.textInputWrapper, styles.amountWrapper]}>
           <TextInput
             placeholder="R$ 0,00"
             returnKeyType={'next'}
             value={amount}
             onChangeText={value => setAmount(value)}
+            style={styles.amountInput}
           />
         </View>
-        <View style={styles.textInputWrapper}>
-          <Text>Entrada / Saída</Text>
+        <View style={[styles.textInputWrapper, styles.isIncomeWrapper]}>
+          <View style={styles.isIncomeLabel}>
+            <Text
+              style={[
+                styles.isIncomeLabelFragments,
+                isIncome ? styles.in : '',
+              ]}>
+              Entrada
+            </Text>
+            <Text style={styles.isIncomeLabelFragments}> / </Text>
+            <Text
+              style={[
+                styles.isIncomeLabelFragments,
+                !isIncome ? styles.out : '',
+              ]}>
+              Saída
+            </Text>
+          </View>
           <Switch
             value={isIncome}
             onValueChange={value => setIsIncome(value)}
+            style={styles.isIncometInput}
           />
         </View>
         <View style={styles.textInputWrapper}>
@@ -38,6 +56,7 @@ const Transaction = ({navigation}) => {
             returnKeyType={'next'}
             value={description}
             onChangeText={value => setDescription(value)}
+            style={styles.descriptiontInput}
           />
         </View>
         <View style={styles.textInputWrapper}>
@@ -46,6 +65,7 @@ const Transaction = ({navigation}) => {
             returnKeyType={'next'}
             value={date}
             onChangeText={value => setDate(value)}
+            style={styles.dateInput}
           />
         </View>
         <View style={styles.textInputWrapper}>
@@ -55,6 +75,7 @@ const Transaction = ({navigation}) => {
             multiline={true}
             value={notes}
             onChangeText={value => setNotes(value)}
+            style={styles.notesInput}
           />
         </View>
       </View>
