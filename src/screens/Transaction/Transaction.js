@@ -44,8 +44,8 @@ const Transaction = ({navigation}) => {
             </Text>
           </View>
           <Switch
-            value={isIncome}
-            onValueChange={value => setIsIncome(value)}
+            value={!isIncome}
+            onValueChange={value => setIsIncome(!value)}
             style={styles.isIncometInput}
           />
         </View>

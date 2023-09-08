@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Color} from '../../styles';
+import {Colors} from '../../styles';
 
 const styles = StyleSheet.create({
   main: {
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   amountInput: {
+    color: Colors.blueFive,
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',

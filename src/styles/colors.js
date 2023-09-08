@@ -8,7 +8,11 @@ const blueSeven = '#56CFE1';
 const blueEight = '#64DFDF';
 const blueNine = '#72EFDD';
 const blueTen = '#80FFDB';
+
 const placeholderTextColor = '#91C8EB';
+
+const positive = '#43B700';
+const negative = '#DD4E4D';
 
 export default {
   blueOne,
@@ -22,4 +26,6 @@ export default {
   blueNine,
   blueTen,
   placeholderTextColor,
+  positive,
+  negative,
 };

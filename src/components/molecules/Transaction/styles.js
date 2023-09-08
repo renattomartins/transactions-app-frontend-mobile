@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {Colors} from '../../../styles';
 
 const styles = StyleSheet.create({
   transactionArea: {
@@ -32,10 +33,10 @@ const styles = StyleSheet.create({
   transactionAmount: {
     fontWeight: 'bold',
     textAlign: 'right',
-    color: '#DD4E4D',
+    color: Colors.negative,
   },
   positive: {
-    color: '#43B700',
+    color: Colors.positive,
   },
 });
 
