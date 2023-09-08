@@ -13,6 +13,7 @@ const placeholderTextColor = '#91C8EB';
 
 const positive = '#43B700';
 const negative = '#DD4E4D';
+const white = '#fff';
 
 export default {
   blueOne,
@@ -28,4 +29,5 @@ export default {
   placeholderTextColor,
   positive,
   negative,
+  white,
 };

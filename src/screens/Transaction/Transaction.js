@@ -6,6 +6,7 @@ import {ApplicationContext} from '../../store';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
 
 import styles from './styles.js';
+import {Colors} from '../../styles';
 
 const Transaction = ({navigation}) => {
   const [amount, setAmount] = useState('');
@@ -44,6 +45,9 @@ const Transaction = ({navigation}) => {
             </Text>
           </View>
           <Switch
+            thumbColor={Colors.white}
+            trackColor={{false: Colors.positive, true: Colors.negative}}
+            ios_backgroundColor={Colors.positive}
             value={!isIncome}
             onValueChange={value => setIsIncome(!value)}
             style={styles.isIncometInput}

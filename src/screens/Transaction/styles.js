@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   amountInput: {
-    color: Colors.blueFive,
+    color: Colors.blueSix,
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
