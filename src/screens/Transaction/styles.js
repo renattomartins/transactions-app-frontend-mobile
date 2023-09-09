@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
   textInputWrapper: {
     paddingVertical: 10,
   },
+  textInput: {
+    height: 40,
+    marginTop: 5,
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 1,
+  },
   amountWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -42,6 +48,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   isIncomeInput: {},
+  descriptiontInput: {},
+  dateInput: {},
+  notesInput: {
+    height: 80,
+  },
 });
 
 export default styles;

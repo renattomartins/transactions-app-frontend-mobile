@@ -54,32 +54,34 @@ const Transaction = ({navigation}) => {
           />
         </View>
         <View style={styles.textInputWrapper}>
-          <Text>Descrição:</Text>
+          <Text>Descrição</Text>
           <TextInput
             maxLength={255}
             returnKeyType={'next'}
+            placeholder="digite a descrição"
             value={description}
             onChangeText={value => setDescription(value)}
-            style={styles.descriptiontInput}
+            style={[styles.textInput, styles.descriptiontInput]}
           />
         </View>
         <View style={styles.textInputWrapper}>
-          <Text>Data:</Text>
+          <Text>Data</Text>
           <TextInput
             returnKeyType={'next'}
+            placeholder="digite a data"
             value={date}
             onChangeText={value => setDate(value)}
-            style={styles.dateInput}
+            style={[styles.textInput, styles.dateInput]}
           />
         </View>
         <View style={styles.textInputWrapper}>
-          <Text>Observações (opcional):</Text>
+          <Text>Observações (opcional)</Text>
           <TextInput
             returnKeyType={'done'}
             multiline={true}
             value={notes}
             onChangeText={value => setNotes(value)}
-            style={styles.notesInput}
+            style={[styles.textInput, styles.notesInput]}
           />
         </View>
       </View>
