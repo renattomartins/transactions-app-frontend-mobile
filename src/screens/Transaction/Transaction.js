@@ -1,8 +1,9 @@
 import React, {useContext, useState, useRef} from 'react';
-import {View, Text, TextInput, Switch} from 'react-native';
+import {View, ScrollView, Text, TextInput, Switch} from 'react-native';
 
 import {ApplicationContext} from '../../store';
 
+import Button from '../../components/atoms/Button';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
 
 import styles from './styles.js';
@@ -15,7 +16,7 @@ const Transaction = ({navigation}) => {
   const [date, setDate] = useState('');
   const [notes, setNotes] = useState('');
   return (
-    <View style={styles.main}>
+    <ScrollView style={styles.main}>
       <View style={styles.inputsArea}>
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
           <TextInput
@@ -85,7 +86,16 @@ const Transaction = ({navigation}) => {
           />
         </View>
       </View>
-    </View>
+      <View style={styles.buttonsArea}>
+        <Button title="Salvar" onPress={() => {}} inverse={true} width="100%" />
+        <Button
+          title="Cancelar"
+          onPress={() => {}}
+          inverse={false}
+          width="100%"
+        />
+      </View>
+    </ScrollView>
   );
 };
 

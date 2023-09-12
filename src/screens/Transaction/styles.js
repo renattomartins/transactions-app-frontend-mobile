@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
   inputsArea: {
     padding: 20,
   },
+  buttonsArea: {
+    padding: 20,
+  },
   textInputWrapper: {
     paddingVertical: 10,
   },
