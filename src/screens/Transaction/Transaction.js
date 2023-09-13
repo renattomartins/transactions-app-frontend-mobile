@@ -87,12 +87,19 @@ const Transaction = ({navigation}) => {
         </View>
       </View>
       <View style={styles.buttonsArea}>
-        <Button title="Salvar" onPress={() => {}} inverse={true} width="100%" />
+        <Button
+          title="Salvar"
+          onPress={() => {}}
+          inverse={true}
+          width="100%"
+          style={styles.saveButton}
+        />
         <Button
           title="Cancelar"
-          onPress={() => {}}
+          onPress={() => navigation.navigate('Transactions')}
           inverse={false}
           width="100%"
+          style={styles.cancelButton}
         />
       </View>
     </ScrollView>

@@ -56,6 +56,11 @@ const styles = StyleSheet.create({
   notesInput: {
     height: 80,
   },
+  saveButton: {
+    marginBottom: 15,
+    borderWidth: 0,
+  },
+  cancelButton: {},
 });
 
 export default styles;

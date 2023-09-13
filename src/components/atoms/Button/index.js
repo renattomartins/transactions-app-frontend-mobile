@@ -11,6 +11,7 @@ const Button = ({
   loading,
   withMargin,
   inverse,
+  style,
   ...buttonProps
 }) => {
   return (
@@ -20,6 +21,7 @@ const Button = ({
           styles.buttonArea,
           withMargin ? styles.buttonAreaMargin : null,
           inverse ? styles.buttonInverse : null,
+          style,
         ]}
         onPress={onPress}
         {...buttonProps}>

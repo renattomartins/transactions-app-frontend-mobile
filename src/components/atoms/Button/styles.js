@@ -3,11 +3,11 @@ import {Colors} from '../../../styles';
 
 const styles = StyleSheet.create({
   buttonArea: {
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     padding: 15,
     alignItems: 'center',
     borderRadius: 10,
-    borderColor: '#ffffff',
+    borderColor: Colors.white,
     borderWidth: 2,
   },
   buttonAreaMargin: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.blueFive,
   },
   textInverse: {
-    color: '#ffffff',
+    color: Colors.white,
   },
 });
 
