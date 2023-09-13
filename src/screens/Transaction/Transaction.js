@@ -1,6 +1,7 @@
 import React, {useContext, useState, useRef} from 'react';
 import {View, Text, TextInput, Switch} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import CurrencyInput from 'react-native-currency-input';
 
 import {ApplicationContext} from '../../store';
 
@@ -20,11 +21,16 @@ const Transaction = ({navigation}) => {
     <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.inputsArea}>
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
-          <TextInput
+          <CurrencyInput
             placeholder="R$ 0,00"
             returnKeyType={'next'}
             value={amount}
-            onChangeText={value => setAmount(value)}
+            onChangeValue={setAmount}
+            prefix="R$ "
+            delimiter="."
+            separator=","
+            precision={2}
+            signPosition="beforePrefix"
             style={styles.amountInput}
           />
         </View>
