@@ -1,5 +1,6 @@
 import React, {useContext, useState, useRef} from 'react';
-import {View, ScrollView, Text, TextInput, Switch} from 'react-native';
+import {View, Text, TextInput, Switch} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
 
@@ -16,7 +17,7 @@ const Transaction = ({navigation}) => {
   const [date, setDate] = useState('');
   const [notes, setNotes] = useState('');
   return (
-    <ScrollView style={styles.main}>
+    <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.inputsArea}>
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
           <TextInput
@@ -102,7 +103,7 @@ const Transaction = ({navigation}) => {
           style={styles.cancelButton}
         />
       </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 
