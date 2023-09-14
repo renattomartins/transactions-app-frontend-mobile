@@ -1,7 +1,7 @@
 import React, {useContext, useState, useRef} from 'react';
 import {View, Text, TextInput, Switch} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import CurrencyInput from 'react-native-currency-input';
+import {FakeCurrencyInput} from 'react-native-currency-input';
 
 import {ApplicationContext} from '../../store';
 
@@ -12,7 +12,7 @@ import styles from './styles.js';
 import {Colors} from '../../styles';
 
 const Transaction = ({navigation}) => {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [isIncome, setIsIncome] = useState(true);
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -21,8 +21,7 @@ const Transaction = ({navigation}) => {
     <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.inputsArea}>
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
-          <CurrencyInput
-            placeholder="R$ 0,00"
+          <FakeCurrencyInput
             returnKeyType={'next'}
             value={amount}
             onChangeValue={setAmount}
@@ -30,8 +29,11 @@ const Transaction = ({navigation}) => {
             delimiter="."
             separator=","
             precision={2}
+            minValue={0}
+            maxValue={999999.99}
             signPosition="beforePrefix"
             style={styles.amountInput}
+            containerStyle={styles.containerAmountInput}
           />
         </View>
         <View style={[styles.textInputWrapper, styles.isIncomeWrapper]}>

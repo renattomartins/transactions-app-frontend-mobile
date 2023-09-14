@@ -24,15 +24,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  containerAmountInput: {
+    padding: 8,
+    borderBottomColor: '#666',
+    borderBottomWidth: 1,
+    width: 200,
+  },
   amountInput: {
     color: Colors.blueSix,
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    padding: 8,
-    borderBottomColor: '#666',
-    borderBottomWidth: 1,
-    width: 200,
   },
   isIncomeWrapper: {
     justifyContent: 'center',
