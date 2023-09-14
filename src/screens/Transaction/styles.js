@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   dateInput: {},
   notesInput: {
     height: 80,
+    textAlignVertical: 'top',
   },
   saveButton: {
     marginBottom: 15,
