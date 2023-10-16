@@ -25,12 +25,13 @@ const Transaction = ({navigation}) => {
             returnKeyType={'next'}
             value={amount}
             onChangeValue={setAmount}
+            placeholder="R$ 0,00"
             prefix="R$ "
             delimiter="."
             separator=","
             precision={2}
             minValue={0}
-            maxValue={999999.99}
+            maxValue={9999999.99}
             signPosition="beforePrefix"
             style={styles.amountInput}
             containerStyle={styles.containerAmountInput}

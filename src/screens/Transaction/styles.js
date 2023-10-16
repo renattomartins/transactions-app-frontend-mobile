@@ -28,11 +28,10 @@ const styles = StyleSheet.create({
     padding: 8,
     borderBottomColor: '#666',
     borderBottomWidth: 1,
-    width: 200,
+    width: 230,
   },
   amountInput: {
-    color: Colors.blueSix,
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     textAlign: 'center',
   },
