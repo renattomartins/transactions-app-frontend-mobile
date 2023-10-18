@@ -160,7 +160,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				17754D9D623E4A18C19E6BC6 /* [CP] Embed Pods Frameworks */,
 				4F611ED9F84EF18DBD6E6F0B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -183,7 +182,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				34DA45A0B6AACD8110890070 /* [CP] Embed Pods Frameworks */,
 				67417E6BD4D2FDE61FB1AAFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -264,40 +262,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
-		};
-		17754D9D623E4A18C19E6BC6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TransactionAppMobile-TransactionAppMobileTests/Pods-TransactionAppMobile-TransactionAppMobileTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TransactionAppMobile-TransactionAppMobileTests/Pods-TransactionAppMobile-TransactionAppMobileTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TransactionAppMobile-TransactionAppMobileTests/Pods-TransactionAppMobile-TransactionAppMobileTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		34DA45A0B6AACD8110890070 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TransactionAppMobile/Pods-TransactionAppMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TransactionAppMobile/Pods-TransactionAppMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TransactionAppMobile/Pods-TransactionAppMobile-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		4F2BFDABB26A657D53E2046F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
