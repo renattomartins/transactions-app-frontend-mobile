@@ -2,6 +2,7 @@ import React, {useContext, useState, useRef} from 'react';
 import {View, Text, TextInput, Switch} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {FakeCurrencyInput} from 'react-native-currency-input';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import {ApplicationContext} from '../../store';
 
@@ -15,8 +16,20 @@ const Transaction = ({navigation}) => {
   const [amount, setAmount] = useState(0);
   const [isIncome, setIsIncome] = useState(true);
   const [description, setDescription] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(date);
   const [notes, setNotes] = useState('');
+
+  const onChangeDate = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
+
+  const onChangeTime = (event, selectedTime) => {
+    const currentTime = selectedTime;
+    setDate(currentTime);
+  };
+
   return (
     <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.inputsArea}>
@@ -77,11 +90,22 @@ const Transaction = ({navigation}) => {
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
-          <TextInput
-            returnKeyType={'next'}
-            placeholder="digite a data"
+          <DateTimePicker
             value={date}
-            onChangeText={value => setDate(value)}
+            mode="date"
+            timeZoneName="America/Sao_Paulo"
+            locale="pt-BR"
+            is24Hour={true}
+            onChange={onChangeDate}
+            style={[styles.textInput, styles.dateInput]}
+          />
+          <DateTimePicker
+            value={time}
+            mode="time"
+            timeZoneName="America/Sao_Paulo"
+            locale="pt-BR"
+            is24Hour={true}
+            onChange={onChangeTime}
             style={[styles.textInput, styles.dateInput]}
           />
         </View>
