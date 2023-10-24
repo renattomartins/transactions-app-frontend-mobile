@@ -53,7 +53,26 @@ const styles = StyleSheet.create({
   },
   isIncomeInput: {},
   descriptiontInput: {},
-  dateInput: {},
+  dateInputAggregate: {
+    display: 'flex',
+    flexDirection: 'row',
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 1,
+    paddingBottom: 5,
+  },
+  dateInput: {
+    width: 100,
+    opacity: 1,
+    height: 30,
+    marginTop: 5,
+    marginRight: 5,
+  },
+  timeInput: {
+    width: 65,
+    opacity: 1,
+    height: 30,
+    marginTop: 5,
+  },
   notesInput: {
     height: 80,
     textAlignVertical: 'top',

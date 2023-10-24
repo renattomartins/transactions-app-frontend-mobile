@@ -90,24 +90,32 @@ const Transaction = ({navigation}) => {
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
-          <DateTimePicker
-            value={date}
-            mode="date"
-            timeZoneName="America/Sao_Paulo"
-            locale="pt-BR"
-            is24Hour={true}
-            onChange={onChangeDate}
-            style={[styles.textInput, styles.dateInput]}
-          />
-          <DateTimePicker
-            value={time}
-            mode="time"
-            timeZoneName="America/Sao_Paulo"
-            locale="pt-BR"
-            is24Hour={true}
-            onChange={onChangeTime}
-            style={[styles.textInput, styles.dateInput]}
-          />
+          <View style={styles.dateInputAggregate}>
+            <DateTimePicker
+              value={date}
+              mode="date"
+              timeZoneName="America/Sao_Paulo"
+              locale="pt-BR"
+              is24Hour={true}
+              onChange={onChangeDate}
+              style={styles.dateInput}
+              // style={[styles.textInput, styles.dateInput]}
+            />
+            <DateTimePicker
+              value={time}
+              mode="time"
+              timeZoneName="America/Sao_Paulo"
+              locale="pt-BR"
+              is24Hour={true}
+              onChange={onChangeTime}
+              style={styles.timeInput}
+            />
+          </View>
+          {/* onChange={onChange}
+                textColor={textColor || undefined}
+                accentColor={accentColor || undefined}
+                neutralButton={{label: neutralButtonLabel}}
+                negativeButton={{label: 'Cancel', textColor: 'red'}} */}
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Observações (opcional)</Text>
