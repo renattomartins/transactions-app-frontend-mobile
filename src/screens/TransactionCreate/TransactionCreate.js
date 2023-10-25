@@ -1,8 +1,10 @@
 import React, {useContext, useState, useRef} from 'react';
-import {View, Text, TextInput, Switch} from 'react-native';
+import {View, Text, TextInput, Switch, Platform} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {FakeCurrencyInput} from 'react-native-currency-input';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker, {
+  DateTimePickerAndroid,
+} from '@react-native-community/datetimepicker';
 
 import {ApplicationContext} from '../../store';
 
@@ -23,11 +25,30 @@ const TransactionCreate = ({navigation}) => {
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate;
     setDate(currentDate);
+    console.log(date);
   };
 
   const onChangeTime = (event, selectedTime) => {
     const currentTime = selectedTime;
-    setDate(currentTime);
+    setTime(currentTime);
+    console.log(time);
+  };
+
+  const showMode = currentMode => {
+    DateTimePickerAndroid.open({
+      value: date,
+      onChangeDate,
+      mode: currentMode,
+      is24Hour: true,
+    });
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
   };
 
   return (
@@ -91,25 +112,36 @@ const TransactionCreate = ({navigation}) => {
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
           <View style={styles.dateInputAggregate}>
-            <DateTimePicker
-              value={date}
-              mode="date"
-              timeZoneName="America/Sao_Paulo"
-              locale="pt-BR"
-              is24Hour={true}
-              onChange={onChangeDate}
-              style={styles.dateInput}
-              // style={[styles.textInput, styles.dateInput]}
-            />
-            <DateTimePicker
-              value={time}
-              mode="time"
-              timeZoneName="America/Sao_Paulo"
-              locale="pt-BR"
-              is24Hour={true}
-              onChange={onChangeTime}
-              style={styles.timeInput}
-            />
+            {Platform.OS === 'ios' && (
+              <>
+                <DateTimePicker
+                  value={date}
+                  mode="date"
+                  timeZoneName="America/Sao_Paulo"
+                  locale="pt-BR"
+                  is24Hour={true}
+                  onChange={onChangeDate}
+                  style={styles.dateInput}
+                />
+                <DateTimePicker
+                  value={time}
+                  mode="time"
+                  timeZoneName="America/Sao_Paulo"
+                  locale="pt-BR"
+                  is24Hour={true}
+                  onChange={onChangeTime}
+                  style={styles.timeInput}
+                />
+              </>
+            )}
+            {Platform.OS === 'android' && (
+              <>
+                <Button onPress={showDatepicker} title="Date" />
+                <Button onPress={showTimepicker} title="Time" />
+                <Text>Date: {date.toLocaleString()}</Text>
+                <Text>Time: {time.toLocaleString()}</Text>
+              </>
+            )}
           </View>
           {/* onChange={onChange}
                 textColor={textColor || undefined}
