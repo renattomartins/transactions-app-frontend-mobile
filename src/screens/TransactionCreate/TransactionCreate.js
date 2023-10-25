@@ -12,7 +12,7 @@ import ErrorMessage from '../../components/atoms/ErrorMessage';
 import styles from './styles.js';
 import {Colors} from '../../styles';
 
-const Transaction = ({navigation}) => {
+const TransactionCreate = ({navigation}) => {
   const [amount, setAmount] = useState(0);
   const [isIncome, setIsIncome] = useState(true);
   const [description, setDescription] = useState('');
@@ -148,4 +148,4 @@ const Transaction = ({navigation}) => {
   );
 };
 
-export default Transaction;
+export default TransactionCreate;
