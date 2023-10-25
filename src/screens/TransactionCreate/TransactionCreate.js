@@ -138,7 +138,7 @@ const TransactionCreate = ({navigation}) => {
         />
         <Button
           title="Cancelar"
-          onPress={() => navigation.navigate('Transactions')}
+          onPress={() => navigation.navigate('TransactionList')}
           inverse={false}
           width="100%"
           style={styles.cancelButton}

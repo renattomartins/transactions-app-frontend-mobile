@@ -12,7 +12,7 @@ import SplashScreen from './screens/SplashScreen';
 import InitialScreen from './screens/InitialScreen';
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
-import Transactions from './screens/Transactions';
+import TransactionList from './screens/TransactionList';
 import TransactionCreate from './screens/TransactionCreate';
 
 import {getAccounts} from './services/AccountManager';
@@ -131,8 +131,8 @@ const App = props => {
           ) : (
             <>
               <Stack.Screen
-                name="Transactions"
-                component={Transactions}
+                name="TransactionList"
+                component={TransactionList}
                 options={{title: 'Transações', headerLeft: () => null}}
               />
               <Stack.Screen

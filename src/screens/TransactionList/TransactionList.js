@@ -13,7 +13,7 @@ import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
 import styles from './styles';
 
-const Transactions = ({navigation, handleGetTransactions}) => {
+const TransactionList = ({navigation, handleGetTransactions}) => {
   const {
     env,
     userToken,
@@ -164,4 +164,4 @@ const Transactions = ({navigation, handleGetTransactions}) => {
   );
 };
 
-export default Transactions;
+export default TransactionList;
