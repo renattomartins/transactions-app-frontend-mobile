@@ -2,6 +2,7 @@ import React, {useContext, useState, useRef} from 'react';
 import {View, Text, TextInput, Switch, Platform} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {FakeCurrencyInput} from 'react-native-currency-input';
+import DatePicker from 'react-native-date-picker';
 
 import {ApplicationContext} from '../../store';
 
@@ -17,6 +18,8 @@ const TransactionCreate = ({navigation}) => {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');
+
+  const [open, setOpen] = useState(false);
 
   return (
     <KeyboardAwareScrollView style={styles.main}>
@@ -78,7 +81,21 @@ const TransactionCreate = ({navigation}) => {
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
-          <View style={styles.dateInputAggregate} />
+          <View style={styles.dateInputAggregate}>
+            <Button title="Open" onPress={() => setOpen(true)} />
+            <DatePicker
+              modal
+              open={open}
+              date={date}
+              onConfirm={date => {
+                setOpen(false);
+                setDate(date);
+              }}
+              onCancel={() => {
+                setOpen(false);
+              }}
+            />
+          </View>
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Observações (opcional)</Text>
