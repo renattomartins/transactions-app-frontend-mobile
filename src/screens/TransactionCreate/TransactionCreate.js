@@ -2,9 +2,6 @@ import React, {useContext, useState, useRef} from 'react';
 import {View, Text, TextInput, Switch, Platform} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {FakeCurrencyInput} from 'react-native-currency-input';
-import DateTimePicker, {
-  DateTimePickerAndroid,
-} from '@react-native-community/datetimepicker';
 
 import {ApplicationContext} from '../../store';
 
@@ -19,37 +16,7 @@ const TransactionCreate = ({navigation}) => {
   const [isIncome, setIsIncome] = useState(true);
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState(date);
   const [notes, setNotes] = useState('');
-
-  const onChangeDate = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setDate(currentDate);
-    console.log(date);
-  };
-
-  const onChangeTime = (event, selectedTime) => {
-    const currentTime = selectedTime;
-    setTime(currentTime);
-    console.log(time);
-  };
-
-  const showMode = currentMode => {
-    DateTimePickerAndroid.open({
-      value: date,
-      onChangeDate,
-      mode: currentMode,
-      is24Hour: true,
-    });
-  };
-
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
-  };
 
   return (
     <KeyboardAwareScrollView style={styles.main}>
@@ -111,43 +78,7 @@ const TransactionCreate = ({navigation}) => {
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
-          <View style={styles.dateInputAggregate}>
-            {Platform.OS === 'ios' && (
-              <>
-                <DateTimePicker
-                  value={date}
-                  mode="date"
-                  timeZoneName="America/Sao_Paulo"
-                  locale="pt-BR"
-                  is24Hour={true}
-                  onChange={onChangeDate}
-                  style={styles.dateInput}
-                />
-                <DateTimePicker
-                  value={time}
-                  mode="time"
-                  timeZoneName="America/Sao_Paulo"
-                  locale="pt-BR"
-                  is24Hour={true}
-                  onChange={onChangeTime}
-                  style={styles.timeInput}
-                />
-              </>
-            )}
-            {Platform.OS === 'android' && (
-              <>
-                <Button onPress={showDatepicker} title="Date" />
-                <Button onPress={showTimepicker} title="Time" />
-                <Text>Date: {date.toLocaleString()}</Text>
-                <Text>Time: {time.toLocaleString()}</Text>
-              </>
-            )}
-          </View>
-          {/* onChange={onChange}
-                textColor={textColor || undefined}
-                accentColor={accentColor || undefined}
-                neutralButton={{label: neutralButtonLabel}}
-                negativeButton={{label: 'Cancel', textColor: 'red'}} */}
+          <View style={styles.dateInputAggregate} />
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Observações (opcional)</Text>
