@@ -12,6 +12,7 @@ const Button = ({
   withMargin,
   inverse,
   style,
+  textStyle,
   ...buttonProps
 }) => {
   return (
@@ -25,7 +26,12 @@ const Button = ({
         ]}
         onPress={onPress}
         {...buttonProps}>
-        <Text style={[styles.buttonText, inverse ? styles.textInverse : null]}>
+        <Text
+          style={[
+            styles.buttonText,
+            inverse ? styles.textInverse : null,
+            textStyle,
+          ]}>
           {title}
         </Text>
       </Pressable>

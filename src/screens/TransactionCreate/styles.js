@@ -61,17 +61,19 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   dateInput: {
-    width: 100,
+    width: 160,
     opacity: 1,
-    height: 30,
+    padding: 6,
     marginTop: 5,
     marginRight: 5,
+    backgroundColor: '#dadada',
+    borderWidth: 0,
   },
-  timeInput: {
-    width: 65,
-    opacity: 1,
-    height: 30,
-    marginTop: 5,
+  dateInputText: {
+    color: '#222521',
+  },
+  dateInputTextSelected: {
+    color: '#4983DB',
   },
   notesInput: {
     height: 80,

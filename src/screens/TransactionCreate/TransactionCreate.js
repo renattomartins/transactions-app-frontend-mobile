@@ -8,6 +8,7 @@ import {ApplicationContext} from '../../store';
 
 import Button from '../../components/atoms/Button';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
+import {dateFormat} from '../../utils/formatter';
 
 import styles from './styles.js';
 import {Colors} from '../../styles';
@@ -83,8 +84,13 @@ const TransactionCreate = ({navigation}) => {
           <Text>Data</Text>
           <View style={styles.dateInputAggregate}>
             <Button
-              title={date.toUTCString()}
+              title={dateFormat(date.toUTCString())}
               onPress={() => setIsDateModalOpen(true)}
+              style={styles.dateInput}
+              textStyle={[
+                styles.dateInputText,
+                isDateModalOpen ? styles.dateInputTextSelected : '',
+              ]}
             />
             <DatePicker
               modal
