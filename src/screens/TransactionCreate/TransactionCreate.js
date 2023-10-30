@@ -19,7 +19,7 @@ const TransactionCreate = ({navigation}) => {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');
 
-  const [open, setOpen] = useState(false);
+  const [isDateModalOpen, setIsDateModalOpen] = useState(false);
 
   return (
     <KeyboardAwareScrollView style={styles.main}>
@@ -82,17 +82,26 @@ const TransactionCreate = ({navigation}) => {
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
           <View style={styles.dateInputAggregate}>
-            <Button title="Open" onPress={() => setOpen(true)} />
+            <Button
+              title={date.toUTCString()}
+              onPress={() => setIsDateModalOpen(true)}
+            />
             <DatePicker
               modal
-              open={open}
+              open={isDateModalOpen}
               date={date}
-              onConfirm={date => {
-                setOpen(false);
-                setDate(date);
+              locale="pt-BR"
+              is24hourSource="locale"
+              title="Selecione a data"
+              confirmText="Confirmar"
+              cancelText="Cancelar"
+              androidVariant="iosClone"
+              onConfirm={value => {
+                setIsDateModalOpen(false);
+                setDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setIsDateModalOpen(false);
               }}
             />
           </View>
