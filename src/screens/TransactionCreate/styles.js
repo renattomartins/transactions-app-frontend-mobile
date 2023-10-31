@@ -61,13 +61,14 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   dateInput: {
-    width: 160,
+    width: 145,
     opacity: 1,
     padding: 6,
     marginTop: 5,
     marginRight: 5,
-    backgroundColor: '#dadada',
+    backgroundColor: '#dedcdc',
     borderWidth: 0,
+    borderRadius: 6,
   },
   dateInputText: {
     color: '#222521',
