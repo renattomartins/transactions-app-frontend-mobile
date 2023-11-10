@@ -1,5 +1,5 @@
 import React, {useContext, useState, useRef} from 'react';
-import {View, Text, TextInput, Switch, Platform} from 'react-native';
+import {View, Text, TextInput, Switch} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {FakeCurrencyInput} from 'react-native-currency-input';
 import DatePicker from 'react-native-date-picker';
@@ -13,14 +13,38 @@ import {dateFormat} from '../../utils/formatter';
 import styles from './styles.js';
 import {Colors} from '../../styles';
 
-const TransactionCreate = ({navigation}) => {
+const TransactionCreate = ({navigation, handleCreateTransaction}) => {
+  const {env, userToken, accounts} = useContext(ApplicationContext);
+
   const [amount, setAmount] = useState(0);
   const [isIncome, setIsIncome] = useState(true);
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');
-
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
+
+  const onSubmit = async () => {
+    try {
+      const createdTransaction = await handleCreateTransaction(
+        env,
+        userToken,
+        accounts[0].id,
+        description,
+        amount,
+        date,
+        notes,
+        isIncome,
+      );
+
+      console.log(
+        `Nova transação criada com sucesso. ID: ${createdTransaction.id}, Data de criação: ${createdTransaction.createdAt}`,
+      );
+
+      // Adicionar createTranscion on accounts array
+
+      navigation.navigate('TransactionList');
+    } catch (e) {}
+  };
 
   return (
     <KeyboardAwareScrollView style={styles.main}>
@@ -126,7 +150,7 @@ const TransactionCreate = ({navigation}) => {
       <View style={styles.buttonsArea}>
         <Button
           title="Salvar"
-          onPress={() => {}}
+          onPress={onSubmit}
           inverse={true}
           width="100%"
           style={styles.saveButton}
