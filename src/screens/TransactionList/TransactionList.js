@@ -151,7 +151,7 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
                 description={transaction.description}
                 isIncome={transaction.isIncome}
                 date={transaction.date}
-                amount={transaction.ammount}
+                amount={transaction.amount}
               />
             ))}
           </ScrollView>
