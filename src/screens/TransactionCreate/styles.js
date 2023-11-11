@@ -1,9 +1,17 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '../../styles';
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
+  },
+  overlay: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0,
+    backgroundColor: 'white',
+    height: '100%',
+    width: '100%',
   },
   inputsArea: {
     padding: 20,
@@ -81,8 +89,10 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
     textAlign: 'left',
   },
-  saveButton: {
+  wrapSaveButton: {
     marginBottom: 15,
+  },
+  saveButton: {
     borderWidth: 0,
   },
   cancelButton: {},

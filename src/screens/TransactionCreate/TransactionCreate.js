@@ -7,6 +7,7 @@ import DatePicker from 'react-native-date-picker';
 import {ApplicationContext} from '../../store';
 
 import Button from '../../components/atoms/Button';
+import If from '../../utils/if';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
 import {dateFormat} from '../../utils/formatter';
 
@@ -21,9 +22,13 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');
+
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = async () => {
+    setIsSubmitting(true);
+
     try {
       const createdTransaction = await handleCreateTransaction(
         env,
@@ -43,7 +48,10 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
       // Adicionar createTranscion on accounts array
 
       navigation.navigate('TransactionList');
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -153,7 +161,9 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
           onPress={onSubmit}
           inverse={true}
           width="100%"
+          wrapStyle={styles.wrapSaveButton}
           style={styles.saveButton}
+          loading={isSubmitting}
         />
         <Button
           title="Cancelar"
@@ -163,6 +173,9 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
           style={styles.cancelButton}
         />
       </View>
+      <If test={isSubmitting}>
+        <View style={styles.overlay} />
+      </If>
     </KeyboardAwareScrollView>
   );
 };
