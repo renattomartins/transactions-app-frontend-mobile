@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Pressable, Text, ActivityIndicator} from 'react-native';
+import {View, Pressable, Text, ActivityIndicator} from 'react-native';
 
 import If from '../../../utils/if';
 import styles from './styles';
@@ -11,12 +11,13 @@ const Button = ({
   loading,
   withMargin,
   inverse,
+  wrapStyle,
   style,
   textStyle,
   ...buttonProps
 }) => {
   return (
-    <>
+    <View style={[wrapStyle]}>
       <Pressable
         style={[
           styles.buttonArea,
@@ -36,9 +37,13 @@ const Button = ({
         </Text>
       </Pressable>
       <If test={loading}>
-        <ActivityIndicator style={styles.buttonLoading} />
+        <ActivityIndicator
+          size="small"
+          color="#fff"
+          style={styles.buttonLoading}
+        />
       </If>
-    </>
+    </View>
   );
 };
 
