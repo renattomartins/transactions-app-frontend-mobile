@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
   inputsArea: {
     padding: 20,
   },
+  errorMessage: {
+    marginHorizontal: 0,
+  },
   buttonsArea: {
     padding: 20,
   },

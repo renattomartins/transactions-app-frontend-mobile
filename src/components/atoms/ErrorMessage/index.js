@@ -4,10 +4,10 @@ import {Text, View} from 'react-native';
 
 import styles from './styles';
 
-const ErrorMessage = ({message, ...props}) => {
+const ErrorMessage = ({message, style, textStyle, ...props}) => {
   return (
-    <View style={styles.wrapper}>
-      <Text style={styles.text}>{message}</Text>
+    <View style={[styles.wrapper, style]}>
+      <Text style={[styles.text, textStyle]}>{message}</Text>
     </View>
   );
 };
