@@ -13,6 +13,7 @@ const StoreProvider = ({
   const [userToken, setUserToken] = useState(initialToken);
   const [loggedEmail, setLoggedEmail] = useState(initialEmail);
   const [accounts, setAccounts] = useState(initialAccounts);
+  const [transactions, setTransactions] = useState([]);
   const {values, ...propsFromWrapperApp} = props;
   const {env} = propsFromWrapperApp;
 
@@ -26,6 +27,8 @@ const StoreProvider = ({
         setLoggedEmail,
         accounts,
         setAccounts,
+        transactions,
+        setTransactions,
         ...authActions,
         ...values,
       }}>

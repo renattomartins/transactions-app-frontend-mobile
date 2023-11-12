@@ -18,7 +18,8 @@ import styles from './styles.js';
 import {Colors} from '../../styles';
 
 const TransactionCreate = ({navigation, handleCreateTransaction}) => {
-  const {env, userToken, accounts} = useContext(ApplicationContext);
+  const {env, userToken, accounts, transactions, setTransactions} =
+    useContext(ApplicationContext);
 
   const [amount, setAmount] = useState(0);
   const [isIncome, setIsIncome] = useState(true);
@@ -59,8 +60,7 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
         `Nova transação criada com sucesso. ID: ${createdTransaction.id}, Data de criação: ${createdTransaction.createdAt}`,
       );
 
-      // Adicionar createTranscion on accounts array
-
+      setTransactions([createdTransaction, ...transactions]);
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;

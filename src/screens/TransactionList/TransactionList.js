@@ -22,6 +22,8 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
     setLoggedEmail,
     accounts,
     setAccounts,
+    transactions,
+    setTransactions,
     signOut,
   } = useContext(ApplicationContext);
 
@@ -29,7 +31,6 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
   const [isEmpty, setIsEmpty] = useState(true);
   const [thereIsAnError, setThereIsAnError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [transactions, setTransactions] = useState([]);
 
   const onLogout = async () => {
     // Requests
