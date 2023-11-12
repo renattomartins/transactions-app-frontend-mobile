@@ -9,6 +9,9 @@ import {ApplicationContext} from '../../store';
 import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
+
+import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
+import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 import {dateFormat} from '../../utils/formatter';
 
 import styles from './styles.js';
@@ -22,6 +25,9 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');
+
+  const [isToShowGenericErrorMsg, setIsToShowGenericErrorMsg] = useState(false);
+  const [genericErrorMsg, setGenericErrorMsg] = useState('');
 
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,6 +55,36 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
 
       navigation.navigate('TransactionList');
     } catch (e) {
+      let errorMessageToDiplay;
+      setIsToShowGenericErrorMsg(true);
+
+      switch (e.response.data.code) {
+        case 400:
+          errorMessageToDiplay = errorMessages.createTransaction.e400.message;
+          break;
+        case 401:
+          errorMessageToDiplay = errorMessages.createTransaction.e401.message;
+          break;
+        case 403:
+          errorMessageToDiplay = errorMessages.createTransaction.e403.message;
+          break;
+        case 404:
+          errorMessageToDiplay = errorMessages.createTransaction.e404.message;
+          break;
+        case 422:
+          errorMessageToDiplay = errorMessages.createTransaction.e422.message;
+          // processValidationMessages(
+          //   e.response.data.details,
+          //   errorMessages.createTransaction.e422.details,
+          // );
+          break;
+        case 500:
+          errorMessageToDiplay = errorMessages.createTransaction.e500.message;
+          break;
+        default:
+          errorMessageToDiplay = errorMessages.createTransaction.e500.message;
+      }
+      setGenericErrorMsg(errorMessageToDiplay);
     } finally {
       setIsSubmitting(false);
     }
@@ -57,6 +93,9 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
   return (
     <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.inputsArea}>
+        <If test={isToShowGenericErrorMsg}>
+          <ErrorMessage message={genericErrorMsg} />
+        </If>
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
           <FakeCurrencyInput
             returnKeyType={'next'}
