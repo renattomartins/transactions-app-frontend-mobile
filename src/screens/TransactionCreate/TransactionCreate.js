@@ -28,6 +28,14 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
 
   const [isToShowGenericErrorMsg, setIsToShowGenericErrorMsg] = useState(false);
   const [genericErrorMsg, setGenericErrorMsg] = useState('');
+  const [
+    isToShowDescriptionValidationMsg,
+    setIsToShowDescriptionValidationMsg,
+  ] = useState(false);
+  const [descriptionValidationMsg, setDescriptionValidationMsg] = useState('');
+  const [isToShowNotesValidationMsg, setIsToShowNotesValidationMsg] =
+    useState(false);
+  const [notesValidationMsg, setNotesValidationMsg] = useState('');
 
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,6 +64,7 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;
+      cleanUpValidations();
       setIsToShowGenericErrorMsg(true);
 
       switch (e.response.data.code) {
@@ -73,10 +82,10 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
           break;
         case 422:
           errorMessageToDiplay = errorMessages.createTransaction.e422.message;
-          // processValidationMessages(
-          //   e.response.data.details,
-          //   errorMessages.createTransaction.e422.details,
-          // );
+          processValidationMessages(
+            e.response.data.details,
+            errorMessages.createTransaction.e422.details,
+          );
           break;
         case 500:
           errorMessageToDiplay = errorMessages.createTransaction.e500.message;
@@ -88,6 +97,32 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const processValidationMessages = (
+    responseErrorDetails,
+    messagesErrorDetails,
+  ) => {
+    for (let errorDetail of responseErrorDetails) {
+      let fieldName = errorDetail.path;
+      let messageKey = convertStringToCamelCase(errorDetail.msg);
+
+      if (fieldName === 'description') {
+        setIsToShowDescriptionValidationMsg(true);
+        setDescriptionValidationMsg(
+          messagesErrorDetails[fieldName][messageKey],
+        );
+      }
+      if (fieldName === 'notes') {
+        setIsToShowNotesValidationMsg(true);
+        setNotesValidationMsg(messagesErrorDetails[fieldName][messageKey]);
+      }
+    }
+  };
+
+  const cleanUpValidations = () => {
+    setIsToShowDescriptionValidationMsg(false);
+    setIsToShowNotesValidationMsg(false);
   };
 
   return (
@@ -150,6 +185,11 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             onChangeText={value => setDescription(value)}
             style={[styles.textInput, styles.descriptiontInput]}
           />
+          <If test={isToShowDescriptionValidationMsg}>
+            <Text style={styles.inputValidationMessage}>
+              👆 {descriptionValidationMsg}
+            </Text>
+          </If>
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
@@ -192,6 +232,11 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             onChangeText={value => setNotes(value)}
             style={[styles.textInput, styles.notesInput]}
           />
+          <If test={isToShowNotesValidationMsg}>
+            <Text style={styles.inputValidationMessage}>
+              👆 {notesValidationMsg}
+            </Text>
+          </If>
         </View>
       </View>
       <View style={styles.buttonsArea}>
