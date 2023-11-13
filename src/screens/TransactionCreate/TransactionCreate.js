@@ -1,4 +1,4 @@
-import React, {useContext, useState, useRef} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, TextInput, Switch} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {FakeCurrencyInput} from 'react-native-currency-input';
@@ -134,7 +134,6 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
         </If>
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
           <FakeCurrencyInput
-            returnKeyType={'next'}
             value={amount}
             onChangeValue={setAmount}
             placeholder="R$ 0,00"
@@ -180,7 +179,6 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
           <Text>Descrição</Text>
           <TextInput
             maxLength={255}
-            returnKeyType={'next'}
             placeholder="digite a descrição"
             value={description}
             onChangeText={value => setDescription(value)}
@@ -227,7 +225,6 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
         <View style={styles.textInputWrapper}>
           <Text>Observações (opcional)</Text>
           <TextInput
-            returnKeyType={'done'}
             multiline={true}
             value={notes}
             onChangeText={value => setNotes(value)}
