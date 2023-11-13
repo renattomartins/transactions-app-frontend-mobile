@@ -22,7 +22,7 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
     useContext(ApplicationContext);
 
   const [amount, setAmount] = useState(0);
-  const [isIncome, setIsIncome] = useState(true);
+  const [isIncome, setIsIncome] = useState(false);
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');
