@@ -56,11 +56,12 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
         isIncome,
       );
 
-      console.log(
-        `Nova transação criada com sucesso. ID: ${createdTransaction.id}, Data de criação: ${createdTransaction.createdAt}`,
+      const incrementedTransactions = [createdTransaction, ...transactions];
+      incrementedTransactions.sort(
+        (a, b) => new Date(b.date) - new Date(a.date),
       );
 
-      setTransactions([createdTransaction, ...transactions]);
+      setTransactions(incrementedTransactions);
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;
