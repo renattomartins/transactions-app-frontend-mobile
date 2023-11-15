@@ -61,7 +61,7 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
         (a, b) => new Date(b.date) - new Date(a.date),
       );
 
-      setTransactions(incrementedTransactions);
+      await setTransactions(incrementedTransactions);
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;

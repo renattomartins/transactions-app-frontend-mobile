@@ -45,6 +45,7 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
     setUserToken(null);
     setLoggedEmail(null);
     setAccounts([]);
+    setTransactions([]);
 
     // Screen state
     signOut();
@@ -104,6 +105,16 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
     loadTransactions();
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      if (transactions.length > 0) {
+        setIsEmpty(false);
+      }
+    });
+
+    return unsubscribe;
+  }, [navigation, transactions]);
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
@@ -140,6 +151,9 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
               Você não possui transações cadastradas.
             </Text>
           </View>
+          <FloatButton
+            onPress={() => navigation.navigate('TransactionCreate')}
+          />
         </If>
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
           <ScrollView
