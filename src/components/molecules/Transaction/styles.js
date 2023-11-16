@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   transactionIconWrapper: {
-    flex: 1,
+    flex: 3,
   },
   transactionIcon: {
     height: 38,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   transactionTextWrapper: {
     minHeight: 50,
-    flex: 4,
+    flex: 12,
   },
   transactionDescription: {
     fontWeight: 'bold',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   transactionAmountWrapper: {
-    flex: 2,
+    flex: 6,
   },
   transactionAmount: {
     fontWeight: 'bold',
@@ -37,6 +37,14 @@ const styles = StyleSheet.create({
   },
   positive: {
     color: Colors.positive,
+  },
+  enterIconWrapper: {
+    flex: 1,
+    marginLeft: 5,
+    marginTop: 2,
+  },
+  enterIcon: {
+    alignItems: 'center',
   },
 });
 

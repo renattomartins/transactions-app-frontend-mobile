@@ -31,6 +31,14 @@ const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
           {currencyFormat(amount)}
         </Text>
       </View>
+      <View style={styles.enterIconWrapper}>
+        <Image
+          style={[styles.enterIcon]}
+          source={require('../../../assets/images/arrow-right.png')}
+          width={16}
+          height={16}
+        />
+      </View>
     </View>
   );
 };
