@@ -167,6 +167,7 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
                 isIncome={transaction.isIncome}
                 date={transaction.date}
                 amount={transaction.amount}
+                onPress={() => navigation.navigate('TransactionView')}
               />
             ))}
           </ScrollView>

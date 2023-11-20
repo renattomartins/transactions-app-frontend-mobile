@@ -1,13 +1,21 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {View, Text, Image} from 'react-native';
+import {Pressable, View, Text, Image} from 'react-native';
 import {dateFormat, currencyFormat} from '../../../utils/formatter';
 
 import styles from './styles';
 
-const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
+const Transaction = ({
+  id,
+  description,
+  isIncome,
+  date,
+  amount,
+  onPress,
+  ...props
+}) => {
   return (
-    <View style={styles.transactionArea}>
+    <Pressable style={styles.transactionArea} onPress={onPress}>
       <View style={styles.transactionIconWrapper}>
         <Image
           style={[styles.transactionIcon]}
@@ -39,7 +47,7 @@ const Transaction = ({id, description, isIncome, date, amount, ...props}) => {
           height={16}
         />
       </View>
-    </View>
+    </Pressable>
   );
 };
 
