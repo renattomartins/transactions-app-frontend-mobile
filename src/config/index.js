@@ -13,6 +13,7 @@ const getEnvironment = env => {
       getAccountsUrl: `${hosts.LOCAL}/accounts`,
       getTransactionsUrl: `${hosts.LOCAL}/accounts/:accountId/transactions`,
       createTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions`,
+      getTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions/:transactionId`,
     },
     prd: {
       signUpUrl: `${hosts.PRD}/users`,
@@ -20,6 +21,7 @@ const getEnvironment = env => {
       getAccountsUrl: `${hosts.PRD}/accounts`,
       getTransactionsUrl: `${hosts.PRD}/accounts/:accountId/transactions`,
       createTransactionsUrl: `${hosts.PRD}/accounts/:accountId/transactions`,
+      getTransactionUrl: `${hosts.PRD}/accounts/:accountId/transactions/:transactionId`,
     },
   };
 

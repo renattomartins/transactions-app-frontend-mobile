@@ -57,4 +57,24 @@ const createTransaction = async (
   }
 };
 
-export {getTransactions, createTransaction};
+const getTransaction = async (env, token, accountId, transactionId) => {
+  let {getTransactionUrl} = getEnvironment(env);
+
+  try {
+    getTransactionUrl = getTransactionUrl
+      .replace(':accountId', accountId)
+      .replace(':transactionId', transactionId);
+
+    const response = await axios.get(getTransactionUrl, {
+      headers: {
+        Authorization: `bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export {getTransactions, createTransaction, getTransaction};
