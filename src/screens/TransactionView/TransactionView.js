@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
-import chalk from 'chalk';
-import {View, Text} from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
+
+import If from '../../utils/if';
 
 import styles from './styles.js';
 
@@ -39,12 +40,13 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
           transactionId,
         );
 
-        const ctx = new chalk.Instance({level: 3});
-        console.log(
-          ctx.green(
-            `Transação de Id: ${transaction.id} recuperada com sucesso.`,
-          ),
-        );
+        setDescription(transaction.description);
+        setAmount(transaction.amount);
+        setDate(transaction.date);
+        setNotes(transaction.notes);
+        setIsIncome(transaction.isIncome);
+        setCreatedAt(transaction.createdAt);
+        setUpdatedAt(transaction.updatedAt);
       } catch (e) {
       } finally {
         setIsLoading(false);
@@ -54,11 +56,46 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
   }, [accounts, transactionId, handleGetTransaction, env, userToken]);
 
   return (
-    <KeyboardAwareScrollView style={styles.main}>
-      <View>
-        <Text>Dados da transação: {transactionId}</Text>
-      </View>
-    </KeyboardAwareScrollView>
+    <>
+      <If test={isLoading}>
+        <View style={styles.loaderWrapper}>
+          <ActivityIndicator
+            size="small"
+            color="#aaa"
+            style={styles.loaderIcon}
+          />
+          <Text style={styles.loaderText}>Carregando transação...</Text>
+        </View>
+      </If>
+      <If test={!isLoading}>
+        <KeyboardAwareScrollView style={styles.main}>
+          <View>
+            <Text>Dados da transação: {transactionId}</Text>
+          </View>
+          <View style={styles.attributeWrapper}>
+            <Text>{description}</Text>
+          </View>
+          <View style={styles.attributeWrapper}>
+            <Text>{amount}</Text>
+          </View>
+          <View style={styles.attributeWrapper}>
+            <Text>{date}</Text>
+          </View>
+          <View style={styles.attributeWrapper}>
+            <Text>{notes}</Text>
+          </View>
+          <View style={styles.attributeWrapper}>
+            <Text>{isIncome}</Text>
+          </View>
+          <View style={styles.attributeWrapper}>
+            <Text>{createdAt}</Text>
+          </View>
+          <View style={styles.attributeWrapper}>
+            <Text>{updatedAt}</Text>
+          </View>
+        </KeyboardAwareScrollView>
+      </If>
+    </>
   );
 };
 
