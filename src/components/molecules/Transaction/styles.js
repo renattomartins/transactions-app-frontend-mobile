@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
   },
   enterIcon: {
     alignItems: 'center',
+    width: 16,
+    height: 16,
   },
 });
 
