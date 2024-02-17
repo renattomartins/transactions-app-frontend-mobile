@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, Text, ActivityIndicator, Image} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
@@ -69,6 +69,18 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
       </If>
       <If test={!isLoading}>
         <KeyboardAwareScrollView style={styles.main}>
+          <View style={styles.mainContent}>
+            <View style={styles.transactionIconWrapper}>
+              <Image
+                style={[styles.transactionIcon]}
+                source={
+                  isIncome
+                    ? require('../../assets/images/money-in.png')
+                    : require('../../assets/images/money-out.png')
+                }
+              />
+            </View>
+          </View>
           <View>
             <Text>Dados da transação: {transactionId}</Text>
           </View>
