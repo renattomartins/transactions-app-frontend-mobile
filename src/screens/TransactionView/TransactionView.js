@@ -5,6 +5,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {ApplicationContext} from '../../store';
 
 import If from '../../utils/if';
+import {currencyFormat} from '../../utils/formatter.js';
 
 import styles from './styles.js';
 
@@ -80,15 +81,32 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
                 }
               />
             </View>
-          </View>
-          <View>
-            <Text>Dados da transação: {transactionId}</Text>
+            <View style={styles.transactionAmountWrapper}>
+              <Text
+                style={[
+                  styles.transactionAmount,
+                  isIncome ? styles.positive : null,
+                ]}>
+                {currencyFormat(amount)}
+              </Text>
+              <View
+                style={[
+                  styles.isIncomeWrapper,
+                  isIncome
+                    ? styles.isIncomeWrapperIn
+                    : styles.isIncomeWrapperOut,
+                ]}>
+                <Text
+                  style={
+                    isIncome ? styles.transactionIn : styles.transactionOut
+                  }>
+                  {isIncome ? 'Entrada' : 'Saída'}
+                </Text>
+              </View>
+            </View>
           </View>
           <View style={styles.attributeWrapper}>
             <Text>{description}</Text>
-          </View>
-          <View style={styles.attributeWrapper}>
-            <Text>{amount}</Text>
           </View>
           <View style={styles.attributeWrapper}>
             <Text>{date}</Text>

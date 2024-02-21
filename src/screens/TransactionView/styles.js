@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {Colors} from '../../styles';
 
 const styles = StyleSheet.create({
   main: {
@@ -37,8 +38,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   transactionIcon: {
-    height: 58,
-    width: 54,
+    height: 48,
+    width: 44,
+  },
+  transactionAmountWrapper: {
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  transactionAmount: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: Colors.negative,
+  },
+  positive: {
+    color: Colors.positive,
+  },
+  isIncomeWrapper: {
+    marginTop: 3,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 20,
+  },
+  isIncomeWrapperIn: {
+    backgroundColor: Colors.position90tint,
+  },
+  isIncomeWrapperOut: {
+    backgroundColor: Colors.negative90tint,
+  },
+  transactionIn: {
+    color: Colors.positive,
+  },
+  transactionOut: {
+    color: Colors.negative,
   },
 });
 
