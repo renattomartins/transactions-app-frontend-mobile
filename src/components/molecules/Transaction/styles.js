@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   transactionTextWrapper: {
     minHeight: 50,
-    flex: 12,
+    flex: 11,
   },
   transactionDescription: {
     fontWeight: 'bold',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   transactionAmountWrapper: {
-    flex: 6,
+    flex: 7,
   },
   transactionAmount: {
     fontWeight: 'bold',

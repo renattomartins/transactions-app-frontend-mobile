@@ -32,6 +32,7 @@ const Transaction = ({
       </View>
       <View style={styles.transactionAmountWrapper}>
         <Text
+          numberOfLines={1}
           style={[
             styles.transactionAmount,
             isIncome ? styles.positive : styles.negative,
