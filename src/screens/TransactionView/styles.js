@@ -92,6 +92,19 @@ const styles = StyleSheet.create({
   attributeValue: {
     color: '#888',
   },
+  block3: {
+    backgroundColor: null,
+    paddingHorizontal: 0,
+    shadowColor: null,
+    shadowOffset: null,
+    shadowOpacity: null,
+    shadowRadius: null,
+    elevation: null,
+  },
+  okButton: {
+    borderRadius: 0,
+    borderWidth: 0,
+  },
 });
 
 export default styles;

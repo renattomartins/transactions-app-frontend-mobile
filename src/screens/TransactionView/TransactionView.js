@@ -4,6 +4,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
 
+import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
 import {currencyFormat, dateFormat} from '../../utils/formatter.js';
 
@@ -133,6 +134,15 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
               <Text style={styles.attributeLabel}>Última modificação em</Text>
               <Text style={styles.attributeValue}>{dateFormat(updatedAt)}</Text>
             </View>
+          </View>
+          <View style={[styles.block, styles.block3]}>
+            <Button
+              title="Voltar para lista de transações"
+              onPress={() => navigation.navigate('TransactionList')}
+              inverse={true}
+              width="100%"
+              style={styles.okButton}
+            />
           </View>
         </KeyboardAwareScrollView>
       </If>
