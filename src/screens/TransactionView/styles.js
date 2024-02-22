@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
   },
-  attributeWrapper: {},
   loaderWrapper: {
     flex: 1,
     justifyContent: 'center',
@@ -20,9 +19,10 @@ const styles = StyleSheet.create({
     color: '#aaa',
     fontStyle: 'italic',
   },
-  mainContent: {
+  block: {
     backgroundColor: '#fff',
     margin: 10,
+    marginBottom: 0,
     padding: 10,
     shadowColor: '#ccc',
     shadowOffset: {
@@ -41,6 +41,14 @@ const styles = StyleSheet.create({
     height: 48,
     width: 44,
   },
+  trasactionDescriptionWrapper: {
+    alignItems: 'center',
+  },
+  trasactionDescriptionValue: {
+    textAlign: 'center',
+    color: '#222',
+    fontSize: 15,
+  },
   transactionAmountWrapper: {
     marginTop: 10,
     alignItems: 'center',
@@ -56,6 +64,7 @@ const styles = StyleSheet.create({
   },
   isIncomeWrapper: {
     marginTop: 3,
+    marginBottom: 17,
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 20,
@@ -71,6 +80,17 @@ const styles = StyleSheet.create({
   },
   transactionOut: {
     color: Colors.negative,
+  },
+  attributeWrapper: {
+    padding: 5,
+    paddingBottom: 10,
+  },
+  attributeLabel: {
+    color: '#888',
+    fontWeight: 'bold',
+  },
+  attributeValue: {
+    color: '#888',
   },
 });
 

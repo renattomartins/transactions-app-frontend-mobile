@@ -5,7 +5,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {ApplicationContext} from '../../store';
 
 import If from '../../utils/if';
-import {currencyFormat} from '../../utils/formatter.js';
+import {currencyFormat, dateFormat} from '../../utils/formatter.js';
 
 import styles from './styles.js';
 
@@ -70,7 +70,7 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
       </If>
       <If test={!isLoading}>
         <KeyboardAwareScrollView style={styles.main}>
-          <View style={styles.mainContent}>
+          <View style={[styles.block, styles.block1]}>
             <View style={styles.transactionIconWrapper}>
               <Image
                 style={[styles.transactionIcon]}
@@ -80,6 +80,11 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
                     : require('../../assets/images/money-out.png')
                 }
               />
+            </View>
+            <View style={styles.transactionDescriptionWrapper}>
+              <Text style={styles.trasactionDescriptionValue}>
+                {description}
+              </Text>
             </View>
             <View style={styles.transactionAmountWrapper}>
               <Text
@@ -105,23 +110,29 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
               </View>
             </View>
           </View>
-          <View style={styles.attributeWrapper}>
-            <Text>{description}</Text>
-          </View>
-          <View style={styles.attributeWrapper}>
-            <Text>{date}</Text>
-          </View>
-          <View style={styles.attributeWrapper}>
-            <Text>{notes}</Text>
-          </View>
-          <View style={styles.attributeWrapper}>
-            <Text>{isIncome}</Text>
-          </View>
-          <View style={styles.attributeWrapper}>
-            <Text>{createdAt}</Text>
-          </View>
-          <View style={styles.attributeWrapper}>
-            <Text>{updatedAt}</Text>
+          <View style={[styles.block, styles.block2]}>
+            <View style={styles.attributeWrapper}>
+              <Text style={styles.attributeLabel}>Descrição</Text>
+              <Text style={styles.attributeValue}>{description}</Text>
+            </View>
+            <View style={styles.attributeWrapper}>
+              <Text style={styles.attributeLabel}>Data e hora</Text>
+              <Text style={styles.attributeValue}>{dateFormat(date)}</Text>
+            </View>
+            <View style={styles.attributeWrapper}>
+              <Text style={styles.attributeLabel}>Observações</Text>
+              <Text style={styles.attributeValue}>
+                {notes ? notes : 'Sem nenhuma nota para essa transação'}
+              </Text>
+            </View>
+            <View style={styles.attributeWrapper}>
+              <Text style={styles.attributeLabel}>Criada em</Text>
+              <Text style={styles.attributeValue}>{dateFormat(createdAt)}</Text>
+            </View>
+            <View style={styles.attributeWrapper}>
+              <Text style={styles.attributeLabel}>Última modificação em</Text>
+              <Text style={styles.attributeValue}>{dateFormat(updatedAt)}</Text>
+            </View>
           </View>
         </KeyboardAwareScrollView>
       </If>
