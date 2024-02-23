@@ -33,6 +33,23 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  messagesWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorIcon: {
+    height: 88,
+    width: 88,
+  },
+  errorMessage: {
+    marginTop: 20,
+    color: '#666',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'center',
+    width: 200,
+  },
   transactionIconWrapper: {
     marginTop: 20,
     alignItems: 'center',
@@ -94,7 +111,8 @@ const styles = StyleSheet.create({
   },
   block3: {
     backgroundColor: null,
-    paddingHorizontal: 0,
+    marginBottom: 10,
+    padding: 0,
     shadowColor: null,
     shadowOffset: null,
     shadowOpacity: null,

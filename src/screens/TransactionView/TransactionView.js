@@ -7,6 +7,7 @@ import {ApplicationContext} from '../../store';
 import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
 import {currencyFormat, dateFormat} from '../../utils/formatter.js';
+import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
 import styles from './styles.js';
 
@@ -50,6 +51,30 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
         setCreatedAt(transaction.createdAt);
         setUpdatedAt(transaction.updatedAt);
       } catch (e) {
+        let errorMessageToDiplay;
+        setThereIsAnError(true);
+
+        switch (e.response.data.code) {
+          case 400:
+            errorMessageToDiplay = errorMessages.viewTransaction.e400.message;
+            break;
+          case 401:
+            errorMessageToDiplay = errorMessages.viewTransaction.e401.message;
+            break;
+          case 403:
+            errorMessageToDiplay = errorMessages.viewTransaction.e403.message;
+            break;
+          case 404:
+            errorMessageToDiplay = errorMessages.viewTransaction.e404.message;
+            break;
+          case 500:
+            errorMessageToDiplay = errorMessages.viewTransaction.e500.message;
+            break;
+          default:
+            errorMessageToDiplay =
+              errorMessages.viewTransaction.unknown.message;
+        }
+        setErrorMessage(errorMessageToDiplay);
       } finally {
         setIsLoading(false);
       }
@@ -69,7 +94,25 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
           <Text style={styles.loaderText}>Carregando transação...</Text>
         </View>
       </If>
-      <If test={!isLoading}>
+      <If test={!isLoading && thereIsAnError}>
+        <View style={[styles.block, styles.messagesWrapper]}>
+          <Image
+            style={[styles.errorIcon]}
+            source={require('../../assets/images/error-icon.png')}
+          />
+          <Text style={styles.errorMessage}>{errorMessage}</Text>
+        </View>
+        <View style={[styles.block, styles.block3]}>
+          <Button
+            title="Voltar para lista de transações"
+            onPress={() => navigation.navigate('TransactionList')}
+            inverse={true}
+            width="100%"
+            style={styles.okButton}
+          />
+        </View>
+      </If>
+      <If test={!isLoading && !thereIsAnError}>
         <KeyboardAwareScrollView style={styles.main}>
           <View style={[styles.block, styles.block1]}>
             <View style={styles.transactionIconWrapper}>
