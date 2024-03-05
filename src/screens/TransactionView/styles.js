@@ -123,6 +123,10 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     borderWidth: 0,
   },
+  editButton: {
+    borderRadius: 0,
+    marginTop: 10,
+  },
 });
 
 export default styles;

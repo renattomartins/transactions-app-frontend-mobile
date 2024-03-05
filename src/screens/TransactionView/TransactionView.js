@@ -186,6 +186,13 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
               width="100%"
               style={styles.okButton}
             />
+            <Button
+              title="Editar"
+              onPress={() => navigation.navigate('TransactionList')}
+              inverse={false}
+              width="100%"
+              style={styles.editButton}
+            />
           </View>
         </KeyboardAwareScrollView>
       </If>
