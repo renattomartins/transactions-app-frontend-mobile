@@ -109,9 +109,10 @@ const styles = StyleSheet.create({
   attributeValue: {
     color: '#888',
   },
-  block3: {
+  block4: {
     backgroundColor: null,
-    marginBottom: 10,
+    marginTop: 20,
+    marginBottom: 20,
     padding: 0,
     shadowColor: null,
     shadowOffset: null,
@@ -122,10 +123,6 @@ const styles = StyleSheet.create({
   okButton: {
     borderRadius: 0,
     borderWidth: 0,
-  },
-  editButton: {
-    borderRadius: 0,
-    marginTop: 10,
   },
 });
 

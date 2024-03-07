@@ -5,6 +5,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {ApplicationContext} from '../../store';
 
 import Button from '../../components/atoms/Button';
+import ActionList from '../../components/molecules/ActionList/index.js';
 import If from '../../utils/if';
 import {currencyFormat, dateFormat} from '../../utils/formatter.js';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
@@ -179,19 +180,28 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
             </View>
           </View>
           <View style={[styles.block, styles.block3]}>
+            <ActionList
+              actionList={[
+                {
+                  onPress: () => navigation.navigate('TransactionList'),
+                  icon: 'pencil',
+                  text: 'Editar',
+                },
+                {
+                  onPress: () => navigation.navigate('TransactionList'),
+                  icon: 'trash',
+                  text: 'Excluir',
+                },
+              ]}
+            />
+          </View>
+          <View style={[styles.block, styles.block4]}>
             <Button
               title="Voltar para lista de transações"
               onPress={() => navigation.navigate('TransactionList')}
               inverse={true}
               width="100%"
               style={styles.okButton}
-            />
-            <Button
-              title="Editar"
-              onPress={() => navigation.navigate('TransactionList')}
-              inverse={false}
-              width="100%"
-              style={styles.editButton}
             />
           </View>
         </KeyboardAwareScrollView>
