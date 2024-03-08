@@ -15,6 +15,7 @@ import Login from './screens/Login';
 import TransactionList from './screens/TransactionList';
 import TransactionCreate from './screens/TransactionCreate';
 import TransactionView from './screens/TransactionView';
+import TransactionEdit from './screens/TransactionEdit';
 
 import {getAccounts} from './services/AccountManager';
 
@@ -149,6 +150,14 @@ const App = props => {
                 component={TransactionView}
                 options={{
                   title: 'Visualizar transação',
+                  headerBackTitleVisible: false,
+                }}
+              />
+              <Stack.Screen
+                name="TransactionEdit"
+                component={TransactionEdit}
+                options={{
+                  title: 'Editar transação',
                   headerBackTitleVisible: false,
                 }}
               />

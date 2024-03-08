@@ -183,7 +183,7 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
             <ActionList
               actionList={[
                 {
-                  onPress: () => navigation.navigate('TransactionList'),
+                  onPress: () => navigation.navigate('TransactionEdit'),
                   icon: 'pencil',
                   text: 'Editar',
                 },
