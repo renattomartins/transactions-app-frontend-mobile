@@ -20,10 +20,6 @@ const styles = StyleSheet.create({
   errorMessage: {
     marginHorizontal: 0,
   },
-  inputValidationMessage: {
-    marginTop: 5,
-    color: Colors.negative,
-  },
   buttonsArea: {
     padding: 20,
   },

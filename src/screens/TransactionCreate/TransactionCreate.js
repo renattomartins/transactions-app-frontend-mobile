@@ -9,6 +9,7 @@ import {ApplicationContext} from '../../store';
 import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
+import FieldErrorMessage from '../../components/atoms/FieldErrorMessage';
 
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
@@ -185,9 +186,10 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             style={[styles.textInput, styles.descriptiontInput]}
           />
           <If test={isToShowDescriptionValidationMsg}>
-            <Text style={styles.inputValidationMessage}>
-              👆 {descriptionValidationMsg}
-            </Text>
+            <FieldErrorMessage
+              isVisible={isToShowDescriptionValidationMsg}
+              message={descriptionValidationMsg}
+            />
           </If>
         </View>
         <View style={styles.textInputWrapper}>
@@ -231,9 +233,10 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             style={[styles.textInput, styles.notesInput]}
           />
           <If test={isToShowNotesValidationMsg}>
-            <Text style={styles.inputValidationMessage}>
-              👆 {notesValidationMsg}
-            </Text>
+            <FieldErrorMessage
+              isVisible={isToShowNotesValidationMsg}
+              message={notesValidationMsg}
+            />
           </If>
         </View>
       </View>
