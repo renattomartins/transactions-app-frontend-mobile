@@ -185,12 +185,10 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             onChangeText={value => setDescription(value)}
             style={[styles.textInput, styles.descriptiontInput]}
           />
-          <If test={isToShowDescriptionValidationMsg}>
-            <FieldErrorMessage
-              isVisible={isToShowDescriptionValidationMsg}
-              message={descriptionValidationMsg}
-            />
-          </If>
+          <FieldErrorMessage
+            isVisible={isToShowDescriptionValidationMsg}
+            message={descriptionValidationMsg}
+          />
         </View>
         <View style={styles.textInputWrapper}>
           <Text>Data</Text>
@@ -232,12 +230,10 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             onChangeText={value => setNotes(value)}
             style={[styles.textInput, styles.notesInput]}
           />
-          <If test={isToShowNotesValidationMsg}>
-            <FieldErrorMessage
-              isVisible={isToShowNotesValidationMsg}
-              message={notesValidationMsg}
-            />
-          </If>
+          <FieldErrorMessage
+            isVisible={isToShowNotesValidationMsg}
+            message={notesValidationMsg}
+          />
         </View>
       </View>
       <View style={styles.buttonsArea}>

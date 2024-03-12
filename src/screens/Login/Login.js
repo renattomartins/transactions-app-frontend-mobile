@@ -8,6 +8,7 @@ import AsyncStorage from '../../modules/AsyncStorage';
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
 import ErrorMessage from '../../components/atoms/ErrorMessage';
+import FieldErrorMessage from '../../components/atoms/FieldErrorMessage';
 
 import If from '../../utils/if';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
@@ -157,11 +158,11 @@ const Login = ({navigation, handleOnLogin, handleOnGetAccounts}) => {
           onChangeText={value => setEmail(value.trim())}
           {...textInputDefaultProps}
         />
-        <If test={showEmailValidationMsg}>
-          <Text style={styles.inputValidationMessage}>
-            👆 {emailValidationMsg}
-          </Text>
-        </If>
+        <FieldErrorMessage
+          isVisible={showEmailValidationMsg}
+          message={emailValidationMsg}
+          style={styles.inputValidationMessage}
+        />
         <TextInput
           ref={passwordRef}
           placeholder="senha"
@@ -178,11 +179,11 @@ const Login = ({navigation, handleOnLogin, handleOnGetAccounts}) => {
           onChangeText={setPassword}
           {...textInputDefaultProps}
         />
-        <If test={showPasswordValidationMsg}>
-          <Text style={styles.inputValidationMessage}>
-            👆 {passwordValidationMsg}
-          </Text>
-        </If>
+        <FieldErrorMessage
+          isVisible={showPasswordValidationMsg}
+          message={passwordValidationMsg}
+          style={styles.inputValidationMessage}
+        />
         <View style={styles.buttonArea}>
           <Button
             title="Entrar"
