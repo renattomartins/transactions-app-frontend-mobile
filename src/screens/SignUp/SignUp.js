@@ -10,7 +10,6 @@ import Button from '../../components/atoms/Button';
 import FormErrorMessage from '../../components/atoms/FormErrorMessage';
 import FieldErrorMessage from '../../components/atoms/FieldErrorMessage';
 
-import If from '../../utils/if';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
 
@@ -169,9 +168,10 @@ const SignUp = ({
       <View style={styles.headerArea}>
         <Logo isLabelVisisble={false} size="Medium" />
       </View>
-      <If test={showGenericErrorMsg}>
-        <FormErrorMessage message={genericErrorMsg} />
-      </If>
+      <FormErrorMessage
+        isVisible={showGenericErrorMsg}
+        message={genericErrorMsg}
+      />
       <View style={styles.inputsArea}>
         <TextInput
           placeholder="email"

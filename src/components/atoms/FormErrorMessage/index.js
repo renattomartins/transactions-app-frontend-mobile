@@ -2,17 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Text, View} from 'react-native';
 
+import If from '../../../utils/if';
+
 import styles from './styles';
 
-const FormErrorMessage = ({message, style, textStyle, ...props}) => {
+const FormErrorMessage = ({isVisible, message, style, textStyle, ...props}) => {
   return (
-    <View style={[styles.wrapper, style]}>
-      <Text style={[styles.text, textStyle]}>{message}</Text>
-    </View>
+    <If test={isVisible}>
+      <View style={[styles.wrapper, style]}>
+        <Text style={[styles.text, textStyle]}>{message}</Text>
+      </View>
+    </If>
   );
 };
 
 FormErrorMessage.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
   message: PropTypes.string.isRequired,
 };
 

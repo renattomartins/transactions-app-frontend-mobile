@@ -130,12 +130,11 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
   return (
     <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.inputsArea}>
-        <If test={isToShowGenericErrorMsg}>
-          <FormErrorMessage
-            message={genericErrorMsg}
-            style={styles.errorMessage}
-          />
-        </If>
+        <FormErrorMessage
+          isVisible={isToShowGenericErrorMsg}
+          message={genericErrorMsg}
+          style={styles.errorMessage}
+        />
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
           <FakeCurrencyInput
             value={amount}
