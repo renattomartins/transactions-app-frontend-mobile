@@ -8,7 +8,7 @@ import {ApplicationContext} from '../../store';
 
 import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
-import ErrorMessage from '../../components/atoms/ErrorMessage';
+import FormErrorMessage from '../../components/atoms/FormErrorMessage';
 import FieldErrorMessage from '../../components/atoms/FieldErrorMessage';
 
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
@@ -131,7 +131,10 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
     <KeyboardAwareScrollView style={styles.main}>
       <View style={styles.inputsArea}>
         <If test={isToShowGenericErrorMsg}>
-          <ErrorMessage message={genericErrorMsg} style={styles.errorMessage} />
+          <FormErrorMessage
+            message={genericErrorMsg}
+            style={styles.errorMessage}
+          />
         </If>
         <View style={[styles.textInputWrapper, styles.amountWrapper]}>
           <FakeCurrencyInput

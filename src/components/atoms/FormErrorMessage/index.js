@@ -4,7 +4,7 @@ import {Text, View} from 'react-native';
 
 import styles from './styles';
 
-const ErrorMessage = ({message, style, textStyle, ...props}) => {
+const FormErrorMessage = ({message, style, textStyle, ...props}) => {
   return (
     <View style={[styles.wrapper, style]}>
       <Text style={[styles.text, textStyle]}>{message}</Text>
@@ -12,8 +12,8 @@ const ErrorMessage = ({message, style, textStyle, ...props}) => {
   );
 };
 
-ErrorMessage.propTypes = {
+FormErrorMessage.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-export default ErrorMessage;
+export default FormErrorMessage;

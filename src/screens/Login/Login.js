@@ -1,5 +1,5 @@
 import React, {useState, useRef, useContext} from 'react';
-import {View, TextInput, Text} from 'react-native';
+import {View, TextInput} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
@@ -7,7 +7,7 @@ import AsyncStorage from '../../modules/AsyncStorage';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
-import ErrorMessage from '../../components/atoms/ErrorMessage';
+import FormErrorMessage from '../../components/atoms/FormErrorMessage';
 import FieldErrorMessage from '../../components/atoms/FieldErrorMessage';
 
 import If from '../../utils/if';
@@ -140,7 +140,7 @@ const Login = ({navigation, handleOnLogin, handleOnGetAccounts}) => {
         <Logo isLabelVisisble={false} size="Medium" />
       </View>
       <If test={showGenericErrorMsg}>
-        <ErrorMessage message={genericErrorMsg} />
+        <FormErrorMessage message={genericErrorMsg} />
       </If>
       <View style={styles.inputsArea}>
         <TextInput
