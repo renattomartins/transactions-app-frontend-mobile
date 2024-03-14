@@ -6,10 +6,12 @@ import DatePicker from 'react-native-date-picker';
 
 import {ApplicationContext} from '../../store';
 
-import Button from '../../components/atoms/Button';
 import If from '../../utils/if';
+
+import Field from '../../components/molecules/Field';
 import FormErrorMessage from '../../components/atoms/FormErrorMessage';
 import FieldErrorMessage from '../../components/atoms/FieldErrorMessage';
+import Button from '../../components/atoms/Button';
 
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 import convertStringToCamelCase from '../../utils/convertStringToCamelCase';
@@ -135,7 +137,7 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
           message={genericErrorMsg}
           style={styles.errorMessage}
         />
-        <View style={[styles.textInputWrapper, styles.amountWrapper]}>
+        <Field style={styles.amountWrapper}>
           <FakeCurrencyInput
             value={amount}
             onChangeValue={setAmount}
@@ -150,8 +152,8 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             style={styles.amountInput}
             containerStyle={styles.containerAmountInput}
           />
-        </View>
-        <View style={[styles.textInputWrapper, styles.isIncomeWrapper]}>
+        </Field>
+        <Field style={styles.isIncomeWrapper}>
           <View style={styles.isIncomeLabel}>
             <Text
               style={[
@@ -177,8 +179,8 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             onValueChange={value => setIsIncome(!value)}
             style={styles.isIncometInput}
           />
-        </View>
-        <View style={styles.textInputWrapper}>
+        </Field>
+        <Field>
           <Text>Descrição</Text>
           <TextInput
             maxLength={255}
@@ -191,8 +193,8 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             isVisible={isToShowDescriptionValidationMsg}
             message={descriptionValidationMsg}
           />
-        </View>
-        <View style={styles.textInputWrapper}>
+        </Field>
+        <Field>
           <Text>Data</Text>
           <View style={styles.dateInputAggregate}>
             <Button
@@ -223,8 +225,8 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
               }}
             />
           </View>
-        </View>
-        <View style={styles.textInputWrapper}>
+        </Field>
+        <Field>
           <Text>Observações (opcional)</Text>
           <TextInput
             multiline={true}
@@ -236,7 +238,7 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
             isVisible={isToShowNotesValidationMsg}
             message={notesValidationMsg}
           />
-        </View>
+        </Field>
       </View>
       <View style={styles.buttonsArea}>
         <Button

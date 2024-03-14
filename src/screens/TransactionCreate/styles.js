@@ -22,9 +22,6 @@ const styles = StyleSheet.create({
   buttonsArea: {
     padding: 20,
   },
-  textInputWrapper: {
-    paddingVertical: 10,
-  },
   textInput: {
     height: 40,
     marginTop: 5,
