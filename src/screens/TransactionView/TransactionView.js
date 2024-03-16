@@ -82,7 +82,6 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
     };
     loadTransaction();
   }, [accounts, transactionId, handleGetTransaction, env, userToken]);
-
   return (
     <>
       <If test={isLoading}>
@@ -192,6 +191,7 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
                         date,
                         notes,
                         isIncome,
+                        accountId: accounts[0].id,
                       },
                     }),
                   icon: 'pencil',

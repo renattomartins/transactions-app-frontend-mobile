@@ -8,8 +8,8 @@ import {ApplicationContext} from '../../store';
 
 import If from '../../utils/if';
 
-import Field from '../../components/molecules/Field';
 import FormErrorMessage from '../../components/atoms/FormErrorMessage';
+import Field from '../../components/molecules/Field';
 import FieldErrorMessage from '../../components/atoms/FieldErrorMessage';
 import Button from '../../components/atoms/Button';
 
