@@ -21,7 +21,8 @@ import styles from './styles.js';
 import {Colors} from '../../styles';
 
 const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
-  const {env, userToken, setTransactions} = useContext(ApplicationContext);
+  const {env, userToken, setTransactions, transactions} =
+    useContext(ApplicationContext);
 
   const transaction = route.params.transaction;
 
@@ -133,15 +134,6 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
 
   return (
     <KeyboardAwareScrollView style={styles.main}>
-      <Text>Tela de editar transações</Text>
-      <Text>ID: {transaction.id}</Text>
-      <Text>Descrição: {transaction.description}</Text>
-      <Text>Valor: {transaction.amount}</Text>
-      <Text>Data: {transaction.date}</Text>
-      <Text>Notas: {transaction.notes}</Text>
-      <Text>É entrada? {transaction.isIncome ? 'Sim' : 'Não'}</Text>
-      <Text>ID da conta: {transaction.accountId}</Text>
-
       <View style={styles.inputsArea}>
         <FormErrorMessage
           isVisible={isToShowGenericErrorMsg}
