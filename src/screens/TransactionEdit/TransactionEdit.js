@@ -21,43 +21,32 @@ import styles from './styles.js';
 import {Colors} from '../../styles';
 
 const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
-  // Recupero contexto da aplicação
   const {env, userToken, setTransactions, transactions} =
     useContext(ApplicationContext);
 
-  // Recebo inputs vindos da tela anterior (não tipados e não explícitos)
   const transaction = route.params.transaction;
 
-  // Controle de estado dessa tela em específico (valor dos campos)
   const [amount, setAmount] = useState(transaction.amount);
   const [isIncome, setIsIncome] = useState(transaction.isIncome);
   const [description, setDescription] = useState(transaction.description);
   const [date, setDate] = useState(new Date(transaction.date));
   const [notes, setNotes] = useState(transaction.notes);
 
-  // Controle de estado dessa tela em específico (mensagens de erro)
-  const [isToShowGenericErrorMsg, setIsToShowGenericErrorMsg] = useState(false); // form
-  const [genericErrorMsg, setGenericErrorMsg] = useState(''); // form
-
+  const [isToShowGenericErrorMsg, setIsToShowGenericErrorMsg] = useState(false);
+  const [genericErrorMsg, setGenericErrorMsg] = useState('');
   const [
     isToShowDescriptionValidationMsg,
     setIsToShowDescriptionValidationMsg,
-  ] = useState(false); // campo em específico: description
-  const [descriptionValidationMsg, setDescriptionValidationMsg] = useState(''); // campo em específico: description
-
+  ] = useState(false);
+  const [descriptionValidationMsg, setDescriptionValidationMsg] = useState('');
   const [isToShowNotesValidationMsg, setIsToShowNotesValidationMsg] =
-    useState(false); // campo em específico: notes
-  const [notesValidationMsg, setNotesValidationMsg] = useState(''); // campo em específico: notes
-
-  // Controle de estado dessa tela em específico (campo específico: campo date)
+    useState(false);
+  const [notesValidationMsg, setNotesValidationMsg] = useState('');
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
-
-  // Controle de estado dessa tela em específico (botão do form)
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // comportamento do form (ou da tela?)
   const onSubmit = async () => {
-    setIsSubmitting(true); // form
+    setIsSubmitting(true);
 
     try {
       const createdTransaction = await handleUpdateTransaction(
@@ -70,56 +59,52 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
         date,
         notes,
         isIncome,
-      ); // entidade
+      );
 
-      // contexto da da aplicação
       const incrementedTransactions = [createdTransaction, ...transactions];
       incrementedTransactions.sort(
         (a, b) => new Date(b.date) - new Date(a.date),
       );
       await setTransactions(incrementedTransactions);
 
-      // tela/navegação
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;
-      cleanUpValidations(); // form/campos
-      setIsToShowGenericErrorMsg(true); //form
+      cleanUpValidations();
+      setIsToShowGenericErrorMsg(true);
 
-      // entidade/campos-atributos/form
       switch (e.response.data.code) {
         case 400:
-          errorMessageToDiplay = errorMessages.createTransaction.e400.message; //form
+          errorMessageToDiplay = errorMessages.createTransaction.e400.message;
           break;
         case 401:
-          errorMessageToDiplay = errorMessages.createTransaction.e401.message; //form
+          errorMessageToDiplay = errorMessages.createTransaction.e401.message;
           break;
         case 403:
-          errorMessageToDiplay = errorMessages.createTransaction.e403.message; //form
+          errorMessageToDiplay = errorMessages.createTransaction.e403.message;
           break;
         case 404:
-          errorMessageToDiplay = errorMessages.createTransaction.e404.message; //form
+          errorMessageToDiplay = errorMessages.createTransaction.e404.message;
           break;
         case 422:
-          errorMessageToDiplay = errorMessages.createTransaction.e422.message; //campos específicos
+          errorMessageToDiplay = errorMessages.createTransaction.e422.message;
           processValidationMessages(
             e.response.data.details,
             errorMessages.createTransaction.e422.details,
           );
           break;
         case 500:
-          errorMessageToDiplay = errorMessages.createTransaction.e500.message; //form
+          errorMessageToDiplay = errorMessages.createTransaction.e500.message;
           break;
         default:
-          errorMessageToDiplay = errorMessages.createTransaction.e500.message; //form/tela
+          errorMessageToDiplay = errorMessages.createTransaction.e500.message;
       }
-      setGenericErrorMsg(errorMessageToDiplay); //form
+      setGenericErrorMsg(errorMessageToDiplay);
     } finally {
-      setIsSubmitting(false); //form
+      setIsSubmitting(false);
     }
   };
 
-  // campos específicos
   const processValidationMessages = (
     responseErrorDetails,
     messagesErrorDetails,
@@ -128,7 +113,6 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
       let fieldName = errorDetail.path;
       let messageKey = convertStringToCamelCase(errorDetail.msg);
 
-      // campo 1
       if (fieldName === 'description') {
         setIsToShowDescriptionValidationMsg(true);
         setDescriptionValidationMsg(
@@ -136,7 +120,6 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
         );
       }
 
-      // campo 2
       if (fieldName === 'notes') {
         setIsToShowNotesValidationMsg(true);
         setNotesValidationMsg(messagesErrorDetails[fieldName][messageKey]);
@@ -144,7 +127,6 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
     }
   };
 
-  // form/campos
   const cleanUpValidations = () => {
     setIsToShowDescriptionValidationMsg(false);
     setIsToShowNotesValidationMsg(false);
@@ -201,7 +183,8 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
             style={styles.isIncometInput}
           />
         </Field>
-        <Field label="Descrição">
+        <Field>
+          <Text>Descrição</Text>
           <TextInput
             maxLength={255}
             placeholder="digite a descrição"
@@ -214,7 +197,8 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
             message={descriptionValidationMsg}
           />
         </Field>
-        <Field label="Data">
+        <Field>
+          <Text>Data</Text>
           <View style={styles.dateInputAggregate}>
             <Button
               title={dateFormat(date.toUTCString())}
@@ -245,7 +229,8 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
             />
           </View>
         </Field>
-        <Field label="Observações (opcional)">
+        <Field>
+          <Text>Observações (opcional)</Text>
           <TextInput
             multiline={true}
             value={notes}
