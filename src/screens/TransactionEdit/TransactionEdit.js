@@ -20,7 +20,7 @@ import {dateFormat} from '../../utils/formatter';
 import styles from './styles.js';
 import {Colors} from '../../styles';
 
-const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
+const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
   const {env, userToken, setTransactions, transactions} =
     useContext(ApplicationContext);
 
@@ -255,7 +255,11 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
         />
         <Button
           title="Cancelar"
-          onPress={() => navigation.navigate('TransactionList')}
+          onPress={() =>
+            navigation.navigate('TransactionView', {
+              itemId: transaction.id,
+            })
+          }
           inverse={false}
           width="100%"
           style={styles.cancelButton}
@@ -268,4 +272,4 @@ const TransactionCreate = ({navigation, route, handleUpdateTransaction}) => {
   );
 };
 
-export default TransactionCreate;
+export default TransactionEdit;
