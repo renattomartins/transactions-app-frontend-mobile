@@ -77,4 +77,42 @@ const getTransaction = async (env, token, accountId, transactionId) => {
   }
 };
 
-export {getTransactions, createTransaction, getTransaction};
+const updateTransaction = async (
+  env,
+  token,
+  accountId,
+  transactionId,
+  transactionDescription,
+  transactionAmount,
+  transactionDate,
+  transactionNotes,
+  transactionIsIncome,
+) => {
+  let {updateTransactionUrl} = getEnvironment(env);
+
+  try {
+    updateTransactionUrl = updateTransactionUrl
+      .replace(':accountId', accountId)
+      .replace(':transactionId', transactionId);
+
+    const response = await axios.put(
+      updateTransactionUrl,
+      {
+        description: transactionDescription,
+        amount: transactionAmount,
+        date: transactionDate,
+        notes: transactionNotes,
+        isIncome: transactionIsIncome,
+      },
+      {
+        headers: {Authorization: `bearer ${token}`},
+      },
+    );
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export {getTransactions, createTransaction, getTransaction, updateTransaction};

@@ -49,11 +49,11 @@ const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
     setIsSubmitting(true);
 
     try {
-      const createdTransaction = await handleUpdateTransaction(
+      const updatedTransaction = await handleUpdateTransaction(
         env,
         userToken,
-        transaction.id,
         transaction.accountId,
+        transaction.id,
         description,
         amount,
         date,
@@ -61,13 +61,17 @@ const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
         isIncome,
       );
 
-      const incrementedTransactions = [createdTransaction, ...transactions];
-      incrementedTransactions.sort(
-        (a, b) => new Date(b.date) - new Date(a.date),
-      );
-      await setTransactions(incrementedTransactions);
+      // const incrementedTransactions = [updatedTransaction, ...transactions];
+      // incrementedTransactions.sort(
+      //   (a, b) => new Date(b.date) - new Date(a.date),
+      // );
+      // await setTransactions(incrementedTransactions);
 
-      navigation.navigate('TransactionList');
+      console.log(updatedTransaction);
+
+      navigation.navigate('TransactionView', {
+        itemId: transaction.id,
+      });
     } catch (e) {
       let errorMessageToDiplay;
       cleanUpValidations();
@@ -75,29 +79,29 @@ const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
 
       switch (e.response.data.code) {
         case 400:
-          errorMessageToDiplay = errorMessages.createTransaction.e400.message;
+          errorMessageToDiplay = errorMessages.editTransaction.e400.message;
           break;
         case 401:
-          errorMessageToDiplay = errorMessages.createTransaction.e401.message;
+          errorMessageToDiplay = errorMessages.editTransaction.e401.message;
           break;
         case 403:
-          errorMessageToDiplay = errorMessages.createTransaction.e403.message;
+          errorMessageToDiplay = errorMessages.editTransaction.e403.message;
           break;
         case 404:
-          errorMessageToDiplay = errorMessages.createTransaction.e404.message;
+          errorMessageToDiplay = errorMessages.editTransaction.e404.message;
           break;
         case 422:
-          errorMessageToDiplay = errorMessages.createTransaction.e422.message;
+          errorMessageToDiplay = errorMessages.editTransaction.e422.message;
           processValidationMessages(
             e.response.data.details,
-            errorMessages.createTransaction.e422.details,
+            errorMessages.editTransaction.e422.details,
           );
           break;
         case 500:
-          errorMessageToDiplay = errorMessages.createTransaction.e500.message;
+          errorMessageToDiplay = errorMessages.editTransaction.e500.message;
           break;
         default:
-          errorMessageToDiplay = errorMessages.createTransaction.e500.message;
+          errorMessageToDiplay = errorMessages.editTransaction.e500.message;
       }
       setGenericErrorMsg(errorMessageToDiplay);
     } finally {
