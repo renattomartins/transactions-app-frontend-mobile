@@ -61,11 +61,17 @@ const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
         isIncome,
       );
 
-      // const incrementedTransactions = [updatedTransaction, ...transactions];
+      const updatedTransactions = transactions.map(item => {
+        if (item.id === updatedTransaction.id) {
+          return updatedTransaction;
+        } else {
+          return item;
+        }
+      });
       // incrementedTransactions.sort(
       //   (a, b) => new Date(b.date) - new Date(a.date),
       // );
-      // await setTransactions(incrementedTransactions);
+      await setTransactions(updatedTransactions);
 
       console.log(updatedTransaction);
 
