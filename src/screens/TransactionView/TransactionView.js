@@ -13,7 +13,8 @@ import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 import styles from './styles.js';
 
 const TransactionView = ({navigation, route, handleGetTransaction}) => {
-  const {env, userToken, accounts} = useContext(ApplicationContext);
+  const {env, userToken, accounts, transactions} =
+    useContext(ApplicationContext);
 
   const [transactionId] = useState(route.params.itemId);
   const [description, setDescription] = useState('');
@@ -81,7 +82,14 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
       }
     };
     loadTransaction();
-  }, [accounts, transactionId, handleGetTransaction, env, userToken]);
+  }, [
+    accounts,
+    transactionId,
+    handleGetTransaction,
+    env,
+    userToken,
+    transactions,
+  ]);
   return (
     <>
       <If test={isLoading}>

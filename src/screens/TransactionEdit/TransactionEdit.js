@@ -68,12 +68,9 @@ const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
           return item;
         }
       });
-      // incrementedTransactions.sort(
-      //   (a, b) => new Date(b.date) - new Date(a.date),
-      // );
-      await setTransactions(updatedTransactions);
+      updatedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      console.log(updatedTransaction);
+      await setTransactions(updatedTransactions);
 
       navigation.navigate('TransactionView', {
         itemId: transaction.id,
