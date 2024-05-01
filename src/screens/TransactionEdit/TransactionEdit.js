@@ -82,29 +82,29 @@ const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
 
       switch (e.response.data.code) {
         case 400:
-          errorMessageToDiplay = errorMessages.editTransaction.e400.message;
+          errorMessageToDiplay = errorMessages.updateTransaction.e400.message;
           break;
         case 401:
-          errorMessageToDiplay = errorMessages.editTransaction.e401.message;
+          errorMessageToDiplay = errorMessages.updateTransaction.e401.message;
           break;
         case 403:
-          errorMessageToDiplay = errorMessages.editTransaction.e403.message;
+          errorMessageToDiplay = errorMessages.updateTransaction.e403.message;
           break;
         case 404:
-          errorMessageToDiplay = errorMessages.editTransaction.e404.message;
+          errorMessageToDiplay = errorMessages.updateTransaction.e404.message;
           break;
         case 422:
-          errorMessageToDiplay = errorMessages.editTransaction.e422.message;
+          errorMessageToDiplay = errorMessages.updateTransaction.e422.message;
           processValidationMessages(
             e.response.data.details,
-            errorMessages.editTransaction.e422.details,
+            errorMessages.updateTransaction.e422.details,
           );
           break;
         case 500:
-          errorMessageToDiplay = errorMessages.editTransaction.e500.message;
+          errorMessageToDiplay = errorMessages.updateTransaction.e500.message;
           break;
         default:
-          errorMessageToDiplay = errorMessages.editTransaction.e500.message;
+          errorMessageToDiplay = errorMessages.updateTransaction.e500.message;
       }
       setGenericErrorMsg(errorMessageToDiplay);
     } finally {

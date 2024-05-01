@@ -178,6 +178,56 @@ const friendlyErrorMessages = {
       details: {},
     },
   },
+  updateTransaction: {
+    e400: {
+      message: 'Erro no aplicativo. Verifique se o mesmo está atualizado.',
+      details: {},
+    },
+    e401: {
+      message: 'Sua sessão expirou. Faça login novamente antes de continuar.',
+      details: {},
+    },
+    e403: {
+      message: 'Não autorizado.',
+      details: {},
+    },
+    e404: {
+      message: 'Conta ou transação não encontrada.',
+      details: {},
+    },
+    e422: {
+      message: 'Verifique os campos abaixo',
+      details: {
+        description: {
+          invalidValue: 'Campo obrigatório',
+          maxSizeOf255Characters:
+            'A descrição não deve ultrapassar 255 caracteres.',
+        },
+        amount: {
+          mustBeANumber: 'Campo precisa ser um número',
+        },
+        date: {
+          mustBeAValidDate: 'Campo precisa ser uma data válida',
+        },
+        notes: {
+          maxSizeOf1000Characters:
+            'As notas não devem ultrapassar 1000 caracteres.',
+        },
+        isIncome: {
+          invalidValue: 'Campo obrigatório',
+        },
+      },
+    },
+    e500: {
+      message:
+        'Erro interno no servidor. Aguarde alguns instantes e tente novamente.',
+      details: {},
+    },
+    unknown: {
+      message: 'Erro desconhecido. Por favor, tente novamente.',
+      details: {},
+    },
+  },
 };
 
 export {friendlyErrorMessages};
