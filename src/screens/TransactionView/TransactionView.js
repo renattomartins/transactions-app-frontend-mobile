@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, Text, ActivityIndicator, Image} from 'react-native';
+import {View, Text, ActivityIndicator, Image, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {ApplicationContext} from '../../store';
@@ -90,6 +90,25 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
     userToken,
     transactions,
   ]);
+
+  const openDeleteConfirmationDialog = () =>
+    Alert.alert(
+      'Excluir transação',
+      'Você tem certeza que deseja excluir essa transação?',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => console.log('Cancelar'),
+          style: 'cancel',
+        },
+        {
+          text: 'Excluir',
+          onPress: () => console.log('Excluir'),
+          style: 'destructive',
+        },
+      ],
+    );
+
   return (
     <>
       <If test={isLoading}>
@@ -206,7 +225,7 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
                   text: 'Editar',
                 },
                 {
-                  onPress: () => navigation.navigate('TransactionList'),
+                  onPress: openDeleteConfirmationDialog,
                   icon: 'trash',
                   text: 'Excluir',
                 },
