@@ -1,9 +1,16 @@
 import React from 'react';
-import {getTransaction} from '../../services/TransactionManager';
+import {
+  getTransaction,
+  deleteTransaction,
+} from '../../services/TransactionManager';
 import TransactionView from './TransactionView';
 
 const TransactionViewWithDependencies = props => (
-  <TransactionView {...props} handleGetTransaction={getTransaction} />
+  <TransactionView
+    {...props}
+    handleGetTransaction={getTransaction}
+    handleDeleteTransaction={deleteTransaction}
+  />
 );
 
 export default TransactionViewWithDependencies;
