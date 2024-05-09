@@ -12,7 +12,12 @@ import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
 import styles from './styles.js';
 
-const TransactionView = ({navigation, route, handleGetTransaction}) => {
+const TransactionView = ({
+  navigation,
+  route,
+  handleGetTransaction,
+  handleDeleteTransaction,
+}) => {
   const {env, userToken, accounts, transactions} =
     useContext(ApplicationContext);
 
@@ -91,6 +96,58 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
     transactions,
   ]);
 
+  const deleteTransaction = async () => {
+    // setIsSubmitting(true);
+
+    try {
+      await handleDeleteTransaction(
+        env,
+        userToken,
+        accounts[0].id,
+        transactionId,
+      );
+
+      // const incrementedTransactions = [createdTransaction, ...transactions];
+      // await setTransactions(incrementedTransactions);
+
+      navigation.navigate('TransactionList');
+    } catch (e) {
+      let errorMessageToDiplay;
+      // cleanUpValidations();
+      // setIsToShowGenericErrorMsg(true);
+
+      switch (e.response.data.code) {
+        case 400:
+          errorMessageToDiplay = errorMessages.deleteTransaction.e400.message;
+          break;
+        case 401:
+          errorMessageToDiplay = errorMessages.deleteTransaction.e401.message;
+          break;
+        case 403:
+          errorMessageToDiplay = errorMessages.deleteTransaction.e403.message;
+          break;
+        case 404:
+          errorMessageToDiplay = errorMessages.deleteTransaction.e404.message;
+          break;
+        case 422:
+          errorMessageToDiplay = errorMessages.deleteTransaction.e422.message;
+          // processValidationMessages(
+          //   e.response.data.details,
+          //   errorMessages.deleteTransaction.e422.details,
+          // );
+          break;
+        case 500:
+          errorMessageToDiplay = errorMessages.deleteTransaction.e500.message;
+          break;
+        default:
+          errorMessageToDiplay = errorMessages.deleteTransaction.e500.message;
+      }
+      // setGenericErrorMsg(errorMessageToDiplay);
+    } finally {
+      // setIsSubmitting(false);
+    }
+  };
+
   const openDeleteConfirmationDialog = () =>
     Alert.alert(
       'Excluir transação',
@@ -98,12 +155,11 @@ const TransactionView = ({navigation, route, handleGetTransaction}) => {
       [
         {
           text: 'Cancelar',
-          onPress: () => console.log('Cancelar'),
           style: 'cancel',
         },
         {
           text: 'Excluir',
-          onPress: () => console.log('Excluir'),
+          onPress: deleteTransaction,
           style: 'destructive',
         },
       ],
