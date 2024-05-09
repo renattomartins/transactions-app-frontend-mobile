@@ -15,6 +15,7 @@ const getEnvironment = env => {
       createTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions`,
       getTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions/:transactionId`,
       updateTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions/:transactionId`,
+      deleteTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions/:transactionId`,
     },
     prd: {
       signUpUrl: `${hosts.PRD}/users`,
@@ -24,6 +25,7 @@ const getEnvironment = env => {
       createTransactionsUrl: `${hosts.PRD}/accounts/:accountId/transactions`,
       getTransactionUrl: `${hosts.PRD}/accounts/:accountId/transactions/:transactionId`,
       updateTransactionUrl: `${hosts.PRD}/accounts/:accountId/transactions/:transactionId`,
+      deleteTransactionUrl: `${hosts.PRD}/accounts/:accountId/transactions/:transactionId`,
     },
   };
 

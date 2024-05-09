@@ -115,4 +115,30 @@ const updateTransaction = async (
   }
 };
 
-export {getTransactions, createTransaction, getTransaction, updateTransaction};
+const deleteTransaction = async (env, token, accountId, transactionId) => {
+  let {deleteTransactionUrl} = getEnvironment(env);
+
+  try {
+    deleteTransactionUrl = deleteTransactionUrl
+      .replace(':accountId', accountId)
+      .replace(':transactionId', transactionId);
+
+    const response = await axios.delete(deleteTransactionUrl, {
+      headers: {
+        Authorization: `bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export {
+  getTransactions,
+  createTransaction,
+  getTransaction,
+  updateTransaction,
+  deleteTransaction,
+};
