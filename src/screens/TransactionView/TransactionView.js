@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, ActivityIndicator, Image, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import {ApplicationContext} from '../../store';
 
@@ -33,6 +34,7 @@ const TransactionView = ({
   const [isLoading, setIsLoading] = useState(true);
   const [thereIsAnError, setThereIsAnError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const loadTransaction = async () => {
@@ -97,7 +99,7 @@ const TransactionView = ({
   ]);
 
   const deleteTransaction = async () => {
-    // setIsSubmitting(true);
+    setIsDeleting(true);
 
     try {
       await handleDeleteTransaction(
@@ -144,7 +146,7 @@ const TransactionView = ({
       }
       // setGenericErrorMsg(errorMessageToDiplay);
     } finally {
-      // setIsSubmitting(false);
+      setIsDeleting(false);
     }
   };
 
@@ -299,6 +301,13 @@ const TransactionView = ({
           </View>
         </KeyboardAwareScrollView>
       </If>
+      <Spinner
+        visible={isDeleting}
+        textContent={'Só mais um instante...'}
+        overlayColor={'rgba(0, 0, 0, 0.65)'}
+        animation={'fade'}
+        textStyle={styles.spinnerTextStyle}
+      />
     </>
   );
 };

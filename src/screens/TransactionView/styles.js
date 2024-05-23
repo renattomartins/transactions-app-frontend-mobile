@@ -124,6 +124,11 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     borderWidth: 0,
   },
+  spinnerTextStyle: {
+    color: '#FFF',
+    fontSize: 14,
+    fontWeight: 'normal',
+  },
 });
 
 export default styles;
