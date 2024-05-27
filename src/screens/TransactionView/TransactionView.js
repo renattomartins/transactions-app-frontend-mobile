@@ -115,7 +115,6 @@ const TransactionView = ({
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;
-      // cleanUpValidations();
       // setIsToShowGenericErrorMsg(true);
 
       switch (e.response.data.code) {
@@ -130,13 +129,6 @@ const TransactionView = ({
           break;
         case 404:
           errorMessageToDiplay = errorMessages.deleteTransaction.e404.message;
-          break;
-        case 422:
-          errorMessageToDiplay = errorMessages.deleteTransaction.e422.message;
-          // processValidationMessages(
-          //   e.response.data.details,
-          //   errorMessages.deleteTransaction.e422.details,
-          // );
           break;
         case 500:
           errorMessageToDiplay = errorMessages.deleteTransaction.e500.message;
