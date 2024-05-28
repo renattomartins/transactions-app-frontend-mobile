@@ -3,9 +3,10 @@ import 'react-native-gesture-handler';
 import React, {useEffect, useReducer, useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {StoreProvider} from './store';
+import FlashMessage from 'react-native-flash-message';
 import PropTypes from 'prop-types';
 
+import {StoreProvider} from './store';
 import AsyncStorage from './modules/AsyncStorage';
 
 import SplashScreen from './screens/SplashScreen';
@@ -165,6 +166,7 @@ const App = props => {
           )}
         </Stack.Navigator>
       </NavigationContainer>
+      <FlashMessage position="top" />
     </StoreProvider>
   );
 };
