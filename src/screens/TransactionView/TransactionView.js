@@ -12,6 +12,7 @@ import {currencyFormat, dateFormat} from '../../utils/formatter.js';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
 import styles from './styles.js';
+import {showMessage} from 'react-native-flash-message';
 
 const TransactionView = ({
   navigation,
@@ -115,7 +116,6 @@ const TransactionView = ({
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;
-      // setIsToShowGenericErrorMsg(true);
 
       switch (e.response.data.code) {
         case 400:
@@ -136,7 +136,15 @@ const TransactionView = ({
         default:
           errorMessageToDiplay = errorMessages.deleteTransaction.e500.message;
       }
-      // setGenericErrorMsg(errorMessageToDiplay);
+
+      setTimeout(() => {
+        showMessage({
+          message: errorMessageToDiplay,
+          type: 'danger',
+          floating: true,
+          icon: 'warning',
+        });
+      }, 1000);
     } finally {
       setIsDeleting(false);
     }
