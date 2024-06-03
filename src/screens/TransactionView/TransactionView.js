@@ -20,7 +20,7 @@ const TransactionView = ({
   handleGetTransaction,
   handleDeleteTransaction,
 }) => {
-  const {env, userToken, accounts, transactions} =
+  const {env, userToken, accounts, setTransactions, transactions} =
     useContext(ApplicationContext);
 
   const [transactionId] = useState(route.params.itemId);
@@ -123,8 +123,11 @@ const TransactionView = ({
         transactionId,
       );
 
-      // const incrementedTransactions = [createdTransaction, ...transactions];
-      // await setTransactions(incrementedTransactions);
+      const transactionsWithoutDeletedTransaction = transactions.filter(
+        transaction => transaction.id !== transactionId,
+      );
+
+      await setTransactions(transactionsWithoutDeletedTransaction);
 
       navigation.navigate('TransactionList');
     } catch (e) {
