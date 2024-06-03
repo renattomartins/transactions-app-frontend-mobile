@@ -99,6 +99,19 @@ const TransactionView = ({
     transactions,
   ]);
 
+  const navigateToEditScreen = () =>
+    navigation.navigate('TransactionEdit', {
+      transaction: {
+        id: transactionId,
+        description,
+        amount,
+        date,
+        notes,
+        isIncome,
+        accountId: accounts[0].id,
+      },
+    });
+
   const deleteTransaction = async () => {
     setIsDeleting(true);
 
@@ -267,18 +280,7 @@ const TransactionView = ({
             <ActionList
               actionList={[
                 {
-                  onPress: () =>
-                    navigation.navigate('TransactionEdit', {
-                      transaction: {
-                        id: transactionId,
-                        description,
-                        amount,
-                        date,
-                        notes,
-                        isIncome,
-                        accountId: accounts[0].id,
-                      },
-                    }),
+                  onPress: navigateToEditScreen,
                   icon: 'pencil',
                   text: 'Editar',
                 },
