@@ -159,8 +159,9 @@ const TransactionView = ({
           type: 'danger',
           floating: true,
           icon: 'warning',
+          duration: 3000,
         });
-      }, 1000);
+      }, 500);
     } finally {
       setIsDeleting(false);
     }

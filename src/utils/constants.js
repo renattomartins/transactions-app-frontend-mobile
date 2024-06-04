@@ -242,7 +242,7 @@ const friendlyErrorMessages = {
       details: {},
     },
     e404: {
-      message: 'Conta ou transação não encontrada.',
+      message: 'Transação não encontrada.',
       details: {},
     },
     e500: {
