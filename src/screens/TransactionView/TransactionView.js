@@ -129,6 +129,16 @@ const TransactionView = ({
 
       await setTransactions(transactionsWithoutDeletedTransaction);
 
+      setTimeout(() => {
+        showMessage({
+          message: 'Transação excluída com sucesso!',
+          type: 'success',
+          floating: true,
+          position: 'bottom',
+          duration: 3000,
+        });
+      }, 500);
+
       navigation.navigate('TransactionList');
     } catch (e) {
       let errorMessageToDiplay;
