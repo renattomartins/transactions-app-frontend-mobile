@@ -109,6 +109,8 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
     const unsubscribe = navigation.addListener('focus', () => {
       if (transactions.length > 0) {
         setIsEmpty(false);
+      } else {
+        setIsEmpty(true);
       }
     });
 
