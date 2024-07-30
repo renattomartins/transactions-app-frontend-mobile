@@ -3,6 +3,7 @@ const getEnvironment = env => {
 
   const hosts = {
     LOCAL: 'http://192.168.18.4:3000',
+    QA: '',
     PRD: '',
   };
 
@@ -16,6 +17,16 @@ const getEnvironment = env => {
       getTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions/:transactionId`,
       updateTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions/:transactionId`,
       deleteTransactionUrl: `${hosts.LOCAL}/accounts/:accountId/transactions/:transactionId`,
+    },
+    qa: {
+      signUpUrl: `${hosts.QA}/users`,
+      loginUrl: `${hosts.QA}/login`,
+      getAccountsUrl: `${hosts.QA}/accounts`,
+      getTransactionsUrl: `${hosts.QA}/accounts/:accountId/transactions`,
+      createTransactionsUrl: `${hosts.QA}/accounts/:accountId/transactions`,
+      getTransactionUrl: `${hosts.QA}/accounts/:accountId/transactions/:transactionId`,
+      updateTransactionUrl: `${hosts.QA}/accounts/:accountId/transactions/:transactionId`,
+      deleteTransactionUrl: `${hosts.QA}/accounts/:accountId/transactions/:transactionId`,
     },
     prd: {
       signUpUrl: `${hosts.PRD}/users`,
