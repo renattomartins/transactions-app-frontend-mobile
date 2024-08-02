@@ -12,7 +12,7 @@ const Logo = props => {
         source={require('../../../assets/images/logo.png')}
       />
       {props.isLabelVisisble && (
-        <Text style={styles.label}>Transactions App</Text>
+        <Text style={styles.label}>TransactionsApp</Text>
       )}
     </View>
   );
