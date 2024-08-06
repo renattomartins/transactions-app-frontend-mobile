@@ -12,7 +12,7 @@ const blueTen = '#80FFDB';
 const placeholderTextColor = '#91C8EB';
 
 const positive = '#43B700';
-const position90tint = '#ecf8e6'
+const position90tint = '#ecf8e6';
 const negative = '#DD4E4D';
 const negative90tint = '#fceded';
 const white = '#fff';
