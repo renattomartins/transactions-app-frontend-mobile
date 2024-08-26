@@ -60,6 +60,9 @@
 		5709B34CF0A7D63546082F79 /* Pods-TransactionAppMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile.release.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile/Pods-TransactionAppMobile.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-TransactionAppMobile-TransactionAppMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile-TransactionAppMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile-TransactionAppMobileTests/Pods-TransactionAppMobile-TransactionAppMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-TransactionAppMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransactionAppMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7240C7CE2C7CA9AF00700765 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
+		7240C7CF2C7CA9E800700765 /* QA.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QA.xcconfig; sourceTree = "<group>"; };
+		7240C7D02C7CA9F600700765 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		72F703BC2B973BE200C6792E /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		72F703BD2B973BE200C6792E /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		72F703BE2B973BE200C6792E /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome6_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome6_Brands.ttf"; sourceTree = "<group>"; };
@@ -181,6 +184,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				7240C7D02C7CA9F600700765 /* Prod.xcconfig */,
+				7240C7CF2C7CA9E800700765 /* QA.xcconfig */,
+				7240C7CE2C7CA9AF00700765 /* Local.xcconfig */,
 				13B07FAE1A68108700A75B9A /* TransactionAppMobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TransactionAppMobileTests */,
