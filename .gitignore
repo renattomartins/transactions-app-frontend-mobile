@@ -64,3 +64,7 @@ yarn-error.log
 
 # testing
 /coverage
+
+ios/Local.xcconfig
+ios/QA.xcconfig
+ios/Prod.xcconfig
