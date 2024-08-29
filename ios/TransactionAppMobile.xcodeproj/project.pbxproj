@@ -49,13 +49,14 @@
 		00E356EE1AD99517003FC87E /* TransactionAppMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransactionAppMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* TransactionAppMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionAppMobileTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* TransactionAppMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransactionAppMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* TransactionsApp (Local).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TransactionsApp (Local).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = TransactionAppMobile/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = TransactionAppMobile/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TransactionAppMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TransactionAppMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TransactionAppMobile/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-TransactionAppMobile-TransactionAppMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransactionAppMobile-TransactionAppMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C794FDA99A59C891330C98 /* Pods-TransactionAppMobile-TransactionAppMobileTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile-TransactionAppMobileTests.staging.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile-TransactionAppMobileTests/Pods-TransactionAppMobile-TransactionAppMobileTests.staging.xcconfig"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-TransactionAppMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile.debug.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile/Pods-TransactionAppMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-TransactionAppMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile.release.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile/Pods-TransactionAppMobile.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-TransactionAppMobile-TransactionAppMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile-TransactionAppMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile-TransactionAppMobileTests/Pods-TransactionAppMobile-TransactionAppMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		72F703CC2B973BE300C6792E /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome6_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome6_Solid.ttf"; sourceTree = "<group>"; };
 		72F703CD2B973BE300C6792E /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		72F703CE2B973BE300C6792E /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		7ABC6EDFD76EE0D349B471C6 /* Pods-TransactionAppMobile.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile.staging.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile/Pods-TransactionAppMobile.staging.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TransactionAppMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-TransactionAppMobile-TransactionAppMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransactionAppMobile-TransactionAppMobileTests.release.xcconfig"; path = "Target Support Files/Pods-TransactionAppMobile-TransactionAppMobileTests/Pods-TransactionAppMobile-TransactionAppMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -202,7 +204,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* TransactionAppMobile.app */,
+				13B07F961A680F5B00A75B9A /* TransactionsApp (Local).app */,
 				00E356EE1AD99517003FC87E /* TransactionAppMobileTests.xctest */,
 			);
 			name = Products;
@@ -215,6 +217,8 @@
 				5709B34CF0A7D63546082F79 /* Pods-TransactionAppMobile.release.xcconfig */,
 				5B7EB9410499542E8C5724F5 /* Pods-TransactionAppMobile-TransactionAppMobileTests.debug.xcconfig */,
 				89C6BE57DB24E9ADA2F236DE /* Pods-TransactionAppMobile-TransactionAppMobileTests.release.xcconfig */,
+				7ABC6EDFD76EE0D349B471C6 /* Pods-TransactionAppMobile.staging.xcconfig */,
+				24C794FDA99A59C891330C98 /* Pods-TransactionAppMobile-TransactionAppMobileTests.staging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -261,7 +265,7 @@
 			);
 			name = TransactionAppMobile;
 			productName = TransactionAppMobile;
-			productReference = 13B07F961A680F5B00A75B9A /* TransactionAppMobile.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* TransactionsApp (Local).app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -560,7 +564,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TransactionAppMobile/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TransactionsApp;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -572,8 +576,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.transactionsapp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = TransactionAppMobile;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -588,7 +592,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = TransactionAppMobile/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TransactionsApp;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -600,8 +604,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.transactionsapp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = TransactionAppMobile;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -650,6 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -681,13 +686,13 @@
 		};
 		72427F7D2C7E33E600856C7F /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-TransactionAppMobile.release.xcconfig */;
+			baseConfigurationReference = 7ABC6EDFD76EE0D349B471C6 /* Pods-TransactionAppMobile.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = TransactionAppMobile/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TransactionsApp;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -699,8 +704,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.transactionsapp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = TransactionAppMobile;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -708,7 +713,7 @@
 		};
 		72427F7E2C7E33E600856C7F /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-TransactionAppMobile-TransactionAppMobileTests.release.xcconfig */;
+			baseConfigurationReference = 24C794FDA99A59C891330C98 /* Pods-TransactionAppMobile-TransactionAppMobileTests.staging.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -782,6 +787,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -854,6 +860,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
