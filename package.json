@@ -5,6 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios --simulator=\"iPhone 15\"",
+    "ios:local": "react-native run-ios --simulator=\"iPhone 15\" --mode Debug",
+    "ios:staging": "react-native run-ios --simulator=\"iPhone 15\" --mode Staging",
+    "ios:release": "react-native run-ios --simulator=\"iPhone 15\" --mode Release",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
