@@ -1,0 +1,14 @@
+//
+//  Sample.xcconfig
+//  TransactionAppMobile
+//
+//  Created by Renato Martins on 26/08/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+DEVELOPMENT_TEAM =
+BASE_URL = [url_backend]
+BUILD_TYPE = Debug
+APP_NAME = TransactionsApp (Local)
+APP_BUNDLE_ID = com.transactionsapp.TransactionAppMobile.local
