@@ -9,6 +9,7 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 DEVELOPMENT_TEAM =
 BASE_URL = [url_backend]
+ENV = local
 BUILD_TYPE = Debug
 APP_NAME = TransactionsApp (Local)
 APP_BUNDLE_ID = com.transactionsapp.TransactionAppMobile.local
