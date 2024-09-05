@@ -16,6 +16,7 @@ import styles from './styles';
 const TransactionList = ({navigation, handleGetTransactions}) => {
   const {
     env,
+    baseUrl,
     userToken,
     setUserToken,
     loggedEmail,
@@ -62,6 +63,7 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
 
         transactionsList = await handleGetTransactions(
           env,
+          baseUrl,
           userToken,
           initialAccountId,
         );

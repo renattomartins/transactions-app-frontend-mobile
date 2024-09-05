@@ -20,7 +20,7 @@ const TransactionView = ({
   handleGetTransaction,
   handleDeleteTransaction,
 }) => {
-  const {env, userToken, accounts, setTransactions, transactions} =
+  const {env, baseUrl, userToken, accounts, setTransactions, transactions} =
     useContext(ApplicationContext);
 
   const [transactionId] = useState(route.params.itemId);
@@ -48,6 +48,7 @@ const TransactionView = ({
 
         transaction = await handleGetTransaction(
           env,
+          baseUrl,
           userToken,
           accountId,
           transactionId,
@@ -95,6 +96,7 @@ const TransactionView = ({
     transactionId,
     handleGetTransaction,
     env,
+    baseUrl,
     userToken,
     transactions,
   ]);
@@ -118,6 +120,7 @@ const TransactionView = ({
     try {
       await handleDeleteTransaction(
         env,
+        baseUrl,
         userToken,
         accounts[0].id,
         transactionId,

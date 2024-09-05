@@ -17,7 +17,7 @@ import {Colors} from '../../styles';
 import styles from './styles';
 
 const Login = ({navigation, handleOnLogin, handleOnGetAccounts}) => {
-  const {env, setUserToken, setLoggedEmail, setAccounts, signIn} =
+  const {env, baseUrl, setUserToken, setLoggedEmail, setAccounts, signIn} =
     useContext(ApplicationContext);
 
   const passwordRef = useRef();
@@ -59,8 +59,12 @@ const Login = ({navigation, handleOnLogin, handleOnGetAccounts}) => {
       setLoading(true);
 
       // Requests
-      const loggedInUser = await handleOnLogin(env, email, password);
-      const accounts = await handleOnGetAccounts(env, loggedInUser.token);
+      const loggedInUser = await handleOnLogin(env, baseUrl, email, password);
+      const accounts = await handleOnGetAccounts(
+        env,
+        baseUrl,
+        loggedInUser.token,
+      );
 
       // Local storage
       await AsyncStorage.storeData('userToken', loggedInUser.token);

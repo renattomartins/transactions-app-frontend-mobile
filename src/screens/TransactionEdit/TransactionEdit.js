@@ -21,7 +21,7 @@ import styles from './styles.js';
 import {Colors} from '../../styles';
 
 const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
-  const {env, userToken, setTransactions, transactions} =
+  const {env, baseUrl, userToken, setTransactions, transactions} =
     useContext(ApplicationContext);
 
   const transaction = route.params.transaction;
@@ -51,6 +51,7 @@ const TransactionEdit = ({navigation, route, handleUpdateTransaction}) => {
     try {
       const updatedTransaction = await handleUpdateTransaction(
         env,
+        baseUrl,
         userToken,
         transaction.accountId,
         transaction.id,

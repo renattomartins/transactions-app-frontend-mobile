@@ -1,8 +1,8 @@
 import axios from 'axios';
 import getEnvironment from '../../config';
 
-const getTransactions = async (env, token, accountId) => {
-  let {getTransactionsUrl} = getEnvironment(env);
+const getTransactions = async (env, baseUrl, token, accountId) => {
+  let {getTransactionsUrl} = getEnvironment(env, baseUrl);
 
   try {
     getTransactionsUrl = getTransactionsUrl.replace(':accountId', accountId);
@@ -21,6 +21,7 @@ const getTransactions = async (env, token, accountId) => {
 
 const createTransaction = async (
   env,
+  baseUrl,
   token,
   accountId,
   transactionDescription,
@@ -29,7 +30,7 @@ const createTransaction = async (
   transactionNotes,
   transactionIsIncome,
 ) => {
-  let {createTransactionUrl} = getEnvironment(env);
+  let {createTransactionUrl} = getEnvironment(env, baseUrl);
 
   try {
     createTransactionUrl = createTransactionUrl.replace(
@@ -57,8 +58,14 @@ const createTransaction = async (
   }
 };
 
-const getTransaction = async (env, token, accountId, transactionId) => {
-  let {getTransactionUrl} = getEnvironment(env);
+const getTransaction = async (
+  env,
+  baseUrl,
+  token,
+  accountId,
+  transactionId,
+) => {
+  let {getTransactionUrl} = getEnvironment(env, baseUrl);
 
   try {
     getTransactionUrl = getTransactionUrl
@@ -79,6 +86,7 @@ const getTransaction = async (env, token, accountId, transactionId) => {
 
 const updateTransaction = async (
   env,
+  baseUrl,
   token,
   accountId,
   transactionId,
@@ -88,7 +96,7 @@ const updateTransaction = async (
   transactionNotes,
   transactionIsIncome,
 ) => {
-  let {updateTransactionUrl} = getEnvironment(env);
+  let {updateTransactionUrl} = getEnvironment(env, baseUrl);
 
   try {
     updateTransactionUrl = updateTransactionUrl
@@ -115,8 +123,14 @@ const updateTransaction = async (
   }
 };
 
-const deleteTransaction = async (env, token, accountId, transactionId) => {
-  let {deleteTransactionUrl} = getEnvironment(env);
+const deleteTransaction = async (
+  env,
+  baseUrl,
+  token,
+  accountId,
+  transactionId,
+) => {
+  let {deleteTransactionUrl} = getEnvironment(env, baseUrl);
 
   try {
     deleteTransactionUrl = deleteTransactionUrl

@@ -22,7 +22,7 @@ const SignUp = ({
   handleOnLogin,
   handleOnGetAccounts,
 }) => {
-  const {env, setUserToken, setLoggedEmail, setAccounts, signUp} =
+  const {env, baseUrl, setUserToken, setLoggedEmail, setAccounts, signUp} =
     useContext(ApplicationContext);
 
   const passwordRef = useRef();
@@ -78,12 +78,17 @@ const SignUp = ({
       // Requests
       const registeredUser = await handleOnSubmit(
         env,
+        baseUrl,
         email,
         password,
         passwordVerification,
       );
-      const loggedInUser = await handleOnLogin(env, email, password);
-      const accounts = await handleOnGetAccounts(env, loggedInUser.token);
+      const loggedInUser = await handleOnLogin(env, baseUrl, email, password);
+      const accounts = await handleOnGetAccounts(
+        env,
+        baseUrl,
+        loggedInUser.token,
+      );
 
       // Local storage
       await AsyncStorage.storeData('userToken', loggedInUser.token);

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import getEnvironment from '../../config';
 
-const getAccounts = async (env, token) => {
-  const {getAccountsUrl} = getEnvironment(env);
+const getAccounts = async (env, baseUrl, token) => {
+  const {getAccountsUrl} = getEnvironment(env, baseUrl);
 
   try {
     const response = await axios.get(getAccountsUrl, {

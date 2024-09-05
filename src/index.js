@@ -68,7 +68,7 @@ const App = props => {
 
       if (userToken != null) {
         try {
-          accounts = await getAccounts(props.env, userToken);
+          accounts = await getAccounts(props.env, props.baseUrl, userToken);
         } catch (e) {
           userToken = null;
           loggedEmail = null;
@@ -84,7 +84,7 @@ const App = props => {
     };
 
     bootstrapAsync();
-  }, [props.env]);
+  }, [props.env, props.baseUrl]);
 
   const authContext = useMemo(
     () => ({
@@ -172,10 +172,12 @@ const App = props => {
 };
 
 App.propTypes = {
+  baseUrl: PropTypes.string,
   env: PropTypes.string,
 };
 
 App.defaultProps = {
+  baseUrl: 'localhost:3000',
   env: 'local',
 };
 

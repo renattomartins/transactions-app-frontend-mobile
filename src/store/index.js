@@ -16,11 +16,13 @@ const StoreProvider = ({
   const [transactions, setTransactions] = useState([]);
   const {values, ...propsFromWrapperApp} = props;
   const {env} = propsFromWrapperApp;
+  const {baseUrl} = propsFromWrapperApp;
 
   return (
     <ApplicationContext.Provider
       value={{
         env,
+        baseUrl,
         userToken,
         setUserToken,
         loggedEmail,

@@ -21,7 +21,7 @@ import styles from './styles.js';
 import {Colors} from '../../styles';
 
 const TransactionCreate = ({navigation, handleCreateTransaction}) => {
-  const {env, userToken, accounts, transactions, setTransactions} =
+  const {env, baseUrl, userToken, accounts, transactions, setTransactions} =
     useContext(ApplicationContext);
 
   const [amount, setAmount] = useState(0);
@@ -50,6 +50,7 @@ const TransactionCreate = ({navigation, handleCreateTransaction}) => {
     try {
       const createdTransaction = await handleCreateTransaction(
         env,
+        baseUrl,
         userToken,
         accounts[0].id,
         description,

@@ -1,10 +1,10 @@
-const getEnvironment = env => {
+const getEnvironment = (env, baseUrl) => {
   const environment = typeof env === 'string' ? env.toLocaleLowerCase() : env;
 
   const hosts = {
-    LOCAL: 'http://192.168.18.4:3000',
-    QA: '',
-    PRD: '',
+    LOCAL: `http://${baseUrl}`,
+    QA: `https://${baseUrl}`,
+    PRD: `https://${baseUrl}`,
   };
 
   const values = {
