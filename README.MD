@@ -1,10 +1,10 @@
-# Transaction App Frontend
+# Transactions App Frontend
 
-**Transaction App** is a simple Financial tracking tool made with love from Belo Horizonte, Brazil. It is **not** a complete application and it has the objetive to be an instructional repository to learn and teach mobile development with JavaScript technologies, design patterns and atomic design principles.
+**Transactions App** is a simple Financial tracking tool made with love from Belo Horizonte, Brazil. It is **not** a complete application and it has the objetive to be an instructional repository to learn and teach mobile development with JavaScript technologies, design patterns and atomic design principles.
 
 Related repositories:
 
-- [Transaction App Backend](https://github.com/renattomartins/transactions-app-backend)
+- [Transactions App Backend](https://github.com/renattomartins/transactions-app-backend)
 
 ### Diagram
 TBD
