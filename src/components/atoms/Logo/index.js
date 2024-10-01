@@ -9,7 +9,7 @@ const Logo = props => {
     <View style={styles.wrapper}>
       <Image
         style={[styles.img, styles[props.size]]}
-        source={require('../../../assets/images/logo.png')}
+        source={require('../../../assets/images/logo-1024x1024.png')}
       />
       {props.isLabelVisisble && (
         <Text style={styles.label}>TransactionsApp</Text>

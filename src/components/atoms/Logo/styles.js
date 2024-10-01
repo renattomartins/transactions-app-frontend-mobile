@@ -8,16 +8,16 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   Small: {
-    height: 40,
+    height: 70,
   },
   Medium: {
-    height: 80,
+    height: 120,
   },
   Large: {
-    height: 176,
+    height: 276,
   },
   label: {
-    marginTop: 20,
+    marginTop: -30,
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
