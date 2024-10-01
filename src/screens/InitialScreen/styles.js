@@ -17,6 +17,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
+  text: {
+    color: Colors.white,
+    fontSize: 16,
+    marginTop: 2,
+  },
 });
 
 export default styles;

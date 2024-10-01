@@ -1,16 +1,23 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text} from 'react-native';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
 
 import styles from './styles';
+import {ApplicationContext} from '../../store';
+import If from '../../utils/if';
 
 const InitialScreen = ({navigation}) => {
+  const {env} = useContext(ApplicationContext);
+
   return (
     <View style={styles.main}>
       <View style={styles.logoArea}>
         <Logo />
+        <If test={env !== 'prd'}>
+          <Text style={styles.text}>({env})</Text>
+        </If>
       </View>
       <View style={styles.buttonsArea}>
         <Button
