@@ -68,3 +68,5 @@ yarn-error.log
 ios/Local.xcconfig
 ios/QA.xcconfig
 ios/Prod.xcconfig
+
+.env
