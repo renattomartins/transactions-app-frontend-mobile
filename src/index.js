@@ -7,9 +7,8 @@ import FlashMessage from 'react-native-flash-message';
 import PropTypes from 'prop-types';
 
 import {authReducer} from './reducers/authReducer';
-
+import {bootstrapAsync} from './services/bootstrap';
 import {StoreProvider} from './store';
-import AsyncStorage from './modules/AsyncStorage';
 
 import SplashScreen from './screens/SplashScreen';
 import InitialScreen from './screens/InitialScreen';
@@ -19,8 +18,6 @@ import TransactionList from './screens/TransactionList';
 import TransactionCreate from './screens/TransactionCreate';
 import TransactionView from './screens/TransactionView';
 import TransactionEdit from './screens/TransactionEdit';
-
-import {getAccounts} from './services/AccountManager';
 
 import {Colors} from './styles';
 
@@ -35,32 +32,7 @@ const App = props => {
   });
 
   useEffect(() => {
-    const bootstrapAsync = async () => {
-      let userToken, loggedEmail, accounts;
-
-      try {
-        userToken = await AsyncStorage.readData('userToken');
-        loggedEmail = await AsyncStorage.readData('loggedEmail');
-      } catch (e) {}
-
-      if (userToken != null) {
-        try {
-          accounts = await getAccounts(props.env, props.baseUrl, userToken);
-        } catch (e) {
-          userToken = null;
-          loggedEmail = null;
-        }
-      }
-
-      dispatch({
-        type: 'RESTORE_TOKEN',
-        token: userToken,
-        loggedEmail: loggedEmail,
-        accounts: accounts,
-      });
-    };
-
-    bootstrapAsync();
+    bootstrapAsync(dispatch, props.env, props.baseUrl);
   }, [props.env, props.baseUrl]);
 
   const authContext = useMemo(
