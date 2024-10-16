@@ -6,6 +6,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import FlashMessage from 'react-native-flash-message';
 import PropTypes from 'prop-types';
 
+import {authReducer} from './reducers/authReducer';
+
 import {StoreProvider} from './store';
 import AsyncStorage from './modules/AsyncStorage';
 
@@ -25,37 +27,12 @@ import {Colors} from './styles';
 const Stack = createStackNavigator();
 
 const App = props => {
-  const [state, dispatch] = useReducer(
-    (prevState, action) => {
-      switch (action.type) {
-        case 'RESTORE_TOKEN':
-          return {
-            ...prevState,
-            userToken: action.token,
-            loggedEmail: action.loggedEmail,
-            isLoading: false,
-            accounts: action.accounts,
-          };
-        case 'SIGN_IN':
-          return {
-            ...prevState,
-            userToken: action.token,
-          };
-        case 'SIGN_OUT':
-          return {
-            ...prevState,
-            userToken: null,
-            loggedEmail: null,
-          };
-      }
-    },
-    {
-      isLoading: true,
-      userToken: null,
-      loggedEmail: null,
-      accounts: [],
-    },
-  );
+  const [state, dispatch] = useReducer(authReducer, {
+    isLoading: true,
+    userToken: null,
+    loggedEmail: null,
+    accounts: [],
+  });
 
   useEffect(() => {
     const bootstrapAsync = async () => {
