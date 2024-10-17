@@ -2,7 +2,7 @@ import React, {useState, useRef, useContext} from 'react';
 import {View, TextInput} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
-import {ApplicationContext} from '../../store';
+import {ApplicationContext} from '../../contexts';
 import AsyncStorage from '../../modules/AsyncStorage';
 
 import Logo from '../../components/atoms/Logo';

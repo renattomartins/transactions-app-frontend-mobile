@@ -2,7 +2,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {View, ScrollView, Text, Image, ActivityIndicator} from 'react-native';
 
-import {ApplicationContext} from '../../store';
+import {ApplicationContext} from '../../contexts';
 import AsyncStorage from '../../modules/AsyncStorage';
 
 import If from '../../utils/if';

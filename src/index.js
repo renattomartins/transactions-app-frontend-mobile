@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import {authReducer} from './reducers/authReducer';
 import {bootstrapAsync} from './services/bootstrap';
-import {StoreProvider} from './store';
+import {StoreProvider} from './contexts';
 
 import SplashScreen from './screens/SplashScreen';
 import InitialScreen from './screens/InitialScreen';

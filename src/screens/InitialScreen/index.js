@@ -5,7 +5,7 @@ import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
 
 import styles from './styles';
-import {ApplicationContext} from '../../store';
+import {ApplicationContext} from '../../contexts';
 import If from '../../utils/if';
 
 const InitialScreen = ({navigation}) => {

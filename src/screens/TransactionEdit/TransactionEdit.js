@@ -4,7 +4,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {FakeCurrencyInput} from 'react-native-currency-input';
 import DatePicker from 'react-native-date-picker';
 
-import {ApplicationContext} from '../../store';
+import {ApplicationContext} from '../../contexts/index.js';
 
 import If from '../../utils/if';
 
