@@ -1,5 +1,6 @@
 import AsyncStorage from '../modules/AsyncStorage';
 import {getAccounts} from '../services/AccountManager';
+import {RESTORE_TOKEN} from '../constants/actionTypes';
 
 export const bootstrapAsync = async (dispatch, baseUrl, env) => {
   let userToken, loggedEmail, accounts;
@@ -21,7 +22,7 @@ export const bootstrapAsync = async (dispatch, baseUrl, env) => {
   }
 
   dispatch({
-    type: 'RESTORE_TOKEN',
+    type: RESTORE_TOKEN,
     token: userToken,
     loggedEmail: loggedEmail,
     accounts: accounts,
