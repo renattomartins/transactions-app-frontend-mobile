@@ -2,14 +2,14 @@ import AsyncStorage from '../modules/AsyncStorage';
 import {getAccounts} from '../services/AccountManager';
 import {RESTORE_TOKEN} from '../constants/actionTypes';
 
-export const bootstrapAsync = async (dispatch, baseUrl, env) => {
+export const bootstrapAsync = async (dispatch, env, baseUrl) => {
   let userToken, loggedEmail, accounts;
 
   try {
     userToken = await AsyncStorage.readData('userToken');
     loggedEmail = await AsyncStorage.readData('loggedEmail');
   } catch (e) {
-    console.error('Failed to load user data from storage', e);
+    console.log('Failed to load user data from storage', e);
   }
 
   if (userToken) {
@@ -18,6 +18,7 @@ export const bootstrapAsync = async (dispatch, baseUrl, env) => {
     } catch (e) {
       userToken = null;
       loggedEmail = null;
+      console.log('Failed to load accounts', e);
     }
   }
 
