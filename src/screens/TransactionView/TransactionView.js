@@ -3,7 +3,7 @@ import {View, Text, ActivityIndicator, Image, Alert} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import {ApplicationContext} from '../../contexts/index.js';
+import {ApplicationContext} from '../../contexts/ApplicationContext.js';
 
 import Button from '../../components/atoms/Button';
 import ActionList from '../../components/molecules/ActionList/index.js';

@@ -6,10 +6,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import FlashMessage from 'react-native-flash-message';
 import PropTypes from 'prop-types';
 
-import {SIGN_IN, SIGN_OUT} from './constants/actionTypes';
 import {authReducer} from './reducers/authReducer';
 import {bootstrapAsync} from './services/bootstrap';
-import {StoreProvider} from './contexts';
+import {SIGN_IN, SIGN_OUT} from './constants/actionTypes';
+import {StoreProvider} from './contexts/ApplicationContext';
 
 import SplashScreen from './screens/SplashScreen';
 import InitialScreen from './screens/InitialScreen';
