@@ -6,6 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import FlashMessage from 'react-native-flash-message';
 import PropTypes from 'prop-types';
 
+import {SIGN_IN, SIGN_OUT} from './constants/actionTypes';
 import {authReducer} from './reducers/authReducer';
 import {bootstrapAsync} from './services/bootstrap';
 import {StoreProvider} from './contexts';
@@ -24,12 +25,14 @@ import {Colors} from './styles';
 const Stack = createStackNavigator();
 
 const App = props => {
-  const [state, dispatch] = useReducer(authReducer, {
+  const initialState = {
     isLoading: true,
     userToken: null,
     loggedEmail: null,
     accounts: [],
-  });
+  };
+
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
     bootstrapAsync(dispatch, props.env, props.baseUrl);
@@ -37,9 +40,9 @@ const App = props => {
 
   const authContext = useMemo(
     () => ({
-      signIn: async data => dispatch({type: 'SIGN_IN', token: data.token}),
-      signOut: () => dispatch({type: 'SIGN_OUT'}),
-      signUp: async data => dispatch({type: 'SIGN_IN', token: data.token}),
+      signIn: async data => dispatch({type: SIGN_IN, token: data.token}),
+      signOut: () => dispatch({type: SIGN_OUT}),
+      signUp: async data => dispatch({type: SIGN_IN, token: data.token}),
     }),
     [],
   );
