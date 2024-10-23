@@ -62,7 +62,7 @@ const App = props => {
         <Stack.Navigator
           screenOptions={{
             headerStyle: {backgroundColor: Colors.blueFive},
-            headerTintColor: '#fff',
+            headerTintColor: Colors.white,
             headerTitleAlign: 'center',
           }}>
           {state.userToken === null ? (
