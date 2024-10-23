@@ -38,7 +38,7 @@ const App = props => {
     bootstrapAsync(dispatch, props.env, props.baseUrl);
   }, [props.env, props.baseUrl]);
 
-  const authContext = useMemo(
+  const authActions = useMemo(
     () => ({
       signIn: async data => dispatch({type: SIGN_IN, token: data.token}),
       signOut: () => dispatch({type: SIGN_OUT}),
@@ -53,11 +53,11 @@ const App = props => {
 
   return (
     <StoreProvider
-      {...props}
       initialToken={state.userToken}
       initialEmail={state.loggedEmail}
       initialAccounts={state.accounts}
-      authActions={authContext}>
+      authActions={authActions}
+      {...props}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
