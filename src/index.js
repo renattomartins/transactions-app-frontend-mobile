@@ -7,7 +7,7 @@ import FlashMessage from 'react-native-flash-message';
 import PropTypes from 'prop-types';
 
 import {authReducer} from './reducers/authReducer';
-import {bootstrapAsync} from './services/bootstrap';
+import {initializeAppState} from './services/bootstrap';
 import {SIGN_IN, SIGN_OUT} from './constants/actionTypes';
 import {StoreProvider} from './contexts/ApplicationContext';
 
@@ -35,7 +35,7 @@ const App = props => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    bootstrapAsync(dispatch, props.env, props.baseUrl);
+    initializeAppState(dispatch, props.env, props.baseUrl);
   }, [props.env, props.baseUrl]);
 
   const authActions = useMemo(

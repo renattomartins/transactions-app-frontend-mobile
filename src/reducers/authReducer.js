@@ -1,10 +1,10 @@
 import {RESTORE_TOKEN, SIGN_IN, SIGN_OUT} from '../constants/actionTypes';
 
-export const authReducer = (prevState, action) => {
+export const authReducer = (currentState, action) => {
   switch (action.type) {
     case RESTORE_TOKEN:
       return {
-        ...prevState,
+        ...currentState,
         userToken: action.token,
         loggedEmail: action.loggedEmail,
         isLoading: false,
@@ -12,16 +12,16 @@ export const authReducer = (prevState, action) => {
       };
     case SIGN_IN:
       return {
-        ...prevState,
+        ...currentState,
         userToken: action.token,
       };
     case SIGN_OUT:
       return {
-        ...prevState,
+        ...currentState,
         userToken: null,
         loggedEmail: null,
       };
     default:
-      return prevState;
+      return currentState;
   }
 };

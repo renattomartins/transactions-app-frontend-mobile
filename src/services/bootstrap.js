@@ -2,7 +2,7 @@ import AsyncStorage from '../modules/AsyncStorage';
 import {getAccounts} from '../services/AccountManager';
 import {RESTORE_TOKEN} from '../constants/actionTypes';
 
-export const bootstrapAsync = async (dispatch, env, baseUrl) => {
+export const initializeAppState = async (dispatch, env, baseUrl) => {
   let userToken, loggedEmail, accounts;
 
   try {
