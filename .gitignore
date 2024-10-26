@@ -69,4 +69,8 @@ ios/Local.xcconfig
 ios/QA.xcconfig
 ios/Prod.xcconfig
 
+android/app/env/local.properties
+android/app/env/qa.properties
+android/app/env/prod.properties
+
 .env
