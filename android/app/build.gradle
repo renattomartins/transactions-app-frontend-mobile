@@ -82,6 +82,41 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    flavorDimensions "environment"
+    productFlavors {
+        local {
+            dimension "environment"
+            def localProperties = new Properties()
+            file("env/local.properties").withInputStream { localProperties.load(it) }
+
+            applicationId localProperties.getProperty("APPLICATION_ID")
+            resValue "string", "app_name", localProperties.getProperty("APP_NAME")
+            buildConfigField "String", "ENV", "\"${localProperties.getProperty('ENV')}\""
+            buildConfigField "String", "BASE_URL", "\"${localProperties.getProperty('BASE_URL')}\""
+        }
+        qa {
+            dimension "environment"
+            def qaProperties = new Properties()
+            file("env/qa.properties").withInputStream { qaProperties.load(it) }
+
+            applicationId qaProperties.getProperty("APPLICATION_ID")
+            resValue "string", "app_name", qaProperties.getProperty("APP_NAME")
+            buildConfigField "String", "ENV", "\"${qaProperties.getProperty('ENV')}\""
+            buildConfigField "String", "BASE_URL", "\"${qaProperties.getProperty('BASE_URL')}\""
+        }
+        prod {
+            dimension "environment"
+            def prodProperties = new Properties()
+            file("env/prod.properties").withInputStream { prodProperties.load(it) }
+
+            applicationId prodProperties.getProperty("APPLICATION_ID")
+            resValue "string", "app_name", prodProperties.getProperty("APP_NAME")
+            buildConfigField "String", "ENV", "\"${prodProperties.getProperty('ENV')}\""
+            buildConfigField "String", "BASE_URL", "\"${prodProperties.getProperty('BASE_URL')}\""
+        }
+    }
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
