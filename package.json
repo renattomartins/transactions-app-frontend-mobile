@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "yarn run android:local",
     "android:local": "cd android && ./gradlew assembleLocal && react-native run-android --mode=localDebug",
     "android:qa": "cd android && ./gradlew assembleQa && react-native run-android --mode=qaDebug",
     "android:prod": "cd android && ./gradlew assembleProd && react-native run-android --mode=prodRelease",
