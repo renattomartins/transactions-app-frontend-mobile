@@ -1,5 +1,6 @@
 package com.transactionappmobile
 
+import android.os.Bundle
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -15,8 +16,18 @@ class MainActivity : ReactActivity() {
 
   /**
    * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]
-   * which allows you to enable New Architecture with a single boolean flags [fabricEnabled]
+   * which allows you to enable New Architecture with a single boolean flag [fabricEnabled]
    */
-  override fun createReactActivityDelegate(): ReactActivityDelegate =
-      DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+  override fun createReactActivityDelegate(): ReactActivityDelegate {
+    val initialProps = Bundle().apply {
+      putString("env", BuildConfig.ENV)
+      putString("baseUrl", BuildConfig.BASE_URL)
+    }
+
+    return object : DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled) {
+      override fun getLaunchOptions(): Bundle? {
+        return initialProps
+      }
+    }
+  }
 }
