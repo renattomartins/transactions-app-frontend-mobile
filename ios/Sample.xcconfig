@@ -11,5 +11,5 @@ DEVELOPMENT_TEAM =
 BASE_URL = [url_backend]
 ENV = local
 BUILD_TYPE = Debug
-APP_NAME = TransactionsApp (Local)
-APP_BUNDLE_ID = com.transactionsapp.TransactionAppMobile.local
+APP_NAME = [Local]TransactionsApp
+APP_BUNDLE_ID = com.transactionsapp.TransactionsAppMobile.local

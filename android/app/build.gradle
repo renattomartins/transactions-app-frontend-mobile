@@ -76,7 +76,6 @@ android {
 
     namespace "com.transactionappmobile"
     defaultConfig {
-        applicationId "com.transactionappmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

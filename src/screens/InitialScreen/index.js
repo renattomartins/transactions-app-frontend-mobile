@@ -9,14 +9,16 @@ import {ApplicationContext} from '../../contexts/ApplicationContext';
 import If from '../../utils/if';
 
 const InitialScreen = ({navigation}) => {
-  const {env} = useContext(ApplicationContext);
+  const {env, baseUrl} = useContext(ApplicationContext);
 
   return (
     <View style={styles.main}>
       <View style={styles.logoArea}>
         <Logo />
         <If test={env !== 'prd'}>
-          <Text style={styles.text}>({env})</Text>
+          <Text style={styles.text}>
+            ({env} - {baseUrl})
+          </Text>
         </If>
       </View>
       <View style={styles.buttonsArea}>
