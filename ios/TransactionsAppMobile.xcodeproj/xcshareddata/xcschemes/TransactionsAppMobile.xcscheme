@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "TransactionsApp.app"
-               BlueprintName = "TransactionAppMobile"
-               ReferencedContainer = "container:TransactionAppMobile.xcodeproj">
+               BlueprintName = "TransactionsAppMobile"
+               ReferencedContainer = "container:TransactionsAppMobile.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "TransactionAppMobileTests.xctest"
-               BlueprintName = "TransactionAppMobileTests"
-               ReferencedContainer = "container:TransactionAppMobile.xcodeproj">
+               BuildableName = "TransactionsAppMobileTests.xctest"
+               BlueprintName = "TransactionsAppMobileTests"
+               ReferencedContainer = "container:TransactionsAppMobile.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,8 +56,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "TransactionsApp.app"
-            BlueprintName = "TransactionAppMobile"
-            ReferencedContainer = "container:TransactionAppMobile.xcodeproj">
+            BlueprintName = "TransactionsAppMobile"
+            ReferencedContainer = "container:TransactionsAppMobile.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -73,8 +73,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "TransactionsApp.app"
-            BlueprintName = "TransactionAppMobile"
-            ReferencedContainer = "container:TransactionAppMobile.xcodeproj">
+            BlueprintName = "TransactionsAppMobile"
+            ReferencedContainer = "container:TransactionsAppMobile.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

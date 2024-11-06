@@ -6,14 +6,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  self.moduleName = @"TransactionAppMobile";
+  self.moduleName = @"TransactionsAppMobile";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
   NSString *baseUrl = infoDict[@"BASE_URL"];
   NSString *env = infoDict[@"ENV"];
 
-  self.moduleName = @"TransactionAppMobile";
+  self.moduleName = @"TransactionsAppMobile";
   self.initialProps = @{ @"baseUrl": baseUrl, @"env": env };
 
   BOOL result = [super application:application didFinishLaunchingWithOptions:launchOptions];

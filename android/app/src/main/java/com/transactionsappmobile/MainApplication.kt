@@ -1,4 +1,4 @@
-package com.transactionappmobile
+package com.transactionsappmobile
 
 import android.app.Application
 import com.facebook.react.PackageList

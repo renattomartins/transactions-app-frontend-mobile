@@ -1,4 +1,4 @@
-package com.transactionappmobile
+package com.transactionsappmobile
 
 import android.content.Intent
 import android.os.Bundle
