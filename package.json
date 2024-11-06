@@ -25,7 +25,6 @@
     "prop-types": "^15.7.2",
     "react": "18.2.0",
     "react-native": "^0.73.0",
-    "react-native-config": "^1.5.3",
     "react-native-currency-input": "^1.1.1",
     "react-native-date-picker": "4.2.1",
     "react-native-eject": "^0.2.0",
