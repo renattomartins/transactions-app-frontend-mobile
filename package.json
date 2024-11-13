@@ -7,6 +7,7 @@
     "android:local": "cd android && ./gradlew assembleLocal && react-native run-android --mode=localDebug",
     "android:qa": "cd android && ./gradlew assembleQa && react-native run-android --mode=qaDebug",
     "android:prod": "cd android && ./gradlew assembleProd && react-native run-android --mode=prodRelease",
+    "android:bundle": "cd android && ./gradlew bundleProdRelease",
     "ios": "react-native run-ios --simulator=\"iPhone 15\"",
     "ios:local": "react-native run-ios --simulator=\"iPhone 15\" --mode Debug",
     "ios:staging": "react-native run-ios --simulator=\"iPhone 15\" --mode Staging",
