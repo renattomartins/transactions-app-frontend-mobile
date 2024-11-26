@@ -57,7 +57,7 @@ Before you starting clone this repository, make sure that you've already done th
 
    If it is your first time with React Native, follow [this steps first](https://reactnative.dev/docs/set-up-your-environment).
 
-2. For iOS, create a `Local.xcconfig` file (you can duplicate `Sample.xcconfig`) and configure your local dev environment varaibles. Remember that you should never commit this file.
+2. For iOS, create a `Local.xcconfig` file (you can duplicate `Sample.xcconfig` in `ios/`) and configure your local dev environment variables. Remember that you should never commit this file.
 
 3. Execute the project in iOS Simulator:
 
@@ -65,10 +65,10 @@ Before you starting clone this repository, make sure that you've already done th
    $ yarn run ios:local
    ```
 
-4. For Android, ... TBD.
+4. For Android, create a `local.properties` file (you can duplicate `sample.properties` in `android/app/env`) and also configure your local dev environment variables. This files should never be commited.
 
 5. Execute the project in Android Emulator:
 
    ```
-   $ yarn run android
+   $ yarn run android:local
    ```
