@@ -11,6 +11,8 @@ import FloatButton from '../../components/atoms/FloatButton';
 import Transaction from '../../components/molecules/Transaction';
 import {friendlyErrorMessages as errorMessages} from '../../utils/constants';
 
+import {currencyFormat} from '../../utils/formatter';
+
 import styles from './styles';
 
 const TransactionList = ({navigation, handleGetTransactions}) => {
@@ -32,6 +34,7 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
   const [isEmpty, setIsEmpty] = useState(true);
   const [thereIsAnError, setThereIsAnError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [balance, setBalance] = useState(currencyFormat(0));
 
   const onLogout = async () => {
     // Requests
@@ -160,6 +163,10 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
           />
         </If>
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
+          <View style={styles.balanceArea}>
+            <Text style={styles.balanceLabel}>Seu saldo:</Text>
+            <Text style={styles.balance}>{balance}</Text>
+          </View>
           <ScrollView
             scrollIndicatorInsets={{right: 1}}
             style={styles.scrollArea}>

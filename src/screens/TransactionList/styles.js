@@ -65,6 +65,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: 200,
   },
+  balanceArea: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: Colors.blueSeven,
+    flexDirection: 'row',
+  },
+  balanceLabel: {
+    color: Colors.white,
+    textAlign: 'left',
+    flex: 1,
+    fontSize: 24,
+  },
+  balance: {
+    color: Colors.white,
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    flex: 1,
+  },
 });
 
 export default styles;
