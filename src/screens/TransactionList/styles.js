@@ -68,8 +68,16 @@ const styles = StyleSheet.create({
   balanceArea: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: Colors.blueSeven,
+    backgroundColor: Colors.blueSix,
     flexDirection: 'row',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   balanceLabel: {
     color: Colors.white,
