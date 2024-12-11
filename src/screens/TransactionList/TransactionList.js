@@ -122,6 +122,16 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
     return unsubscribe;
   }, [navigation, transactions]);
 
+  useEffect(() => {
+    const totalAmount = transactions.reduce((acc, transaction) => {
+      return transaction.isIncome
+        ? acc + transaction.amount
+        : acc - transaction.amount;
+    }, 0);
+
+    setBalance(currencyFormat(totalAmount));
+  }, [transactions]);
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerArea}>
