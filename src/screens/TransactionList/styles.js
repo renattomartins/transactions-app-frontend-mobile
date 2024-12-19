@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'right',
-    flex: 1,
+    flex: 2,
   },
 });
 

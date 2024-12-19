@@ -174,8 +174,12 @@ const TransactionList = ({navigation, handleGetTransactions}) => {
         </If>
         <If test={!isLoading && !thereIsAnError && !isEmpty}>
           <View style={styles.balanceArea}>
-            <Text style={styles.balanceLabel}>Seu saldo:</Text>
-            <Text style={styles.balance}>{balance}</Text>
+            <Text numberOfLines={1} style={styles.balanceLabel}>
+              Seu saldo:
+            </Text>
+            <Text numberOfLines={1} style={styles.balance}>
+              {balance}
+            </Text>
           </View>
           <ScrollView
             scrollIndicatorInsets={{right: 1}}
