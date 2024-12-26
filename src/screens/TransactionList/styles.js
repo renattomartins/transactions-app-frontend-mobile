@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    padding: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
   },
   logoutButton: {
     width: '23%',
