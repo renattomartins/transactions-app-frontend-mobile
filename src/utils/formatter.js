@@ -1,5 +1,9 @@
 export const currencyFormat = num => {
+  const isNegative = num < 0;
+  num = Math.abs(num);
+
   return (
+    (isNegative ? '-' : '') +
     'R$ ' +
     num
       .toFixed(2)
